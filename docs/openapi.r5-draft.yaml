@@ -1,0 +1,2754 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MetaFit R5 本地模拟接口（草案）",
+    "version": "0.3.0-draft",
+    "description": "仅供本机模拟，未经 App 团队确认，不提供真实身份、投递或安全保证。JSON 是 YAML 1.2 子集。"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000",
+      "description": "默认端口；模拟服务只绑定 127.0.0.1，端口可配置。"
+    }
+  ],
+  "paths": {
+    "/sim/v0/meta": {
+      "get": {
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Meta"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "parameters": [],
+        "operationId": "get_sim_v0_meta",
+        "summary": "GET /sim/v0/meta（本地模拟草案）",
+        "tags": [
+          "simulation"
+        ]
+      },
+      "post": {
+        "operationId": "unsupported_post_sim_v0_meta",
+        "summary": "不支持 POST /sim/v0/meta",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "put": {
+        "operationId": "unsupported_put_sim_v0_meta",
+        "summary": "不支持 PUT /sim/v0/meta",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "head": {
+        "operationId": "unsupported_head_sim_v0_meta",
+        "summary": "不支持 HEAD /sim/v0/meta",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowedHead"
+          },
+          "503": {
+            "$ref": "#/components/responses/UnavailableHead"
+          }
+        }
+      },
+      "options": {
+        "operationId": "unsupported_options_sim_v0_meta",
+        "summary": "不支持 OPTIONS /sim/v0/meta",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unsupported_delete_sim_v0_meta",
+        "summary": "不支持 DELETE /sim/v0/meta",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "unsupported_patch_sim_v0_meta",
+        "summary": "不支持 PATCH /sim/v0/meta",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "trace": {
+        "operationId": "unsupported_trace_sim_v0_meta",
+        "summary": "不支持 TRACE /sim/v0/meta",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/sim/v0/sessions": {
+      "post": {
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OK"
+          },
+          "201": {
+            "$ref": "#/components/responses/Created"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "413": {
+            "$ref": "#/components/responses/TooLarge"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSession"
+              }
+            }
+          }
+        },
+        "operationId": "post_sim_v0_sessions",
+        "summary": "POST /sim/v0/sessions（本地模拟草案）",
+        "tags": [
+          "simulation"
+        ]
+      },
+      "get": {
+        "operationId": "unsupported_get_sim_v0_sessions",
+        "summary": "不支持 GET /sim/v0/sessions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "put": {
+        "operationId": "unsupported_put_sim_v0_sessions",
+        "summary": "不支持 PUT /sim/v0/sessions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "head": {
+        "operationId": "unsupported_head_sim_v0_sessions",
+        "summary": "不支持 HEAD /sim/v0/sessions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowedHead"
+          },
+          "503": {
+            "$ref": "#/components/responses/UnavailableHead"
+          }
+        }
+      },
+      "options": {
+        "operationId": "unsupported_options_sim_v0_sessions",
+        "summary": "不支持 OPTIONS /sim/v0/sessions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unsupported_delete_sim_v0_sessions",
+        "summary": "不支持 DELETE /sim/v0/sessions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "unsupported_patch_sim_v0_sessions",
+        "summary": "不支持 PATCH /sim/v0/sessions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "trace": {
+        "operationId": "unsupported_trace_sim_v0_sessions",
+        "summary": "不支持 TRACE /sim/v0/sessions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/sim/v0/sessions/{session_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OK"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "operationId": "get_sim_v0_sessions_session_id",
+        "summary": "GET /sim/v0/sessions/{session_id}（本地模拟草案）",
+        "tags": [
+          "simulation"
+        ]
+      },
+      "post": {
+        "operationId": "unsupported_post_sim_v0_sessions_session_id",
+        "summary": "不支持 POST /sim/v0/sessions/{session_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "put": {
+        "operationId": "unsupported_put_sim_v0_sessions_session_id",
+        "summary": "不支持 PUT /sim/v0/sessions/{session_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "head": {
+        "operationId": "unsupported_head_sim_v0_sessions_session_id",
+        "summary": "不支持 HEAD /sim/v0/sessions/{session_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowedHead"
+          },
+          "503": {
+            "$ref": "#/components/responses/UnavailableHead"
+          }
+        }
+      },
+      "options": {
+        "operationId": "unsupported_options_sim_v0_sessions_session_id",
+        "summary": "不支持 OPTIONS /sim/v0/sessions/{session_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unsupported_delete_sim_v0_sessions_session_id",
+        "summary": "不支持 DELETE /sim/v0/sessions/{session_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "unsupported_patch_sim_v0_sessions_session_id",
+        "summary": "不支持 PATCH /sim/v0/sessions/{session_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "trace": {
+        "operationId": "unsupported_trace_sim_v0_sessions_session_id",
+        "summary": "不支持 TRACE /sim/v0/sessions/{session_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/sim/v0/sessions/{session_id}/questions": {
+      "post": {
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OK"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/QuestionConflict"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "413": {
+            "$ref": "#/components/responses/TooLarge"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Question"
+              }
+            }
+          }
+        },
+        "operationId": "post_sim_v0_sessions_session_id_questions",
+        "summary": "POST /sim/v0/sessions/{session_id}/questions（本地模拟草案）",
+        "tags": [
+          "simulation"
+        ],
+        "description": "open 由用户主动发起；present 代表客户端报告展示；none/unknown 回答须先展示。安全确认允许未展示时 skip；重复 skip 和关闭后操作仅返回关闭快照，不代表回答被接受。不存在、已失效或标识格式不合法的会话接收 answer=reported 返回 400 safety_report_unattributed；不保存报告。 已存在会话的 answer=reported 若缺失或非法 question_id、携带多余字段，也返回 400 safety_report_unattributed；有提示、不保存。"
+      },
+      "get": {
+        "operationId": "unsupported_get_sim_v0_sessions_session_id_questions",
+        "summary": "不支持 GET /sim/v0/sessions/{session_id}/questions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "put": {
+        "operationId": "unsupported_put_sim_v0_sessions_session_id_questions",
+        "summary": "不支持 PUT /sim/v0/sessions/{session_id}/questions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "head": {
+        "operationId": "unsupported_head_sim_v0_sessions_session_id_questions",
+        "summary": "不支持 HEAD /sim/v0/sessions/{session_id}/questions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowedHead"
+          },
+          "503": {
+            "$ref": "#/components/responses/UnavailableHead"
+          }
+        }
+      },
+      "options": {
+        "operationId": "unsupported_options_sim_v0_sessions_session_id_questions",
+        "summary": "不支持 OPTIONS /sim/v0/sessions/{session_id}/questions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unsupported_delete_sim_v0_sessions_session_id_questions",
+        "summary": "不支持 DELETE /sim/v0/sessions/{session_id}/questions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "unsupported_patch_sim_v0_sessions_session_id_questions",
+        "summary": "不支持 PATCH /sim/v0/sessions/{session_id}/questions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "trace": {
+        "operationId": "unsupported_trace_sim_v0_sessions_session_id_questions",
+        "summary": "不支持 TRACE /sim/v0/sessions/{session_id}/questions",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/sim/v0/sessions/{session_id}/events": {
+      "post": {
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OK"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "413": {
+            "$ref": "#/components/responses/TooLarge"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitEvent"
+              },
+              "examples": {
+                "simulation": {
+                  "value": {
+                    "event": {
+                      "schema_version": "0.1",
+                      "event_id": "sim_event_001",
+                      "event_type": "set_completed",
+                      "user_id": "sim_user_001",
+                      "session_id": "sim_session_001",
+                      "set_id": "sim_set_001",
+                      "exercise_id": "dumbbell_fly",
+                      "timestamp": "2026-11-02T18:30:00+08:00",
+                      "source": "simulation",
+                      "set_index": 2,
+                      "rest_seconds": 90,
+                      "discomfort": {
+                        "status": "unknown",
+                        "source": "self_report",
+                        "reported_at": null
+                      },
+                      "planned_reps": 12,
+                      "completed_reps": 10,
+                      "weight_kg_per_hand": 8,
+                      "perceived_effort": null,
+                      "metrics": [
+                        {
+                          "metric_id": "range_of_motion_change",
+                          "value": -18,
+                          "unit": "%",
+                          "source": "simulation",
+                          "confidence": null,
+                          "observation_id": "sim_observation_001"
+                        }
+                      ]
+                    },
+                    "do_not_disturb": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post_sim_v0_sessions_session_id_events",
+        "summary": "POST /sim/v0/sessions/{session_id}/events（本地模拟草案）",
+        "tags": [
+          "simulation"
+        ],
+        "description": "相同事件重复为 200 duplicate_event，冲突为 409。reported 信号身份不匹配或信封错误时 400 safety_report_unattributed，安全提示保留但不写入任何会话；应经当前会话 answer=reported 重新报告。不存在、已失效或标识格式不合法的会话接收 reported 同样返回 400 safety_report_unattributed；普通未知会话请求仍为 404。"
+      },
+      "get": {
+        "operationId": "unsupported_get_sim_v0_sessions_session_id_events",
+        "summary": "不支持 GET /sim/v0/sessions/{session_id}/events",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "put": {
+        "operationId": "unsupported_put_sim_v0_sessions_session_id_events",
+        "summary": "不支持 PUT /sim/v0/sessions/{session_id}/events",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "head": {
+        "operationId": "unsupported_head_sim_v0_sessions_session_id_events",
+        "summary": "不支持 HEAD /sim/v0/sessions/{session_id}/events",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowedHead"
+          },
+          "503": {
+            "$ref": "#/components/responses/UnavailableHead"
+          }
+        }
+      },
+      "options": {
+        "operationId": "unsupported_options_sim_v0_sessions_session_id_events",
+        "summary": "不支持 OPTIONS /sim/v0/sessions/{session_id}/events",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unsupported_delete_sim_v0_sessions_session_id_events",
+        "summary": "不支持 DELETE /sim/v0/sessions/{session_id}/events",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "unsupported_patch_sim_v0_sessions_session_id_events",
+        "summary": "不支持 PATCH /sim/v0/sessions/{session_id}/events",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "trace": {
+        "operationId": "unsupported_trace_sim_v0_sessions_session_id_events",
+        "summary": "不支持 TRACE /sim/v0/sessions/{session_id}/events",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/sim/v0/sessions/{session_id}/events/{event_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OK"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "operationId": "get_sim_v0_sessions_session_id_events_event_id",
+        "summary": "GET /sim/v0/sessions/{session_id}/events/{event_id}（本地模拟草案）",
+        "tags": [
+          "simulation"
+        ]
+      },
+      "post": {
+        "operationId": "unsupported_post_sim_v0_sessions_session_id_events_event_id",
+        "summary": "不支持 POST /sim/v0/sessions/{session_id}/events/{event_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "put": {
+        "operationId": "unsupported_put_sim_v0_sessions_session_id_events_event_id",
+        "summary": "不支持 PUT /sim/v0/sessions/{session_id}/events/{event_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "head": {
+        "operationId": "unsupported_head_sim_v0_sessions_session_id_events_event_id",
+        "summary": "不支持 HEAD /sim/v0/sessions/{session_id}/events/{event_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowedHead"
+          },
+          "503": {
+            "$ref": "#/components/responses/UnavailableHead"
+          }
+        }
+      },
+      "options": {
+        "operationId": "unsupported_options_sim_v0_sessions_session_id_events_event_id",
+        "summary": "不支持 OPTIONS /sim/v0/sessions/{session_id}/events/{event_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unsupported_delete_sim_v0_sessions_session_id_events_event_id",
+        "summary": "不支持 DELETE /sim/v0/sessions/{session_id}/events/{event_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "unsupported_patch_sim_v0_sessions_session_id_events_event_id",
+        "summary": "不支持 PATCH /sim/v0/sessions/{session_id}/events/{event_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      },
+      "trace": {
+        "operationId": "unsupported_trace_sim_v0_sessions_session_id_events_event_id",
+        "summary": "不支持 TRACE /sim/v0/sessions/{session_id}/events/{event_id}",
+        "description": "该方法不提供业务功能，只返回 405；HEAD 无响应体。",
+        "tags": [
+          "simulation"
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateSession": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          },
+          "session_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          }
+        },
+        "required": [
+          "user_id",
+          "session_id"
+        ]
+      },
+      "Question": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "operation": {
+                "const": "open"
+              },
+              "question_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,64}$"
+              },
+              "kind": {
+                "const": "safety_confirmation"
+              }
+            },
+            "required": [
+              "operation",
+              "question_id",
+              "kind"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "operation": {
+                "enum": [
+                  "present",
+                  "skip"
+                ]
+              },
+              "question_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,64}$"
+              }
+            },
+            "required": [
+              "operation",
+              "question_id"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "operation": {
+                "const": "answer"
+              },
+              "question_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,64}$"
+              },
+              "answer": {
+                "enum": [
+                  "none",
+                  "unknown",
+                  "reported"
+                ]
+              }
+            },
+            "required": [
+              "operation",
+              "question_id",
+              "answer"
+            ]
+          }
+        ]
+      },
+      "SubmitEvent": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event": {
+            "type": "object",
+            "required": [
+              "schema_version",
+              "event_id",
+              "event_type",
+              "user_id",
+              "session_id",
+              "set_id",
+              "exercise_id",
+              "timestamp",
+              "source"
+            ],
+            "properties": {
+              "schema_version": {
+                "const": "0.1"
+              },
+              "event_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,64}$"
+              },
+              "event_type": {
+                "const": "set_completed"
+              },
+              "user_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,64}$"
+              },
+              "session_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,64}$"
+              },
+              "set_id": {
+                "type": "string"
+              },
+              "exercise_id": {
+                "type": "string"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "必须含已知时区，小数秒最多 6 位，不允许 -00:00；R1 还检查实际日期有效性。"
+              },
+              "source": {
+                "const": "simulation"
+              },
+              "set_index": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1
+              },
+              "rest_seconds": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "planned_reps": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "completed_reps": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "weight_kg_per_hand": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "perceived_effort": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "仅检查有限数值，不表示已确认量表或科学阈值。"
+              },
+              "extensions": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "description": "JSON 对象或 null；最多 16384 UTF-8 字节、深度 8、遍历节点 1000；指标扩展同样受限。"
+              },
+              "discomfort": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "reported",
+                      "none",
+                      "unknown"
+                    ]
+                  },
+                  "source": {
+                    "const": "self_report"
+                  },
+                  "reported_at": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date-time",
+                    "description": "非 null 时与 timestamp 使用相同的时区与精度限制。"
+                  }
+                },
+                "required": [
+                  "status",
+                  "source"
+                ],
+                "additionalProperties": false
+              },
+              "metrics": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "metric_id": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string"
+                    },
+                    "source": {
+                      "const": "simulation"
+                    },
+                    "observation_id": {
+                      "type": "string"
+                    },
+                    "confidence": {
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "quality": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "extensions": {
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "metric_id",
+                    "value",
+                    "unit",
+                    "source",
+                    "observation_id"
+                  ]
+                },
+                "description": "观测 ID 在事件内不得重复；数值和单位不构成科学有效性证明。"
+              }
+            },
+            "additionalProperties": false,
+            "description": "必须通过 R1 完整验证，包括时间、观测 ID 唯一性及扩展大小和深度；不适优先于非安全输入错误。"
+          },
+          "do_not_disturb": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "event",
+          "do_not_disturb"
+        ]
+      },
+      "Response": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "pending_confirmation",
+              "reviewed",
+              "safety_pending",
+              "answered",
+              "stopped"
+            ],
+            "description": "当前响应的有限状态；App 优先依赖 required_action、display 和 confirmation_state，不代表真实安全或投递。"
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "pending_confirmation",
+              "confirmation_closed",
+              "duplicate_event",
+              "event_conflict",
+              "session_exists",
+              "question_conflict",
+              "invalid_request",
+              "invalid_event",
+              "state_missing",
+              "event_missing",
+              "request_too_large",
+              "storage_failed",
+              "safety_state_unknown",
+              "server_busy",
+              "method_not_allowed",
+              "uri_too_long",
+              "decision_stopped",
+              "session_invalidated",
+              "confirmation_not_needed",
+              "question_already_presented",
+              "question_already_created",
+              "safety_report_unattributed",
+              null
+            ],
+            "description": "本接口受控代码；decision_stopped 是未单独公开的内部停止原因，不表示可重试或可投递。"
+          },
+          "required_action": {
+            "type": "string",
+            "enum": [
+              "confirm",
+              "report_discomfort",
+              "none"
+            ],
+            "description": "confirm 表示确认流程待用户主动处理，包含发起、展示或回答；不授权自动弹问。report_discomfort 表示显示安全提示或重新报告，none 不代表身体安全。"
+          },
+          "display": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "pending_confirmation",
+                  "confirmation_closed",
+                  "question",
+                  "safety_pending",
+                  "safety_unknown",
+                  "unavailable",
+                  "error"
+                ]
+              },
+              "text": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "expires_at": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "kind",
+              "text",
+              "expires_at"
+            ]
+          },
+          "candidate": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "null"
+              },
+              "may_display": {
+                "const": false
+              }
+            },
+            "required": [
+              "text",
+              "may_display"
+            ]
+          },
+          "meta": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "contract_version": {
+                "const": "0.3.0-draft"
+              },
+              "simulation": {
+                "const": true
+              }
+            },
+            "required": [
+              "contract_version",
+              "simulation"
+            ]
+          },
+          "confirmation_state": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "not_asked",
+              "open",
+              "closed",
+              "confirmed",
+              "reported",
+              "unknown",
+              null
+            ]
+          },
+          "can_request_confirmation": {
+            "type": "boolean"
+          },
+          "question_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          },
+          "question_presented": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "safety_state_durability": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "durable",
+              "volatile",
+              null
+            ]
+          },
+          "event_saved": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "record_state": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "decided",
+              "pending",
+              "no_decision",
+              "inconsistent",
+              null
+            ],
+            "description": "提交与查询均采用同一查询记录语义；decided 只表示历史决策记录存在，不表示反馈已投递或当前安全。pending 包括预占及安全检查未完成；null 表示不可获得。"
+          },
+          "event_status": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "查询时返回的历史记录状态，可能包含旧版本内部值；仅供排障，不能判断当前安全状态。"
+          },
+          "event_code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "查询时返回的历史记录代码，可能包含旧版本内部值；仅供排障，App 不应依赖其取值或假设穷尽。"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "诊断提示，不是可穷尽的稳定枚举；客户端应忽略未知值。常见值包括 storage_failed、time_unvalidated、input_unvalidated、discomfort_source_unverified、record_state_unavailable 和 unattributed_discomfort。"
+          },
+          "features": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "仅 /meta 返回；其他响应为 null。",
+            "properties": {
+              "safety_confirmation": {
+                "type": "boolean"
+              },
+              "event_deduplication": {
+                "type": "boolean"
+              },
+              "real_model": {
+                "type": "boolean"
+              },
+              "delivery": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "safety_confirmation",
+              "event_deduplication",
+              "real_model",
+              "delivery"
+            ],
+            "additionalProperties": false
+          },
+          "limits": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "仅 /meta 返回，值为该实例当前生效的限制。",
+            "properties": {
+              "max_body_bytes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "events_per_request": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "max_concurrent": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "read_timeout_seconds": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "confirmation_seconds": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "max_body_bytes",
+              "events_per_request",
+              "max_concurrent",
+              "read_timeout_seconds",
+              "confirmation_seconds"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "status",
+          "code",
+          "required_action",
+          "display",
+          "candidate",
+          "meta",
+          "confirmation_state",
+          "can_request_confirmation",
+          "question_id",
+          "question_presented",
+          "safety_state_durability",
+          "event_saved",
+          "record_state",
+          "event_status",
+          "event_code",
+          "warnings",
+          "features",
+          "limits"
+        ]
+      }
+    },
+    "responses": {
+      "OK": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "default": {
+                "value": {
+                  "status": "reviewed",
+                  "code": null,
+                  "required_action": "none",
+                  "display": {
+                    "kind": "unavailable",
+                    "text": "模拟结果不可投递。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              },
+              "reported_volatile": {
+                "summary": "已注册会话中提交不适事件；reported_at 缺失且报告及事件写入失败。",
+                "value": {
+                  "status": "safety_pending",
+                  "code": null,
+                  "required_action": "report_discomfort",
+                  "display": {
+                    "kind": "safety_pending",
+                    "text": "你报告了不适，请先停止当前动作；如症状明显、持续或加重，请联系医疗专业人员。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": "reported",
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": "volatile",
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [
+                    "time_unvalidated",
+                    "storage_failed"
+                  ],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "Created": {
+        "description": "Created",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "default": {
+                "value": {
+                  "status": "pending_confirmation",
+                  "code": "pending_confirmation",
+                  "required_action": "confirm",
+                  "display": {
+                    "kind": "pending_confirmation",
+                    "text": "请由用户主动发起确认。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": "not_asked",
+                  "can_request_confirmation": true,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": "durable",
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "BadRequest",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "invalid_request": {
+                "value": {
+                  "status": "stopped",
+                  "code": "invalid_request",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "请求无效。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              },
+              "invalid_event": {
+                "value": {
+                  "status": "stopped",
+                  "code": "invalid_event",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "模拟事件无效。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              },
+              "safety_report_unattributed": {
+                "value": {
+                  "status": "stopped",
+                  "code": "safety_report_unattributed",
+                  "required_action": "report_discomfort",
+                  "display": {
+                    "kind": "safety_unknown",
+                    "text": "收到不适信号，但报告信息不完整或无法确认其所属会话，报告未记录。请先停止当前动作，并使用正确会话重新报告不适。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": false,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [
+                    "unattributed_discomfort"
+                  ],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "NotFound",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "state_missing": {
+                "value": {
+                  "status": "stopped",
+                  "code": "state_missing",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "未找到模拟会话。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              },
+              "event_missing": {
+                "value": {
+                  "status": "stopped",
+                  "code": "event_missing",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "未找到模拟事件。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "Conflict",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "event_conflict": {
+                "value": {
+                  "status": "stopped",
+                  "code": "event_conflict",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "事件内容冲突。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              },
+              "session_exists": {
+                "value": {
+                  "status": "stopped",
+                  "code": "session_exists",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "模拟会话已存在。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              },
+              "question_conflict": {
+                "value": {
+                  "status": "stopped",
+                  "code": "question_conflict",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "确认操作与当前状态冲突。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "TooLarge": {
+        "description": "TooLarge",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "request_too_large": {
+                "value": {
+                  "status": "stopped",
+                  "code": "request_too_large",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "请求体过大。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "Unavailable": {
+        "description": "Unavailable",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "storage_failed": {
+                "value": {
+                  "status": "stopped",
+                  "code": "storage_failed",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "safety_unknown",
+                    "text": "当前安全状态无法确认，请先停止当前动作，并按需寻求专业帮助。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [
+                    "storage_failed"
+                  ],
+                  "features": null,
+                  "limits": null
+                },
+                "summary": "待确认会话提交事件时，事件预占写入失败；其他故障时警告可能不同。"
+              },
+              "safety_state_unknown": {
+                "value": {
+                  "status": "stopped",
+                  "code": "safety_state_unknown",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "safety_unknown",
+                    "text": "当前安全状态无法确认，请先停止当前动作，并按需寻求专业帮助。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": "unknown",
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": "volatile",
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [
+                    "storage_failed"
+                  ],
+                  "features": null,
+                  "limits": null
+                },
+                "summary": "创建会话时，安全状态持久化读取失败；其他故障时快照和警告可能不同。"
+              },
+              "server_busy": {
+                "value": {
+                  "status": "stopped",
+                  "code": "server_busy",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "safety_unknown",
+                    "text": "当前安全状态无法确认，请先停止当前动作，并按需寻求专业帮助。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                },
+                "summary": "GET 请求抵达时并发容量已满；HEAD 无正文，无法识别方法时也无正文。"
+              }
+            }
+          }
+        }
+      },
+      "MethodNotAllowed": {
+        "description": "已知路径不支持该方法；Allow 给出该路径支持的方法。",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "method_not_allowed": {
+                "value": {
+                  "status": "stopped",
+                  "code": "method_not_allowed",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "该路径不支持此方法。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        },
+        "headers": {
+          "Allow": {
+            "schema": {
+              "type": "string"
+            },
+            "description": "该路径支持的方法。"
+          }
+        }
+      },
+      "UriTooLong": {
+        "description": "414",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "uri_too_long": {
+                "value": {
+                  "status": "stopped",
+                  "code": "uri_too_long",
+                  "required_action": "none",
+                  "display": {
+                    "kind": "error",
+                    "text": "请求地址过长。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "Meta": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "default": {
+                "value": {
+                  "status": "ready",
+                  "code": null,
+                  "required_action": "none",
+                  "display": {
+                    "kind": "unavailable",
+                    "text": "模拟结果不可投递。",
+                    "expires_at": null
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": null,
+                  "can_request_confirmation": false,
+                  "question_id": null,
+                  "question_presented": null,
+                  "safety_state_durability": null,
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": {
+                    "safety_confirmation": true,
+                    "event_deduplication": true,
+                    "real_model": false,
+                    "delivery": false
+                  },
+                  "limits": {
+                    "max_body_bytes": 65536,
+                    "events_per_request": 1,
+                    "max_concurrent": 4,
+                    "read_timeout_seconds": 5,
+                    "confirmation_seconds": 120
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "QuestionConflict": {
+        "description": "Conflict",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "examples": {
+              "question_conflict": {
+                "value": {
+                  "status": "stopped",
+                  "code": "question_conflict",
+                  "required_action": "confirm",
+                  "display": {
+                    "kind": "pending_confirmation",
+                    "text": "确认操作与当前状态冲突；请查看当前确认状态。",
+                    "expires_at": "2026-11-03T08:02:00.000000Z"
+                  },
+                  "candidate": {
+                    "text": null,
+                    "may_display": false
+                  },
+                  "meta": {
+                    "contract_version": "0.3.0-draft",
+                    "simulation": true
+                  },
+                  "confirmation_state": "open",
+                  "can_request_confirmation": false,
+                  "question_id": "q1",
+                  "question_presented": false,
+                  "safety_state_durability": "durable",
+                  "event_saved": null,
+                  "record_state": null,
+                  "event_status": null,
+                  "event_code": null,
+                  "warnings": [],
+                  "features": null,
+                  "limits": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "MethodNotAllowedHead": {
+        "description": "HEAD 不受支持；405 无正文，返回与错误表示对应的 Content-Type 和 Allow。",
+        "headers": {
+          "Allow": {
+            "schema": {
+              "type": "string"
+            },
+            "description": "该路径支持的方法。"
+          }
+        }
+      },
+      "UnavailableHead": {
+        "description": "满载时完整识别 HEAD 则返回 503、无响应体，Content-Length 为相应错误表示的长度；若限时内无法完整识别方法，返回无正文 503，Content-Length 为 0。",
+        "headers": {
+          "Cache-Control": {
+            "schema": {
+              "type": "string"
+            },
+            "description": "no-store"
+          }
+        }
+      }
+    }
+  },
+  "security": [],
+  "x-http-errors": {
+    "unsupported_method": {
+      "status": 405,
+      "code": "method_not_allowed",
+      "body": "JSON；HEAD 按 HTTP 语义无响应体，但仍有 JSON Content-Type。"
+    },
+    "unknown_path": {
+      "status": 404,
+      "code": "state_missing"
+    },
+    "request_uri_too_long": {
+      "status": 414,
+      "code": "uri_too_long",
+      "body": "JSON；在路由前发生，不属于单个操作。"
+    },
+    "overload_unidentified_method": {
+      "status": 503,
+      "body": "满载时若在限时内无法完整识别方法，保守返回无正文 503。"
+    }
+  }
+}

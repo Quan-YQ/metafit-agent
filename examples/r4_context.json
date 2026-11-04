@@ -1,0 +1,15 @@
+{
+  "source": "simulation",
+  "context_id": "r4_context_001",
+  "profile": {"goal": "general_fitness"},
+  "long_term_profile": {"weekly_session_goal": 3},
+  "daily_state": {"energy_level": "medium"},
+  "history": [
+    {
+      "schema_version": "0.1", "event_id": "sim_history_001", "event_type": "set_completed",
+      "user_id": "sim_user_001", "session_id": "sim_previous_session", "set_id": "sim_history_set_001",
+      "exercise_id": "dumbbell_fly", "timestamp": "2026-11-01T18:30:00+08:00",
+      "source": "simulation", "completed_reps": 9
+    }
+  ]
+}

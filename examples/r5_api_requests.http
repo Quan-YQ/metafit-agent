@@ -1,0 +1,40 @@
+# 本地模拟接口示例；可在支持 .http 的 REST 客户端中逐条运行。
+# 必须已有可信的本机模拟服务；只先运行第 1 条，人工检查 HTTP 200、版本和三个模拟标志。
+# 全部符合才逐条运行 2–6；不要一次 Run All。本客户端文件不自动执行门禁。
+# 每次运行前将 sid 改成新 ID；请勿输入真实用户或健康数据。
+@base = http://127.0.0.1:8000/sim/v0
+@sid = manual_change_me_01
+@user = manual_sim_user
+
+### 1. 检查 0.3.x-draft（当前 0.3.0-draft）、simulation=true、real_model=false、delivery=false
+GET {{base}}/meta
+
+### 2. 创建模拟会话；如 409，请更换新 sid
+POST {{base}}/sessions
+Content-Type: application/json
+
+{"user_id":"{{user}}","session_id":"{{sid}}"}
+
+### 3. 待确认时提交模拟事件；期望 200 pending_confirmation
+POST {{base}}/sessions/{{sid}}/events
+Content-Type: application/json
+
+{"event":{"schema_version":"0.1","event_id":"manual_event","event_type":"set_completed","user_id":"{{user}}","session_id":"{{sid}}","set_id":"set_1","exercise_id":"squat","timestamp":"2026-11-03T00:00:00Z","source":"simulation"},"do_not_disturb":false}
+
+### 4. 重复同一事件；期望 200 duplicate_event
+POST {{base}}/sessions/{{sid}}/events
+Content-Type: application/json
+
+{"event":{"schema_version":"0.1","event_id":"manual_event","event_type":"set_completed","user_id":"{{user}}","session_id":"{{sid}}","set_id":"set_1","exercise_id":"squat","timestamp":"2026-11-03T00:00:00Z","source":"simulation"},"do_not_disturb":false}
+
+### 5. 不存在的模拟会话中明确报告不适；期望 400，报告未记录
+POST {{base}}/sessions/ghost_not_registered/questions
+Content-Type: application/json
+
+{"operation":"answer","question_id":"q1","answer":"reported"}
+
+### 6. 已存在会话中缺少 question_id 的明确不适信号；期望 400，报告未记录
+POST {{base}}/sessions/{{sid}}/questions
+Content-Type: application/json
+
+{"operation":"answer","answer":"reported"}

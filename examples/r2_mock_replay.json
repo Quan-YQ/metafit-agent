@@ -1,0 +1,7 @@
+{
+  "sanitization_notice": "此文件是手工生成的离线模拟回放样例，不代表真实模型响应。",
+  "data": {
+    "schema": "r2-simulation-record-1",
+    "model_content_unreviewed": "{\"suggested_action\":\"silent\",\"message\":null,\"reason\":\"不适状态未知，仅依据当前模拟事实。\",\"evidence\":[]}"
+  }
+}

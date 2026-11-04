@@ -1,0 +1,17 @@
+.venv/
+.python312/
+.tmp/
+outputs/r2_records/
+outputs/r5_simulation/
+*.db-wal
+*.db-shm
+python-3.12.10-amd64.exe
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.env
+.env.*
+!.env.example

@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "event_id": "sim_event_001",
+  "event_type": "set_completed",
+  "user_id": "sim_user_001",
+  "session_id": "sim_session_001",
+  "set_id": "sim_set_001",
+  "exercise_id": "dumbbell_fly",
+  "timestamp": "2026-11-02T18:30:00+08:00",
+  "source": "simulation",
+  "set_index": 2,
+  "rest_seconds": 90,
+  "discomfort": {
+    "status": "unknown",
+    "source": "self_report",
+    "reported_at": null
+  },
+  "planned_reps": 12,
+  "completed_reps": 10,
+  "weight_kg_per_hand": 8,
+  "perceived_effort": null,
+  "metrics": [
+    {
+      "metric_id": "range_of_motion_change",
+      "value": -18,
+      "unit": "%",
+      "source": "simulation",
+      "confidence": null,
+      "observation_id": "sim_observation_001"
+    }
+  ]
+}

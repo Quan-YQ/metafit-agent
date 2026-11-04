@@ -1,0 +1,1304 @@
+[
+  {
+    "name": "new_session_pending",
+    "preconditions": "使用新的模拟会话 ID。",
+    "fault": null,
+    "expect_error": false,
+    "expected_code": "pending_confirmation",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions",
+      "json": {
+        "user_id": "sim_user_001",
+        "session_id": "sim_session_001"
+      }
+    },
+    "http_status": 201,
+    "response": {
+      "status": "pending_confirmation",
+      "code": "pending_confirmation",
+      "required_action": "confirm",
+      "display": {
+        "kind": "pending_confirmation",
+        "text": "请由用户主动发起确认。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "not_asked",
+      "can_request_confirmation": true,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": "durable",
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "confirmation_open",
+    "preconditions": "已创建待确认会话，尚未打开问题。",
+    "fault": null,
+    "expect_error": false,
+    "expected_code": "pending_confirmation",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/questions",
+      "json": {
+        "operation": "open",
+        "question_id": "q1",
+        "kind": "safety_confirmation"
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "status": "pending_confirmation",
+      "code": "pending_confirmation",
+      "required_action": "confirm",
+      "display": {
+        "kind": "pending_confirmation",
+        "text": "确认问题已创建，等待用户主动展示。",
+        "expires_at": "2026-11-03T08:02:00.000000Z"
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "open",
+      "can_request_confirmation": false,
+      "question_id": "q1",
+      "question_presented": false,
+      "safety_state_durability": "durable",
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "confirmation_closed",
+    "preconditions": "已打开并展示 q1。",
+    "fault": null,
+    "expect_error": false,
+    "expected_code": "confirmation_closed",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/questions",
+      "json": {
+        "operation": "skip",
+        "question_id": "q1"
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "status": "pending_confirmation",
+      "code": "confirmation_closed",
+      "required_action": "none",
+      "display": {
+        "kind": "confirmation_closed",
+        "text": "本会话的确认已结束；需要继续时，请主动开始新会话。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "closed",
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": "durable",
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "confirmed",
+    "preconditions": "已打开并展示 q1。",
+    "fault": null,
+    "expect_error": false,
+    "expected_code": null,
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/questions",
+      "json": {
+        "operation": "answer",
+        "question_id": "q1",
+        "answer": "none"
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "status": "answered",
+      "code": null,
+      "required_action": "none",
+      "display": {
+        "kind": "unavailable",
+        "text": "模拟结果不可投递。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "confirmed",
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": "durable",
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "pending_event",
+    "preconditions": "已创建待确认会话，尚未确认。",
+    "fault": null,
+    "expect_error": false,
+    "expected_code": "pending_confirmation",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/events",
+      "json": {
+        "event": {
+          "schema_version": "0.1",
+          "event_id": "sim_event_001",
+          "event_type": "set_completed",
+          "user_id": "sim_user_001",
+          "session_id": "sim_session_001",
+          "set_id": "sim_set_001",
+          "exercise_id": "dumbbell_fly",
+          "timestamp": "2026-11-02T18:30:00+08:00",
+          "source": "simulation",
+          "set_index": 2,
+          "rest_seconds": 90,
+          "discomfort": {
+            "status": "none",
+            "source": "self_report"
+          },
+          "planned_reps": 12,
+          "completed_reps": 10,
+          "weight_kg_per_hand": 8,
+          "perceived_effort": null,
+          "metrics": [
+            {
+              "metric_id": "range_of_motion_change",
+              "value": -18,
+              "unit": "%",
+              "source": "simulation",
+              "confidence": null,
+              "observation_id": "sim_observation_001"
+            }
+          ]
+        },
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "status": "pending_confirmation",
+      "code": "pending_confirmation",
+      "required_action": "confirm",
+      "display": {
+        "kind": "pending_confirmation",
+        "text": "请由用户主动发起确认。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "not_asked",
+      "can_request_confirmation": true,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": "durable",
+      "event_saved": true,
+      "record_state": "decided",
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "reviewed",
+    "preconditions": "已确认本会话。",
+    "fault": null,
+    "expect_error": false,
+    "expected_code": null,
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/events",
+      "json": {
+        "event": {
+          "schema_version": "0.1",
+          "event_id": "sim_event_001",
+          "event_type": "set_completed",
+          "user_id": "sim_user_001",
+          "session_id": "sim_session_001",
+          "set_id": "sim_set_001",
+          "exercise_id": "dumbbell_fly",
+          "timestamp": "2026-11-02T18:30:00+08:00",
+          "source": "simulation",
+          "set_index": 2,
+          "rest_seconds": 90,
+          "discomfort": {
+            "status": "none",
+            "source": "self_report"
+          },
+          "planned_reps": 12,
+          "completed_reps": 10,
+          "weight_kg_per_hand": 8,
+          "perceived_effort": null,
+          "metrics": [
+            {
+              "metric_id": "range_of_motion_change",
+              "value": -18,
+              "unit": "%",
+              "source": "simulation",
+              "confidence": null,
+              "observation_id": "sim_observation_001"
+            }
+          ]
+        },
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "status": "reviewed",
+      "code": null,
+      "required_action": "none",
+      "display": {
+        "kind": "unavailable",
+        "text": "模拟结果不可投递。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "confirmed",
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": "durable",
+      "event_saved": true,
+      "record_state": "decided",
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "duplicate_event",
+    "preconditions": "同一规范化事件已保存。",
+    "fault": null,
+    "expect_error": false,
+    "expected_code": "duplicate_event",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/events",
+      "json": {
+        "event": {
+          "schema_version": "0.1",
+          "event_id": "sim_event_001",
+          "event_type": "set_completed",
+          "user_id": "sim_user_001",
+          "session_id": "sim_session_001",
+          "set_id": "sim_set_001",
+          "exercise_id": "dumbbell_fly",
+          "timestamp": "2026-11-02T18:30:00+08:00",
+          "source": "simulation",
+          "set_index": 2,
+          "rest_seconds": 90,
+          "discomfort": {
+            "status": "none",
+            "source": "self_report"
+          },
+          "planned_reps": 12,
+          "completed_reps": 10,
+          "weight_kg_per_hand": 8,
+          "perceived_effort": null,
+          "metrics": [
+            {
+              "metric_id": "range_of_motion_change",
+              "value": -18,
+              "unit": "%",
+              "source": "simulation",
+              "confidence": null,
+              "observation_id": "sim_observation_001"
+            }
+          ]
+        },
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "status": "stopped",
+      "code": "duplicate_event",
+      "required_action": "none",
+      "display": {
+        "kind": "unavailable",
+        "text": "模拟结果不可投递。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "confirmed",
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": "durable",
+      "event_saved": true,
+      "record_state": "decided",
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "event_conflict",
+    "preconditions": "相同组合键的另一事件已保存。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "event_conflict",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/events",
+      "json": {
+        "event": {
+          "schema_version": "0.1",
+          "event_id": "sim_event_001",
+          "event_type": "set_completed",
+          "user_id": "sim_user_001",
+          "session_id": "sim_session_001",
+          "set_id": "sim_set_001",
+          "exercise_id": "dumbbell_fly",
+          "timestamp": "2026-11-02T18:30:00+08:00",
+          "source": "simulation",
+          "set_index": 2,
+          "rest_seconds": 90,
+          "discomfort": {
+            "status": "none",
+            "source": "self_report"
+          },
+          "planned_reps": 12,
+          "completed_reps": 7,
+          "weight_kg_per_hand": 8,
+          "perceived_effort": null,
+          "metrics": [
+            {
+              "metric_id": "range_of_motion_change",
+              "value": -18,
+              "unit": "%",
+              "source": "simulation",
+              "confidence": null,
+              "observation_id": "sim_observation_001"
+            }
+          ]
+        },
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 409,
+    "response": {
+      "status": "stopped",
+      "code": "event_conflict",
+      "required_action": "none",
+      "display": {
+        "kind": "error",
+        "text": "事件内容冲突。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "reported_volatile",
+    "preconditions": "会话已创建；不适事件未携带 reported_at，且模拟 report 和 claim 写入失败。",
+    "fault": "模拟 report/claim 写入失败",
+    "expect_error": false,
+    "expected_code": null,
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/events",
+      "json": {
+        "event": {
+          "schema_version": "0.1",
+          "event_id": "sim_event_001",
+          "event_type": "set_completed",
+          "user_id": "sim_user_001",
+          "session_id": "sim_session_001",
+          "set_id": "sim_set_001",
+          "exercise_id": "dumbbell_fly",
+          "timestamp": "2026-11-02T18:30:00+08:00",
+          "source": "simulation",
+          "set_index": 2,
+          "rest_seconds": 90,
+          "discomfort": {
+            "status": "reported",
+            "source": "self_report"
+          },
+          "planned_reps": 12,
+          "completed_reps": 10,
+          "weight_kg_per_hand": 8,
+          "perceived_effort": null,
+          "metrics": [
+            {
+              "metric_id": "range_of_motion_change",
+              "value": -18,
+              "unit": "%",
+              "source": "simulation",
+              "confidence": null,
+              "observation_id": "sim_observation_001"
+            }
+          ]
+        },
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "status": "safety_pending",
+      "code": null,
+      "required_action": "report_discomfort",
+      "display": {
+        "kind": "safety_pending",
+        "text": "你报告了不适，请先停止当前动作；如症状明显、持续或加重，请联系医疗专业人员。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "reported",
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": "volatile",
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [
+        "time_unvalidated",
+        "storage_failed"
+      ],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "storage_failed",
+    "preconditions": "会话存在，普通事件存储失败。",
+    "fault": "模拟 claim 写入失败",
+    "expect_error": true,
+    "expected_code": "storage_failed",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/events",
+      "json": {
+        "event": {
+          "schema_version": "0.1",
+          "event_id": "sim_event_001",
+          "event_type": "set_completed",
+          "user_id": "sim_user_001",
+          "session_id": "sim_session_001",
+          "set_id": "sim_set_001",
+          "exercise_id": "dumbbell_fly",
+          "timestamp": "2026-11-02T18:30:00+08:00",
+          "source": "simulation",
+          "set_index": 2,
+          "rest_seconds": 90,
+          "discomfort": {
+            "status": "none",
+            "source": "self_report"
+          },
+          "planned_reps": 12,
+          "completed_reps": 10,
+          "weight_kg_per_hand": 8,
+          "perceived_effort": null,
+          "metrics": [
+            {
+              "metric_id": "range_of_motion_change",
+              "value": -18,
+              "unit": "%",
+              "source": "simulation",
+              "confidence": null,
+              "observation_id": "sim_observation_001"
+            }
+          ]
+        },
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 503,
+    "response": {
+      "status": "stopped",
+      "code": "storage_failed",
+      "required_action": "none",
+      "display": {
+        "kind": "safety_unknown",
+        "text": "当前安全状态无法确认，请先停止当前动作，并按需寻求专业帮助。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [
+        "storage_failed"
+      ],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "invalid_request",
+    "preconditions": "仅供独立模拟，按对应请求构造输入。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "invalid_request",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions",
+      "json": {}
+    },
+    "http_status": 400,
+    "response": {
+      "status": "stopped",
+      "code": "invalid_request",
+      "required_action": "none",
+      "display": {
+        "kind": "error",
+        "text": "请求无效。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "missing_session",
+    "preconditions": "仅供独立模拟，按对应请求构造输入。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "state_missing",
+    "request": {
+      "method": "GET",
+      "path": "/sim/v0/sessions/missing",
+      "json": null
+    },
+    "http_status": 404,
+    "response": {
+      "status": "stopped",
+      "code": "state_missing",
+      "required_action": "none",
+      "display": {
+        "kind": "error",
+        "text": "未找到模拟会话。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "too_large",
+    "preconditions": "发送 65537 字节请求体；json=null 是占位。",
+    "fault": "发送超长请求体",
+    "expect_error": true,
+    "expected_code": "request_too_large",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions",
+      "json": null
+    },
+    "http_status": 413,
+    "response": {
+      "status": "stopped",
+      "code": "request_too_large",
+      "required_action": "none",
+      "display": {
+        "kind": "error",
+        "text": "请求体过大。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "invalid_event",
+    "preconditions": "仅供独立模拟，按对应请求构造输入。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "invalid_event",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/events",
+      "json": {
+        "event": {},
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 400,
+    "response": {
+      "status": "stopped",
+      "code": "invalid_event",
+      "required_action": "none",
+      "display": {
+        "kind": "error",
+        "text": "模拟事件无效。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "session_exists",
+    "preconditions": "同一协调器内已存在该会话。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "session_exists",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions",
+      "json": {
+        "user_id": "sim_user_001",
+        "session_id": "sim_session_001"
+      }
+    },
+    "http_status": 409,
+    "response": {
+      "status": "stopped",
+      "code": "session_exists",
+      "required_action": "none",
+      "display": {
+        "kind": "error",
+        "text": "模拟会话已存在。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "question_conflict",
+    "preconditions": "q1 已打开但未展示。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "question_conflict",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/questions",
+      "json": {
+        "operation": "answer",
+        "question_id": "q1",
+        "answer": "none"
+      }
+    },
+    "http_status": 409,
+    "response": {
+      "status": "stopped",
+      "code": "question_conflict",
+      "required_action": "confirm",
+      "display": {
+        "kind": "pending_confirmation",
+        "text": "确认操作与当前状态冲突；请查看当前确认状态。",
+        "expires_at": "2026-11-03T08:02:00.000000Z"
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "open",
+      "can_request_confirmation": false,
+      "question_id": "q1",
+      "question_presented": false,
+      "safety_state_durability": "durable",
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "event_missing",
+    "preconditions": "会话存在，事件不存在。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "event_missing",
+    "request": {
+      "method": "GET",
+      "path": "/sim/v0/sessions/sim_session_001/events/missing",
+      "json": null
+    },
+    "http_status": 404,
+    "response": {
+      "status": "stopped",
+      "code": "event_missing",
+      "required_action": "none",
+      "display": {
+        "kind": "error",
+        "text": "未找到模拟事件。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "safety_state_unknown",
+    "preconditions": "创建新模拟会话时安全状态存储读取失败。",
+    "fault": "模拟 open_session 抛出 storage_failed",
+    "expect_error": true,
+    "expected_code": "safety_state_unknown",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions",
+      "json": {
+        "user_id": "sim_user_001",
+        "session_id": "sim_session_001"
+      }
+    },
+    "http_status": 503,
+    "response": {
+      "status": "stopped",
+      "code": "safety_state_unknown",
+      "required_action": "none",
+      "display": {
+        "kind": "safety_unknown",
+        "text": "当前安全状态无法确认，请先停止当前动作，并按需寻求专业帮助。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": "unknown",
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": "volatile",
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [
+        "storage_failed"
+      ],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "server_busy",
+    "preconditions": "并发容量已满。",
+    "fault": "占满并发容量",
+    "expect_error": true,
+    "expected_code": "server_busy",
+    "request": {
+      "method": "GET",
+      "path": "/sim/v0/meta",
+      "json": null
+    },
+    "http_status": 503,
+    "response": {
+      "status": "stopped",
+      "code": "server_busy",
+      "required_action": "none",
+      "display": {
+        "kind": "safety_unknown",
+        "text": "当前安全状态无法确认，请先停止当前动作，并按需寻求专业帮助。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": null,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "unattributed_discomfort",
+    "preconditions": "仅供独立模拟，按对应请求构造输入。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "safety_report_unattributed",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/events",
+      "json": {
+        "event": {
+          "schema_version": "0.1",
+          "event_id": "sim_event_001",
+          "event_type": "set_completed",
+          "user_id": "sim_user_001",
+          "session_id": "other_session",
+          "set_id": "sim_set_001",
+          "exercise_id": "dumbbell_fly",
+          "timestamp": "2026-11-02T18:30:00+08:00",
+          "source": "simulation",
+          "set_index": 2,
+          "rest_seconds": 90,
+          "discomfort": {
+            "status": "reported",
+            "source": "self_report"
+          },
+          "planned_reps": 12,
+          "completed_reps": 10,
+          "weight_kg_per_hand": 8,
+          "perceived_effort": null,
+          "metrics": [
+            {
+              "metric_id": "range_of_motion_change",
+              "value": -18,
+              "unit": "%",
+              "source": "simulation",
+              "confidence": null,
+              "observation_id": "sim_observation_001"
+            }
+          ]
+        },
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 400,
+    "response": {
+      "status": "stopped",
+      "code": "safety_report_unattributed",
+      "required_action": "report_discomfort",
+      "display": {
+        "kind": "safety_unknown",
+        "text": "收到不适信号，但报告信息不完整或无法确认其所属会话，报告未记录。请先停止当前动作，并使用正确会话重新报告不适。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": false,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [
+        "unattributed_discomfort"
+      ],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "unknown_session_reported_event",
+    "preconditions": "ghost 会话不存在。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "safety_report_unattributed",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/ghost/events",
+      "json": {
+        "event": {
+          "schema_version": "0.1",
+          "event_id": "sim_event_001",
+          "event_type": "set_completed",
+          "user_id": "sim_user_001",
+          "session_id": "ghost",
+          "set_id": "sim_set_001",
+          "exercise_id": "dumbbell_fly",
+          "timestamp": "2026-11-02T18:30:00+08:00",
+          "source": "simulation",
+          "set_index": 2,
+          "rest_seconds": 90,
+          "discomfort": {
+            "status": "reported",
+            "source": "self_report"
+          },
+          "planned_reps": 12,
+          "completed_reps": 10,
+          "weight_kg_per_hand": 8,
+          "perceived_effort": null,
+          "metrics": [
+            {
+              "metric_id": "range_of_motion_change",
+              "value": -18,
+              "unit": "%",
+              "source": "simulation",
+              "confidence": null,
+              "observation_id": "sim_observation_001"
+            }
+          ]
+        },
+        "do_not_disturb": false
+      }
+    },
+    "http_status": 400,
+    "response": {
+      "status": "stopped",
+      "code": "safety_report_unattributed",
+      "required_action": "report_discomfort",
+      "display": {
+        "kind": "safety_unknown",
+        "text": "收到不适信号，但报告信息不完整或无法确认其所属会话，报告未记录。请先停止当前动作，并使用正确会话重新报告不适。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": false,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [
+        "unattributed_discomfort"
+      ],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "unknown_session_reported_answer",
+    "preconditions": "ghost 会话不存在。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "safety_report_unattributed",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/ghost/questions",
+      "json": {
+        "operation": "answer",
+        "question_id": "q1",
+        "answer": "reported"
+      }
+    },
+    "http_status": 400,
+    "response": {
+      "status": "stopped",
+      "code": "safety_report_unattributed",
+      "required_action": "report_discomfort",
+      "display": {
+        "kind": "safety_unknown",
+        "text": "收到不适信号，但报告信息不完整或无法确认其所属会话，报告未记录。请先停止当前动作，并使用正确会话重新报告不适。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": false,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [
+        "unattributed_discomfort"
+      ],
+      "features": null,
+      "limits": null
+    }
+  },
+  {
+    "name": "known_session_malformed_reported_answer",
+    "preconditions": "sim_session_001 已创建；模拟答案缺少 question_id。",
+    "fault": null,
+    "expect_error": true,
+    "expected_code": "safety_report_unattributed",
+    "request": {
+      "method": "POST",
+      "path": "/sim/v0/sessions/sim_session_001/questions",
+      "json": {
+        "operation": "answer",
+        "answer": "reported"
+      }
+    },
+    "http_status": 400,
+    "response": {
+      "status": "stopped",
+      "code": "safety_report_unattributed",
+      "required_action": "report_discomfort",
+      "display": {
+        "kind": "safety_unknown",
+        "text": "收到不适信号，但报告信息不完整或无法确认其所属会话，报告未记录。请先停止当前动作，并使用正确会话重新报告不适。",
+        "expires_at": null
+      },
+      "candidate": {
+        "text": null,
+        "may_display": false
+      },
+      "meta": {
+        "contract_version": "0.3.0-draft",
+        "simulation": true
+      },
+      "confirmation_state": null,
+      "can_request_confirmation": false,
+      "question_id": null,
+      "question_presented": null,
+      "safety_state_durability": null,
+      "event_saved": false,
+      "record_state": null,
+      "event_status": null,
+      "event_code": null,
+      "warnings": [
+        "unattributed_discomfort"
+      ],
+      "features": null,
+      "limits": null
+    }
+  }
+]
