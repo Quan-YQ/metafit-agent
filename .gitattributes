@@ -1,4 +1,6 @@
 * text=auto
+# BVH 原始字节用于研究重放的 SHA-256 校验，所有平台统一 LF。
+*.bvh text eol=lf
 *.png binary
 *.jpg binary
 *.jpeg binary

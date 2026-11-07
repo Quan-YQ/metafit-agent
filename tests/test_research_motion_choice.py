@@ -291,6 +291,31 @@ def test_reuse_rejects_changed_sample_before_decision(monkeypatch):
     assert result["visual_requests_started"] == 0 and result["delivery"] is False
 
 
+def test_git_windows_checkout_preserves_replay_sample_bytes(tmp_path):
+    """自动换行打开时，检出的 BVH 必须保留用于回放认证的 LF 字节。"""
+    import hashlib
+    import shutil
+    import subprocess
+
+    git = shutil.which("git")
+    if git is None:
+        pytest.skip("Git 不可用，无法检查检出行为")
+    repo = Path(__file__).resolve().parents[1]
+    (tmp_path / "examples").mkdir()
+    (tmp_path / ".gitattributes").write_bytes((repo / ".gitattributes").read_bytes())
+    source = (repo / "examples/cmu_23_14_sample.bvh").read_bytes().replace(b"\r\n", b"\n")
+    sample = tmp_path / "examples/cmu_23_14_sample.bvh"
+    sample.write_bytes(source)
+    def run(*args):
+        return subprocess.run([git, "-c", "core.autocrlf=true", "-C", str(tmp_path), *args],
+                              check=True, capture_output=True)
+    run("init", "-q")
+    run("add", "--", ".gitattributes", "examples/cmu_23_14_sample.bvh")
+    sample.write_bytes(source.replace(b"\n", b"\r\n"))
+    run("checkout-index", "-f", "--", "examples/cmu_23_14_sample.bvh")
+    assert hashlib.sha256(sample.read_bytes()).hexdigest() == research.UserReportedReplay.source_sha256
+
+
 def test_reuse_rejects_changed_prompt_before_decision(monkeypatch):
     source = event()
     monkeypatch.setattr(research, "PROMPT", "changed prompt")
