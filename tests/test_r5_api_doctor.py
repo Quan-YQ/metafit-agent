@@ -18,6 +18,13 @@ def test_supported_versions_are_explicit():
 
 
 def test_doctor_self_started_json_and_confirmed_reset(tmp_path, monkeypatch, capsys):
+    # pytest 的默认临时目录可能在仓库之外。为此测试创建隔离项目根目录，
+    # 仍然保留 doctor 对根目录和符号链接的实际检查。
+    event_fixture = (doctor.ROOT / "examples" / "set_completed.json").read_bytes()
+    fixture_dir = tmp_path / "examples"
+    fixture_dir.mkdir()
+    (fixture_dir / "set_completed.json").write_bytes(event_fixture)
+    monkeypatch.setattr(doctor, "ROOT", tmp_path)
     path = tmp_path / "doctor"
     monkeypatch.setattr(doctor, "DOCTOR_DIR", path)
     assert doctor.main(["--json"]) == 0

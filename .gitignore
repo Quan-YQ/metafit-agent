@@ -1,17 +1,33 @@
+# Python environments and generated files
 .venv/
 .python312/
-.tmp/
-outputs/r2_records/
-outputs/r5_simulation/
-*.db-wal
-*.db-shm
-python-3.12.10-amd64.exe
 __pycache__/
 *.py[cod]
 .pytest_cache/
 *.egg-info/
 build/
 dist/
+
+# Credentials, databases, logs and local outputs
 .env
 .env.*
 !.env.example
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.log
+.tmp/
+outputs/
+
+# Datasets, restricted models and derived results
+data/fusionposer/*.npz
+data/amass/
+data/body_models/
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

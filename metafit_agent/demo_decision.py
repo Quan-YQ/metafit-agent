@@ -1,4 +1,4 @@
-"""R2 演示，默认离线；仅 --live 允许向 DeepSeek 发起请求。"""
+"""R2 演示，默认离线；仅 --live 允许向真实模型（DeepSeek 或智谱 GLM）发起请求。"""
 
 import argparse
 from dataclasses import asdict
@@ -13,6 +13,7 @@ import warnings
 from .decision import UNKNOWN_REASON, DecisionOutcome, Fact, ModelCallError, decide_simulated_event
 from .deepseek_client import DeepSeekModel
 from .demo_training_event import _invalid_constant, _unique_object
+from .glm_client import GLMModel
 from .model_response import ModelResponse
 
 
@@ -30,7 +31,7 @@ def _load_json(path: Path):
                       parse_constant=_invalid_constant)
 
 
-def make_key_provider():
+def make_key_provider(label: str = "DeepSeek"):
     """仅在确需网络调用时提示一次；无法隐藏输入时中止。"""
     cache: list[str] = []
 
@@ -40,7 +41,7 @@ def make_key_provider():
         try:
             with warnings.catch_warnings():
                 warnings.simplefilter("error", getpass.GetPassWarning)
-                key = getpass.getpass("请输入 DeepSeek API Key（输入不会显示）：")
+                key = getpass.getpass(f"请输入 {label} API Key（输入不会显示）：")
         except getpass.GetPassWarning:
             raise ModelCallError("key_prompt_unavailable") from None
         except (EOFError, KeyboardInterrupt):
@@ -117,7 +118,9 @@ def main() -> int:
     parser.add_argument("path", type=Path, help="UTF-8 模拟事件 JSON 文件")
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--mock", action="store_true", help="离线模拟模型（默认）")
-    mode.add_argument("--live", action="store_true", help="显式调用 DeepSeek，可能产生费用")
+    mode.add_argument("--live", action="store_true", help="显式调用真实模型，可能产生费用")
+    parser.add_argument("--provider", choices=("deepseek", "glm"), default="deepseek",
+                        help="真实调用时使用的大模型服务商；默认 deepseek")
     parser.add_argument("--context", type=Path, help="可选的模拟上下文 JSON 文件")
     parser.add_argument("--prompt-key", action="store_true", help="需要时隐藏输入 API Key，仅本进程使用")
     parser.add_argument("--record", action="store_true", help="显式保存脱敏模拟结果供回放")
@@ -131,10 +134,15 @@ def main() -> int:
         print("无法读取有效的 UTF-8 JSON 文件。", file=sys.stderr)
         return 2
     if args.live:
-        print("真实调用可能产生费用；仅发送经过筛选的模拟事实。", file=sys.stderr)
-    model = DeepSeekModel(key_provider=make_key_provider() if args.prompt_key else None) if args.live else _DemoModel()
+        print(f"真实调用可能产生费用（服务商：{args.provider}）；仅发送经过筛选的模拟事实。", file=sys.stderr)
+    if args.live and args.provider == "glm":
+        model = GLMModel(key_provider=make_key_provider("智谱 GLM") if args.prompt_key else None)
+    elif args.live:
+        model = DeepSeekModel(key_provider=make_key_provider() if args.prompt_key else None)
+    else:
+        model = _DemoModel()
     result = decide_simulated_event(data, model, context)
-    output = outcome_dict(result, "deepseek" if args.live else "mock")
+    output = outcome_dict(result, args.provider if args.live else "mock")
     if args.live:
         output["budget"] = {"limit_yuan": str(model.budget.limit_yuan), "calls": model.budget.calls,
                             "estimated_spent_yuan": str(model.budget.estimated_spent_yuan),

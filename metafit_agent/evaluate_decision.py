@@ -10,7 +10,11 @@ import time
 from .decision import _parse_candidate, decide_simulated_event
 from .deepseek_client import CallBudget, DeepSeekModel
 from .demo_decision import _DemoModel, _load_json, _utf8_output, make_key_provider, outcome_dict, record_results
+from .glm_client import GLMModel
 from .model_response import ModelResponse
+
+LIVE_MODES = {"deepseek", "glm"}
+MODEL_NAMES = {"deepseek": "deepseek-flash", "glm": "glm-5.3-flash"}
 
 
 def run_evaluation(model, base: dict, context: dict, mode: str,
@@ -48,12 +52,12 @@ def run_evaluation(model, base: dict, context: dict, mode: str,
         if stopped:
             records.append({"scenario": name, "status": "skipped", "reason": "budget_or_connection_uncertain"})
             continue
-        before = model.budget.calls if mode == "deepseek" else None
+        before = model.budget.calls if mode in LIVE_MODES else None
         started = time.monotonic()
         result = decide_simulated_event(event, model, ctx)
         wall_ms = round((time.monotonic() - started) * 1000, 2)
-        after = model.budget.calls if mode == "deepseek" else None
-        called = (after > before) if mode == "deepseek" else name not in {"reported_discomfort", "invalid_input"}
+        after = model.budget.calls if mode in LIVE_MODES else None
+        called = (after > before) if mode in LIVE_MODES else name not in {"reported_discomfort", "invalid_input"}
         if called:
             model_attempts += 1
             latencies.append(wall_ms)
@@ -65,7 +69,7 @@ def run_evaluation(model, base: dict, context: dict, mode: str,
                   "outcome": outcome_dict(result, mode),
                   "model_content_unreviewed": result.model_response.content if result.model_response else None}
         records.append(record)
-        if mode == "deepseek" and (model.budget.uncertain or result.error_code in {
+        if mode in LIVE_MODES and (model.budget.uncertain or result.error_code in {
             "budget_exceeded", "budget_unknown", "call_limit_reached", "missing_api_key",
             "key_prompt_cancelled", "key_prompt_unavailable",
         }):
@@ -76,7 +80,7 @@ def run_evaluation(model, base: dict, context: dict, mode: str,
               "structured_output_rate": structured / model_attempts if model_attempts else None,
               "elapsed_ms_for_model_calls": latencies,
               "notice": "结构合规率不代表判断正确、安全或最终费用；候选未通过 R3 验证。"}
-    if mode == "deepseek":
+    if mode in LIVE_MODES:
         output["budget"] = {"limit_yuan": str(model.budget.limit_yuan), "max_calls": model.budget.max_calls,
                             "calls": model.budget.calls, "estimated_spent_yuan": str(model.budget.estimated_spent_yuan),
                             "uncertain": model.budget.uncertain,
@@ -84,7 +88,9 @@ def run_evaluation(model, base: dict, context: dict, mode: str,
     return output
 
 
-def validate_prior_success(record: dict, base: dict, context: dict) -> tuple[dict, Decimal]:
+def validate_prior_success(record: dict, base: dict, context: dict,
+                           requested_model: str = "deepseek-flash",
+                           mode: str = "deepseek") -> tuple[dict, Decimal]:
     """检查本地记录是否覆盖相同的模拟场景；不把历史未知费用记为零。"""
     if not isinstance(record, dict) or not isinstance(record.get("data"), dict):
         raise ValueError("invalid prior record")
@@ -92,10 +98,10 @@ def validate_prior_success(record: dict, base: dict, context: dict) -> tuple[dic
     output = data.get("output")
     if data.get("schema") != "r2-simulation-record-1" or not isinstance(output, dict):
         raise ValueError("unsupported prior record")
-    if output.get("status") != "candidate" or output.get("mode") != "deepseek":
+    if output.get("status") != "candidate" or output.get("mode") != mode:
         raise ValueError("prior call was not a successful real candidate")
     metadata = output.get("model_metadata")
-    if not isinstance(metadata, dict) or metadata.get("requested_model") != "deepseek-flash":
+    if not isinstance(metadata, dict) or metadata.get("requested_model") != requested_model:
         raise ValueError("prior model metadata absent")
     usage = metadata.get("usage")
     if not isinstance(usage, dict):
@@ -131,7 +137,9 @@ def validate_prior_success(record: dict, base: dict, context: dict) -> tuple[dic
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="五个模拟场景的 R2 评估；默认离线")
-    parser.add_argument("--live", action="store_true", help="显式调用 DeepSeek，可能收费")
+    parser.add_argument("--live", action="store_true", help="显式调用真实模型，可能收费")
+    parser.add_argument("--provider", choices=sorted(LIVE_MODES), default="deepseek",
+                        help="真实调用时使用的大模型服务商；默认 deepseek")
     parser.add_argument("--prompt-key", action="store_true", help="需要时隐藏输入密钥")
     parser.add_argument("--record", action="store_true", help="显式保存脱敏模拟回放记录")
     parser.add_argument("--prior-calls", type=int, help="本轮前已发起的请求次数；重试前填写已核实数值")
@@ -168,20 +176,27 @@ def main() -> int:
         if prior_calls < 1:
             parser.error("复用成功记录时此前请求次数必须至少为 1")
         try:
-            prior_coverage, prior_spend = validate_prior_success(_load_json(args.resume_record), base, context)
+            prior_coverage, prior_spend = validate_prior_success(
+                _load_json(args.resume_record), base, context,
+                requested_model=MODEL_NAMES[args.provider], mode=args.provider)
         except (OSError, UnicodeError, ValueError, TypeError):
             parser.error("既有记录无效，或与当前模拟场景不一致；未发送请求")
     _utf8_output()
     if args.live:
         remaining = max(0, 5 - prior_calls)
         planned = min(remaining, 2 if prior_coverage is not None else 3)
-        print(f"历史请求计入 {prior_calls} 次，本次最多发起 {planned} 次请求；进程内估算预算 1 元。")
+        print(f"服务商：{args.provider}；历史请求计入 {prior_calls} 次，本次最多发起 {planned} 次请求；进程内估算预算 1 元。")
         print("仅发送筛选后的模拟事实；进程内估算不是服务商账单硬上限。")
         if args.accept_prior_unknown_cost:
             print("注意：历史失败请求费用未知；只计入已有成功记录的用量估算，不能保证累计账单不超过 1 元。")
     budget = CallBudget(calls=prior_calls, estimated_spent_yuan=prior_spend)
-    model = DeepSeekModel(budget=budget, key_provider=make_key_provider() if args.prompt_key else None) if args.live else _DemoModel()
-    result = run_evaluation(model, base, context, "deepseek" if args.live else "mock", prior_coverage)
+    if args.live and args.provider == "glm":
+        model = GLMModel(budget=budget, key_provider=make_key_provider("智谱 GLM") if args.prompt_key else None)
+    elif args.live:
+        model = DeepSeekModel(budget=budget, key_provider=make_key_provider() if args.prompt_key else None)
+    else:
+        model = _DemoModel()
+    result = run_evaluation(model, base, context, args.provider if args.live else "mock", prior_coverage)
     if args.resume_record:
         result["prior_coverage"] = {"record": str(args.resume_record), "previous_requests": prior_calls,
                                     "successful_record": prior_coverage,
