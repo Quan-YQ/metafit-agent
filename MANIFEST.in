@@ -1,0 +1,15 @@
+include README.md CONTRIBUTING.md CHANGELOG.md .env.example .gitignore .gitattributes
+include .github/workflows/tests.yml
+recursive-include docs *.md *.yaml
+recursive-include examples *.py *.json *.http *.bvh
+recursive-include research *.py *.md *.json *.jsonl .gitignore
+recursive-include data *.md LICENSE
+recursive-include tools *.py
+recursive-include tests *.py
+prune .tmp
+prune outputs
+prune .venv
+prune .python312
+prune .planning
+prune .gstack
+global-exclude *.py[cod] *.npz *.npy *.zip *.xz *.bz2 *.db *.sqlite *.sqlite3 *.partial *.part

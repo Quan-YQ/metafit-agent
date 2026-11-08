@@ -1,4 +1,13 @@
 * text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.env.example text eol=lf
+MANIFEST.in text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
 # BVH 原始字节用于研究重放的 SHA-256 校验，所有平台统一 LF。
 *.bvh text eol=lf
 *.png binary

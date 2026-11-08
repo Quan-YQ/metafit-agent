@@ -25,6 +25,19 @@ outputs/
 data/fusionposer/*.npz
 data/amass/
 data/body_models/
+*.npz
+*.npy
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+data/cip/*
+!data/cip/README.md
+*.partial
+*.part
+.planning/
+.gstack/
 
 # Editor and operating-system files
 .idea/

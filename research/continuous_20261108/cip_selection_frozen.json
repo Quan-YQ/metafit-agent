@@ -1,0 +1,70 @@
+{
+  "train": [
+    "00",
+    "01",
+    "02"
+  ],
+  "validation": [
+    "03"
+  ],
+  "test": [
+    "04"
+  ],
+  "actions": [
+    "sequence",
+    "circuit",
+    "task",
+    "random"
+  ],
+  "candidates": [
+    {
+      "model": "ridge_10.0",
+      "validation_macro": 0.130549
+    },
+    {
+      "model": "ridge_100.0",
+      "validation_macro": 0.130248
+    },
+    {
+      "model": "ridge_1000.0",
+      "validation_macro": 0.128716
+    },
+    {
+      "model": "ridge_10000.0",
+      "validation_macro": 0.122772
+    },
+    {
+      "model": "mlp",
+      "validation_macro": 0.106729,
+      "best_epoch": 14,
+      "history": [
+        0.116309,
+        0.115274,
+        0.112208,
+        0.109851,
+        0.109817,
+        0.108722,
+        0.10812,
+        0.108785,
+        0.11108,
+        0.106947,
+        0.107846,
+        0.107927,
+        0.108078,
+        0.106729,
+        0.108699,
+        0.108553,
+        0.108998,
+        0.10706,
+        0.107785
+      ]
+    }
+  ],
+  "selected": "mlp",
+  "archive_sha256": {
+    "00": "aaeabd37a25f26b2688e38e103eec1e194ec4dec957ce40084e45bff16727666",
+    "01": "57648d37e34627ca84dc45c3d42bc9c94533f6ea82c20de0e892cdb17fa63b65",
+    "02": "c82e819238098ea2881d0d36f4a5e7dd3a6054298c865893e5c9206e023c49c5",
+    "03": "9aa316329841fe3d37e530baafe6b67d3a8ddb18caec41969f32dcfe7a2a20e1"
+  }
+}

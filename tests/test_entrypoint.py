@@ -26,7 +26,7 @@ def test_missing_optional_configuration_uses_default():
     result = run_entrypoint(None)
     assert result.returncode == 0
     assert "INFO" in result.stdout
-    assert "尚未实现" in result.stdout
+    assert "python -m metafit_agent.simulation_api" in result.stdout
 
 
 def test_valid_configuration_is_accepted():

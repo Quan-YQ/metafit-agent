@@ -392,6 +392,27 @@ class Handler(BaseHTTPRequestHandler):
             return self._method_not_allowed()
         return self._send(*_error("invalid_request", 400))
 
+    def _reject_oversized_body(self):
+        self._send(*_error("request_too_large", 413))
+        try:
+            # 未读正文时直接关闭会使 Windows 复位连接，丢失已发送的 413。
+            # 先结束响应写端，再按总时限和字节上限丢弃数据，不解析正文。
+            self.wfile.flush()
+            self.connection.shutdown(socket.SHUT_WR)
+            deadline = time.monotonic() + 0.15
+            remaining = MAX_BODY + 8192
+            while remaining > 0:
+                wait = deadline - time.monotonic()
+                if wait <= 0:
+                    break
+                self.connection.settimeout(wait)
+                chunk = self.connection.recv(min(8192, remaining))
+                if not chunk:
+                    break
+                remaining -= len(chunk)
+        except OSError:
+            pass
+
     def _method_not_allowed(self):
         allowed = _allowed_methods(urlsplit(getattr(self, "path", "")).path)
         if not allowed:
@@ -423,7 +444,7 @@ class Handler(BaseHTTPRequestHandler):
                 if not length or not length.isascii() or not length.isdigit():
                     return self._send(*_error("invalid_request"))
                 if int(length) > MAX_BODY:
-                    return self._send(*_error("request_too_large", 413))
+                    return self._reject_oversized_body()
                 raw = self.rfile.read(int(length))
                 def pairs(items):
                     result = {}

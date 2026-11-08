@@ -12,6 +12,8 @@
 
 ## 已知历史变更
 
+2026-11-08 工程修复：超限 POST 请求仍返回 `413 request_too_large`，连接收尾增加有限的正文丢弃，修复 Windows 上偶发收不到已发送响应的问题。字段、状态码和契约版本保持原约定；复现及回归结果见 [工程改进记录](../CHANGELOG.md)。
+
 | 版本 | 变化与原因 | App 需要做什么 |
 |---|---|---|
 | `0.3.0-draft` | 已存在会话中，`answer=reported` 若缺少或非法 `question_id`、或带多余字段，从 400 `invalid_request` 改为 400 `safety_report_unattributed`；返回安全提示，**报告未记录**。这改变已有错误码，故按 0.2.x 规则升至 0.3。 | 升级版本门禁，读取 400 body，向用户展示经审核提示，并在正确会话使用符合契约的请求重新报告；参考 `known_session_malformed_reported_answer` fixture。`0.2.2` 的本地有条件通过不自动覆盖此修订。 |

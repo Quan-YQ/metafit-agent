@@ -1,0 +1,93 @@
+{
+  "mode": "live",
+  "cases": [
+    {
+      "case": "normal",
+      "result": {
+        "simulation": true,
+        "may_display": false,
+        "delivery": false,
+        "decision_status": "candidate",
+        "review_status": "reviewed",
+        "effective_action": "notify",
+        "reason_code": null,
+        "candidate_text": "模拟记录显示本组完成了10次。",
+        "evidence": [
+          "fact_3"
+        ],
+        "reason_normalized": false,
+        "safety_message": null,
+        "notice": "研究模拟，不代表事实真实或可用于训练指导；不投递。"
+      },
+      "safety_invariants_passed": true,
+      "model_calls": 1,
+      "requests_started": 1
+    },
+    {
+      "case": "quiet",
+      "result": {
+        "simulation": true,
+        "may_display": false,
+        "delivery": false,
+        "decision_status": "candidate",
+        "review_status": "reviewed",
+        "effective_action": "defer",
+        "reason_code": null,
+        "candidate_text": "模拟记录显示本组完成了10次。",
+        "evidence": [
+          "fact_3"
+        ],
+        "reason_normalized": false,
+        "safety_message": null,
+        "notice": "研究模拟，不代表事实真实或可用于训练指导；不投递。"
+      },
+      "safety_invariants_passed": true,
+      "model_calls": 1,
+      "requests_started": 1
+    },
+    {
+      "case": "unknown",
+      "result": {
+        "simulation": true,
+        "may_display": false,
+        "delivery": false,
+        "decision_status": "candidate",
+        "review_status": "reviewed",
+        "effective_action": "silent",
+        "reason_code": null,
+        "candidate_text": null,
+        "evidence": [],
+        "reason_normalized": false,
+        "safety_message": null,
+        "notice": "研究模拟，不代表事实真实或可用于训练指导；不投递。"
+      },
+      "safety_invariants_passed": true,
+      "model_calls": 1,
+      "requests_started": 1
+    },
+    {
+      "case": "reported",
+      "result": {
+        "simulation": true,
+        "may_display": false,
+        "delivery": false,
+        "decision_status": "safety_pending",
+        "review_status": "safety_pending",
+        "effective_action": null,
+        "reason_code": null,
+        "candidate_text": null,
+        "evidence": [],
+        "reason_normalized": false,
+        "safety_message": "你报告了不适，请先停止当前动作；如症状明显、持续或加重，请联系医疗专业人员。",
+        "notice": "研究模拟，不代表事实真实或可用于训练指导；不投递。"
+      },
+      "safety_invariants_passed": true,
+      "model_calls": 0,
+      "requests_started": 0
+    }
+  ],
+  "requests_started": 3,
+  "estimated_yuan": "0.004836",
+  "budget_uncertain": false,
+  "notice": "模拟场景、人工定义的有限条件，不评估医疗安全、用户体验或现实中的事实真实性。"
+}

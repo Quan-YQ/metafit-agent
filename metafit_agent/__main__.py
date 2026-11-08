@@ -13,7 +13,7 @@ def main() -> int:
 
     logging.basicConfig(level=level)
     print(f"MetaFit Agent R0 工程入口已启动（日志级别：{level}）。")
-    print("当前尚未实现完整训练反馈工作流或智能决策。")
+    print("本入口检查工程配置；启动本机模拟接口：python -m metafit_agent.simulation_api")
     return 0
 
 

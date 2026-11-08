@@ -5,15 +5,18 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "metafit-agent"
 version = "0.1.0"
-description = "MetaFit Agent 的独立工程基础"
+description = "训练事件、动作骨架评估与 Agent 决策的非商业研究原型"
+readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest==8.4.2"]
+research = ["numpy>=1.26,<3", "Pillow>=10,<13"]
+train = ["numpy>=1.26,<3", "Pillow>=10,<13", "torch>=2.2,<3"]
 
 [tool.setuptools.packages.find]
 include = ["metafit_agent*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "research/continuous_20261108"]
