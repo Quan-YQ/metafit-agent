@@ -1,0 +1,25 @@
+{
+  "full_suite": {
+    "tests": 734,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 84.116
+  },
+  "upstream_warning": "Pinned DynaIP quaternion_product calls torch.cross without dim; source left unchanged.",
+  "pose_replay": {
+    "recording_models_checked": 8,
+    "SO3_validated": true,
+    "max_metric_delta": 0
+  },
+  "geometry": {
+    "selection": 18,
+    "confirmation": 18
+  },
+  "secret_scan": {
+    "keys_checked": 2,
+    "files_scanned": 273,
+    "matching_files": [],
+    "key_values_printed": false
+  }
+}

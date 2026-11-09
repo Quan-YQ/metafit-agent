@@ -1,0 +1,61 @@
+{
+  "dip_test.txt": {
+    "recordings": 19,
+    "sha256": "e6cc302a16769a958df2fbb22a8aa68b6bf1820dd0a4988685c90b995fca9006"
+  },
+  "dip_train.txt": {
+    "recordings": 41,
+    "sha256": "98f9823b6baba7eb5efc585dc7c266168175c0c5f0c171548e4c78641f7fb33a"
+  },
+  "andy_test.txt": {
+    "recordings": 30,
+    "sha256": "2c6b8cc5736a7402bd0ab80ae13d89c4ca41da3499ab427e1cc4935096938e5c"
+  },
+  "andy_train.txt": {
+    "recordings": 165,
+    "sha256": "29750e13ab9e4bd02ed0b714a65d4bf466f36463412a09b73bf91b9906044927"
+  },
+  "cip_test.txt": {
+    "recordings": 45,
+    "sha256": "aa453721a8ea02676d04e3a2d6bbe026afa4451f062a690d6d008604d32ef679"
+  },
+  "cip_train.txt": {
+    "recordings": 243,
+    "sha256": "2d68217bf11cf928507ed4f8648978f5a14479954a13bdb239c2c7d2b1d34de8"
+  },
+  "emokine_train.txt": {
+    "recordings": 63,
+    "sha256": "724510f97d81aead10f6a9733bdc6a7725def12e2f0b79b96a75307ce6c53013"
+  },
+  "unipd_test.txt": {
+    "recordings": 96,
+    "sha256": "1e1267422824f0cf35148a3dbdfac7d663e9599eacf3994f75f1c7149069f815"
+  },
+  "unipd_train.txt": {
+    "recordings": 622,
+    "sha256": "d5582c75a47f10b7acfd460890ec698ed8a26db8b42e36e77f9c0d84b0b522f4"
+  },
+  "virginia_test.txt": {
+    "recordings": 6,
+    "sha256": "9713574a975df0b19e907b9b2ea2916c70e226f6e313c9714de278add1490b0d"
+  },
+  "virginia_train.txt": {
+    "recordings": 13,
+    "sha256": "93039e441127abc8e9cf534c5e6ca92f3af5c5c9b3a897e58b07d65039910cf3"
+  },
+  "cip_train_subjects": [
+    "subject00",
+    "subject01",
+    "subject02",
+    "subject03",
+    "subject05",
+    "subject06",
+    "subject07",
+    "subject09"
+  ],
+  "cip_test_subjects": [
+    "subject04",
+    "subject08"
+  ],
+  "training_scope": "Default DynaIP: AnDy,UNIPD,CIP,Emokine,Virginia. DynaIP_s adds DIP-IMU; only DynaIP used here. Scope inferred from official config/train/splits, not independent retraining attestation."
+}

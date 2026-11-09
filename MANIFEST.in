@@ -2,7 +2,7 @@ include README.md CONTRIBUTING.md CHANGELOG.md .env.example .gitignore .gitattri
 include .github/workflows/tests.yml
 recursive-include docs *.md *.yaml
 recursive-include examples *.py *.json *.http *.bvh
-recursive-include research *.py *.md *.json *.jsonl .gitignore
+recursive-include research *.py *.md *.json *.jsonl *.txt .gitignore
 recursive-include data *.md LICENSE
 recursive-include tools *.py
 recursive-include tests *.py

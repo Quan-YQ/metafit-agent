@@ -1,0 +1,17 @@
+{
+  "parent_results_sha256": "ffc29553d7f1479160a163de1b570d1846508c4a7c1b725e30f15e87b86df723",
+  "reused_responses": 20,
+  "explicit_free_429_retries": [
+    {
+      "case_id": "114_16_w0_f",
+      "model": "glm-4.6v-flash",
+      "image_sha256": "6a7928adaba0c6d15160f29ea699dbe66a6ac0fff8a73533ed26e5077f0ebc72",
+      "elapsed_ms": 298.599,
+      "observation": "invalid",
+      "estimated_yuan": null,
+      "request_id": "bd19f0cb9a12cd40ce6276fa3f9f0e90da49f7cc7b6dcc12237fe9483ba3e5a8",
+      "finished_at": "2026-11-08T13:12:28.156074+00:00",
+      "error": "http_429"
+    }
+  ]
+}

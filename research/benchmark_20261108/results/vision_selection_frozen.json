@@ -1,0 +1,18 @@
+{
+  "schema": "vision-selection-v1",
+  "candidates": [
+    "qwen3-vl-plus",
+    "glm-4.6v-flash"
+  ],
+  "ranking": [
+    "qwen3-vl-plus",
+    "glm-4.6v-flash",
+    "qwen3.7-flash-2026-07-15",
+    "glm-4.1v-thinking-flash"
+  ],
+  "selection_results_sha256": "77c2edfff447e4a8f18a2b29c79b411ec62d681ff93a1f4e06fd4c3784222bde",
+  "registry_sha256": "08b617ab68486be5b65205d73ba0dcc3a7c5ba5f311b45466bc8269a4398468d",
+  "prompt_sha256": "5f503c4d8147ee22fbd3cb4d579853add234586a0f0b7d0c545415ed396551e4",
+  "rule": "accuracy descending, uncertainty ascending, invalid ascending, cost ascending, latency ascending; top2",
+  "frozen_at": "2026-11-08T13:10:35.103113+00:00"
+}

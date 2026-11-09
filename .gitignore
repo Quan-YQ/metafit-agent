@@ -34,6 +34,7 @@ data/body_models/
 *.safetensors
 data/cip/*
 !data/cip/README.md
+*.assembling
 *.partial
 *.part
 .planning/

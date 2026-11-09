@@ -1,0 +1,299 @@
+{
+  "schema": "public-skeleton-vision-v1",
+  "stage": "confirmation",
+  "prompt": "图片展示同一人物按从左到右排列的六个时刻，上下两排是两个视角。紫色大点标出髋部，绿色虚线位于第一列髋部上下、整幅骨架高度的5%处。比较第六列与第一列：第六列紫点在上方绿线之外表示升高up，在下方绿线之外表示降低down，在两条线之间表示no_clear_change；看不清或无法判断时答uncertain。只按图像判断，不推测动作名称。只输出JSON：{\"hip_change\":\"up|down|no_clear_change|uncertain\",\"explanation\":\"一句话\"}。",
+  "prompt_sha256": "5f503c4d8147ee22fbd3cb4d579853add234586a0f0b7d0c545415ed396551e4",
+  "source_repository": "https://github.com/una-dinosauria/cmu-mocap",
+  "source_revision": "09a07f54f3bbb58797325f009282d0b2048a2871",
+  "source_sha256": {
+    "01_06": "8882922f6d51ab25cf7c44ac31e23ad21b5deaebc3332c74b01e2a61cb751b1a",
+    "15_10": "03d58e8f3731b4bd1c5b9ac73bc1955dd827f4171a2e16628d0c89f7a935bdde",
+    "40_06": "9fb48c767f91189e3c9b293dd2d3a6c1326cc834a357fa27abe197ff0afffd54",
+    "88_08": "c09ca52ae671d90f5c3086f7a5841e6a73dc8e07731a98e127171da1fb19c693",
+    "114_16": "702952e8521d615e4425e569a95f8913d11d932ec7ea73f809ce96fda747790f",
+    "136_09": "f958ad4cfc516b025da94eb1085b7ded2f34e0fad2c0520fb554a29794b28c33",
+    "141_17": "50480e797770f6ae881caba3f27746a750bbdae237342bb72b2723df9f0663c7",
+    "143_18": "1b55e3b6fe9254c14acc5cc53cd6e8ede16d21682029c4ccf56d374d612f508f"
+  },
+  "cases": [
+    {
+      "id": "01_06_w0_f",
+      "source": "01_06",
+      "subject": "01",
+      "window": 0,
+      "reverse": false,
+      "start": 0,
+      "end_exclusive": 641,
+      "reference": {
+        "direction": "up",
+        "height_ratio": 0.33138570825118596,
+        "threshold": 0.05
+      },
+      "image_sha256": "bd462b9fb290e1b556bb4efed62a849eb55062b911540aa87c3f9378de64c480"
+    },
+    {
+      "id": "01_06_w0_r",
+      "source": "01_06",
+      "subject": "01",
+      "window": 0,
+      "reverse": true,
+      "start": 0,
+      "end_exclusive": 641,
+      "reference": {
+        "direction": "down",
+        "height_ratio": -0.33138570825118596,
+        "threshold": 0.05
+      },
+      "image_sha256": "48850b8e06faf353ed208b8d53e83449519ac346df8ba8d6e104ab6782460a04"
+    },
+    {
+      "id": "114_16_w0_f",
+      "source": "114_16",
+      "subject": "114",
+      "window": 0,
+      "reverse": false,
+      "start": 0,
+      "end_exclusive": 216,
+      "reference": {
+        "direction": "no_clear_change",
+        "height_ratio": -0.002209150851964104,
+        "threshold": 0.05
+      },
+      "image_sha256": "6a7928adaba0c6d15160f29ea699dbe66a6ac0fff8a73533ed26e5077f0ebc72"
+    },
+    {
+      "id": "114_16_w1_r",
+      "source": "114_16",
+      "subject": "114",
+      "window": 1,
+      "reverse": true,
+      "start": 216,
+      "end_exclusive": 432,
+      "reference": {
+        "direction": "up",
+        "height_ratio": 0.12987257576777375,
+        "threshold": 0.05
+      },
+      "image_sha256": "bb611b3301020f9e330d259b538d4c348aef6fcb68cf83136d31655c525bd691"
+    },
+    {
+      "id": "114_16_w1_f",
+      "source": "114_16",
+      "subject": "114",
+      "window": 1,
+      "reverse": false,
+      "start": 216,
+      "end_exclusive": 432,
+      "reference": {
+        "direction": "down",
+        "height_ratio": -0.12987257576777375,
+        "threshold": 0.05
+      },
+      "image_sha256": "7ca96369a111f6f328ce25cc67186ddafe10b956780cbf3200785a295ea0d21c"
+    },
+    {
+      "id": "136_09_w2_f",
+      "source": "136_09",
+      "subject": "136",
+      "window": 2,
+      "reverse": false,
+      "start": 282,
+      "end_exclusive": 424,
+      "reference": {
+        "direction": "no_clear_change",
+        "height_ratio": -0.017108784683025766,
+        "threshold": 0.05
+      },
+      "image_sha256": "d22fb124ee2b4951fed81844d79e55bd95150c1c4f1ba2809ead686a01c308a0"
+    },
+    {
+      "id": "143_18_w1_r",
+      "source": "143_18",
+      "subject": "143",
+      "window": 1,
+      "reverse": true,
+      "start": 94,
+      "end_exclusive": 188,
+      "reference": {
+        "direction": "up",
+        "height_ratio": 0.29362043007104033,
+        "threshold": 0.05
+      },
+      "image_sha256": "0389f8e904ec63c73df45d57298bb77f54438fb0c1dbe8a70bb6c0efde2720e0"
+    },
+    {
+      "id": "143_18_w1_f",
+      "source": "143_18",
+      "subject": "143",
+      "window": 1,
+      "reverse": false,
+      "start": 94,
+      "end_exclusive": 188,
+      "reference": {
+        "direction": "down",
+        "height_ratio": -0.29362043007104033,
+        "threshold": 0.05
+      },
+      "image_sha256": "af65508b6f0d5388e911519c5fcc4ad2760b6809f409707e456ddf9075a2a74b"
+    },
+    {
+      "id": "141_17_w0_f",
+      "source": "141_17",
+      "subject": "141",
+      "window": 0,
+      "reverse": false,
+      "start": 0,
+      "end_exclusive": 70,
+      "reference": {
+        "direction": "no_clear_change",
+        "height_ratio": 0.025470311012287604,
+        "threshold": 0.05
+      },
+      "image_sha256": "24ba430b17bca1209c7fb5de49a600179a4e339f12e00d68c2cc9e07eeb18acd"
+    },
+    {
+      "id": "15_10_w1_r",
+      "source": "15_10",
+      "subject": "15",
+      "window": 1,
+      "reverse": true,
+      "start": 347,
+      "end_exclusive": 695,
+      "reference": {
+        "direction": "up",
+        "height_ratio": 0.09851551267306656,
+        "threshold": 0.05
+      },
+      "image_sha256": "eeb3aa33a33f986fcab5fa32fb3ec868ec7f10738c4287b05b223134ab30328d"
+    },
+    {
+      "id": "15_10_w1_f",
+      "source": "15_10",
+      "subject": "15",
+      "window": 1,
+      "reverse": false,
+      "start": 347,
+      "end_exclusive": 695,
+      "reference": {
+        "direction": "down",
+        "height_ratio": -0.09851551267306656,
+        "threshold": 0.05
+      },
+      "image_sha256": "205568a9f66a518b9f9600930ab43867927f8e9f9083652ebf785c7c76595ea7"
+    },
+    {
+      "id": "143_18_w0_f",
+      "source": "143_18",
+      "subject": "143",
+      "window": 0,
+      "reverse": false,
+      "start": 0,
+      "end_exclusive": 94,
+      "reference": {
+        "direction": "no_clear_change",
+        "height_ratio": -0.014324253895147021,
+        "threshold": 0.05
+      },
+      "image_sha256": "3ee812d8d8845faf55f5581e8de0002fbd41035a5bbe4dc45350740d4e483a12"
+    },
+    {
+      "id": "40_06_w1_f",
+      "source": "40_06",
+      "subject": "40",
+      "window": 1,
+      "reverse": false,
+      "start": 823,
+      "end_exclusive": 1646,
+      "reference": {
+        "direction": "up",
+        "height_ratio": 0.22420417915268037,
+        "threshold": 0.05
+      },
+      "image_sha256": "4cb8e3aa3e4edaa928dc6ac0dd0ccd2bc04d626519caa8fc3893b204b8a8d47d"
+    },
+    {
+      "id": "40_06_w1_r",
+      "source": "40_06",
+      "subject": "40",
+      "window": 1,
+      "reverse": true,
+      "start": 823,
+      "end_exclusive": 1646,
+      "reference": {
+        "direction": "down",
+        "height_ratio": -0.22420417915268037,
+        "threshold": 0.05
+      },
+      "image_sha256": "37fa3713a1d2042f425715dbb7cc10678c55482e9f82537f0ad8802666567cb5"
+    },
+    {
+      "id": "15_10_w0_f",
+      "source": "15_10",
+      "subject": "15",
+      "window": 0,
+      "reverse": false,
+      "start": 0,
+      "end_exclusive": 347,
+      "reference": {
+        "direction": "no_clear_change",
+        "height_ratio": -0.006971767321593383,
+        "threshold": 0.05
+      },
+      "image_sha256": "55537ab09727966bb89783fca72045031d5a24fa0b3acaf550a93b6523fab144"
+    },
+    {
+      "id": "88_08_w2_r",
+      "source": "88_08",
+      "subject": "88",
+      "window": 2,
+      "reverse": true,
+      "start": 72,
+      "end_exclusive": 108,
+      "reference": {
+        "direction": "up",
+        "height_ratio": 0.33444643041126504,
+        "threshold": 0.05
+      },
+      "image_sha256": "10438521696de703ceeedff7565c5d7e2654932ef9e13f74da9e36f0104bcacb"
+    },
+    {
+      "id": "88_08_w2_f",
+      "source": "88_08",
+      "subject": "88",
+      "window": 2,
+      "reverse": false,
+      "start": 72,
+      "end_exclusive": 108,
+      "reference": {
+        "direction": "down",
+        "height_ratio": -0.33444643041126504,
+        "threshold": 0.05
+      },
+      "image_sha256": "7fa68b78dfaf3df7de8fa3f30a8ddc972fa16fe907172f6792340bc5ab51e0d6"
+    },
+    {
+      "id": "40_06_w0_f",
+      "source": "40_06",
+      "subject": "40",
+      "window": 0,
+      "reverse": false,
+      "start": 0,
+      "end_exclusive": 823,
+      "reference": {
+        "direction": "no_clear_change",
+        "height_ratio": -0.012995304370070281,
+        "threshold": 0.05
+      },
+      "image_sha256": "d96ed001d758090b843265ec30009715a3dbfd2754a7a2101a49f4f669e46adb"
+    }
+  ],
+  "counts": {
+    "up": 6,
+    "down": 6,
+    "no_clear_change": 6
+  },
+  "generator_sha256": "3b0be1552c1cf3474c557f2496f79bd2adafcf95946e79e4c346a44d0c27d33f",
+  "selection_freeze_sha256": "0140753a3f300f2d6b5ae7413bd2ee19296d3508b9065c7f41e00344898e086b",
+  "scope": "controlled CMU-derived skeletons with guides; windows/reversals are clustered, not independent people",
+  "license": "CMU mocap data available for research/use with attribution; source conversion MIT, retain authors and source notices"
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "vision-shortlist-v1",
+  "verified_date": "2026-11-08",
+  "currency": "CNY",
+  "region": "China; Aliyun cn-beijing",
+  "models": [
+    {
+      "id": "glm-4.6v-flash",
+      "provider": "bigmodel",
+      "key_env": "ZHIPUAI_API_KEY",
+      "endpoint": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "input_per_million": 0,
+      "output_per_million": 0,
+      "request_extra": {"thinking": {"type": "disabled"}},
+      "reserve_yuan": 0,
+      "sources": ["https://docs.bigmodel.cn/cn/guide/models/free/glm-4.6v-flash"],
+      "rationale": "Official free image understanding model; low-cost default candidate."
+    },
+    {
+      "id": "glm-4.1v-thinking-flash",
+      "provider": "bigmodel",
+      "key_env": "ZHIPUAI_API_KEY",
+      "endpoint": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "input_per_million": 0,
+      "output_per_million": 0,
+      "request_extra": {},
+      "reserve_yuan": 0,
+      "sources": ["https://docs.bigmodel.cn/cn/guide/models/free/glm-4.1v-thinking-flash"],
+      "rationale": "Official free visual reasoning alternative; reasoning latency is included."
+    },
+    {
+      "id": "qwen3.7-flash-2026-07-15",
+      "provider": "dashscope",
+      "key_env": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "input_per_million": 0.2,
+      "output_per_million": 0.8,
+      "tiers": [[32000, 0.2, 0.8], [256000, 0.6, 2.4], [1000000, 1.2, 4.8]],
+      "request_extra": {"enable_thinking": false},
+      "reserve_yuan": 1.24,
+      "sources": ["https://help.aliyun.com/zh/model-studio/qwen3-7-flash", "https://help.aliyun.com/zh/model-studio/model-pricing"],
+      "rationale": "Pinned image-capable Flash snapshot; inexpensive paid reference."
+    },
+    {
+      "id": "qwen3-vl-plus",
+      "provider": "dashscope",
+      "key_env": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "input_per_million": 1,
+      "output_per_million": 10,
+      "tiers": [[32000, 1, 10], [128000, 1.5, 15], [256000, 3, 30]],
+      "request_extra": {"enable_thinking": false},
+      "reserve_yuan": 0.90,
+      "sources": ["https://help.aliyun.com/zh/model-studio/models", "https://help.aliyun.com/zh/model-studio/model-pricing"],
+      "rationale": "Specialized visual model with stronger advertised spatial understanding; quality comparator.",
+      "alias_notice": "Mutable official alias; record returned model and run time."
+    }
+  ],
+  "exclusions": [
+    "DeepSeek existing experiment is retained; it is not a new officially verified vision candidate.",
+    "GPT-4.1-mini/GPT-5-mini official pages marked selected snapshots deprecated when checked.",
+    "Old qwen3-vl-flash URL redirects and current price table does not establish it; use currently documented Qwen3.7-Flash.",
+    "GLM-4.6V-FlashX price page requires JavaScript; third-party prices alone are insufficient for an official price claim."
+  ]
+}

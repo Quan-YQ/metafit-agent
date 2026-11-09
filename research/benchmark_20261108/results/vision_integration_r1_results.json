@@ -1,0 +1,207 @@
+{
+  "schema": "vision-comparison-v1",
+  "stage": "selection",
+  "summary": {
+    "glm-4.6v-flash": {
+      "planned": 18,
+      "completed": 11,
+      "correct": 7,
+      "accuracy": 0.3888888888888889,
+      "uncertain_rate": 0.0,
+      "invalid_or_missing_rate": 0.4444444444444444,
+      "per_class": {
+        "up": {
+          "total": 6,
+          "correct": 3
+        },
+        "down": {
+          "total": 6,
+          "correct": 2
+        },
+        "no_clear_change": {
+          "total": 6,
+          "correct": 2
+        }
+      },
+      "latency_median_ms": 4339.039,
+      "latency_p95_ms": 13742.876,
+      "estimated_yuan": 0,
+      "cost_unknown_count": 1,
+      "confusion": {
+        "up": {
+          "up": 3,
+          "down": 0,
+          "no_clear_change": 1,
+          "uncertain": 0,
+          "invalid": 0
+        },
+        "down": {
+          "up": 1,
+          "down": 2,
+          "no_clear_change": 0,
+          "uncertain": 0,
+          "invalid": 1
+        },
+        "no_clear_change": {
+          "up": 1,
+          "down": 0,
+          "no_clear_change": 2,
+          "uncertain": 0,
+          "invalid": 0
+        }
+      }
+    },
+    "glm-4.1v-thinking-flash": {
+      "planned": 18,
+      "completed": 10,
+      "correct": 3,
+      "accuracy": 0.16666666666666666,
+      "uncertain_rate": 0.0,
+      "invalid_or_missing_rate": 0.6111111111111112,
+      "per_class": {
+        "up": {
+          "total": 6,
+          "correct": 3
+        },
+        "down": {
+          "total": 6,
+          "correct": 0
+        },
+        "no_clear_change": {
+          "total": 6,
+          "correct": 0
+        }
+      },
+      "latency_median_ms": 6835.5235,
+      "latency_p95_ms": 13788.464,
+      "estimated_yuan": 0,
+      "cost_unknown_count": 0,
+      "confusion": {
+        "up": {
+          "up": 3,
+          "down": 0,
+          "no_clear_change": 0,
+          "uncertain": 0,
+          "invalid": 1
+        },
+        "down": {
+          "up": 2,
+          "down": 0,
+          "no_clear_change": 0,
+          "uncertain": 0,
+          "invalid": 1
+        },
+        "no_clear_change": {
+          "up": 2,
+          "down": 0,
+          "no_clear_change": 0,
+          "uncertain": 0,
+          "invalid": 1
+        }
+      }
+    },
+    "qwen3.7-flash-2026-07-15": {
+      "planned": 18,
+      "completed": 18,
+      "correct": 9,
+      "accuracy": 0.5,
+      "uncertain_rate": 0.0,
+      "invalid_or_missing_rate": 0.0,
+      "per_class": {
+        "up": {
+          "total": 6,
+          "correct": 6
+        },
+        "down": {
+          "total": 6,
+          "correct": 3
+        },
+        "no_clear_change": {
+          "total": 6,
+          "correct": 0
+        }
+      },
+      "latency_median_ms": 1004.152,
+      "latency_p95_ms": 1721.253,
+      "estimated_yuan": 0.0032408000000000003,
+      "cost_unknown_count": 0,
+      "confusion": {
+        "up": {
+          "up": 6,
+          "down": 0,
+          "no_clear_change": 0,
+          "uncertain": 0,
+          "invalid": 0
+        },
+        "down": {
+          "up": 3,
+          "down": 3,
+          "no_clear_change": 0,
+          "uncertain": 0,
+          "invalid": 0
+        },
+        "no_clear_change": {
+          "up": 5,
+          "down": 1,
+          "no_clear_change": 0,
+          "uncertain": 0,
+          "invalid": 0
+        }
+      }
+    },
+    "qwen3-vl-plus": {
+      "planned": 18,
+      "completed": 18,
+      "correct": 13,
+      "accuracy": 0.7222222222222222,
+      "uncertain_rate": 0.0,
+      "invalid_or_missing_rate": 0.0,
+      "per_class": {
+        "up": {
+          "total": 6,
+          "correct": 6
+        },
+        "down": {
+          "total": 6,
+          "correct": 2
+        },
+        "no_clear_change": {
+          "total": 6,
+          "correct": 5
+        }
+      },
+      "latency_median_ms": 1338.2965,
+      "latency_p95_ms": 1898.186,
+      "estimated_yuan": 0.020058,
+      "cost_unknown_count": 0,
+      "confusion": {
+        "up": {
+          "up": 6,
+          "down": 0,
+          "no_clear_change": 0,
+          "uncertain": 0,
+          "invalid": 0
+        },
+        "down": {
+          "up": 2,
+          "down": 2,
+          "no_clear_change": 2,
+          "uncertain": 0,
+          "invalid": 0
+        },
+        "no_clear_change": {
+          "up": 1,
+          "down": 0,
+          "no_clear_change": 5,
+          "uncertain": 0,
+          "invalid": 0
+        }
+      }
+    }
+  },
+  "manifest_sha256": "2915912a6ce2e30a7bbf41b318d010a75e2d9bcb805875a0a06699f961633166",
+  "responses_sha256": "010fd21a0ec95763388bd877ddb41acca2ddaaf8e4a2a7d2dcee4be959e4e44f",
+  "registry_sha256": "08b617ab68486be5b65205d73ba0dcc3a7c5ba5f311b45466bc8269a4398468d",
+  "finished_at": "2026-11-08T12:58:40.154419+00:00",
+  "notice": "18 balanced controlled images per model; source-clustered windows; API latency includes network and reasoning; gross list-price estimate, not invoice"
+}

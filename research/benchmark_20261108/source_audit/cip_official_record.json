@@ -1,0 +1,23 @@
+{
+  "source": "https://zenodo.org/api/records/6480543",
+  "doi": "10.5281/zenodo.6480543",
+  "title": "Complete Inertial Pose (CIP) Dataset",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "creators": [
+    "Manuel Palermo",
+    "Sara Cerqueira",
+    "João André",
+    "António Pereira",
+    "Cristina P. Santos"
+  ],
+  "publication_date": "2022-02-10",
+  "subject08_file": [
+    {
+      "name": "MTwAwinda_trials_subject08.zip",
+      "size": 1393381371,
+      "checksum": "md5:4e5b9caf2d926006f08f0330024130d3"
+    }
+  ]
+}

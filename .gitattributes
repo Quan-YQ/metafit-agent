@@ -10,6 +10,10 @@ MANIFEST.in text eol=lf
 *.yaml text eol=lf
 # BVH 原始字节用于研究重放的 SHA-256 校验，所有平台统一 LF。
 *.bvh text eol=lf
+# Frozen evidence contains hashes of exact bytes; preserve it across Git checkouts.
+research/benchmark_20261108/results/** -text
+research/benchmark_20261108/source_audit/** -text
+docs/两项优化_DynaIP与视觉模型对比_20261108.md -text
 *.png binary
 *.jpg binary
 *.jpeg binary

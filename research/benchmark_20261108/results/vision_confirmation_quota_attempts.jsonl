@@ -1,0 +1,2 @@
+{"case_id": "143_18_w1_r", "model": "glm-4.6v-flash", "request_id": "fb929b5cb8834d2a58ca45236e56323e0809b7710cb8bbc1e3d436f2da91c806", "error": "http_429", "elapsed_ms": 351.2545000012324, "finished_at": "2026-11-08T13:20:51.768323+00:00", "reserved_yuan": 0}
+{"case_id": "141_17_w0_f", "model": "glm-4.6v-flash", "request_id": "43c3907c55813686be02514e602a7118ef0b7a77b630daf861378e63d6705683", "error": "http_429", "elapsed_ms": 300.6692999988445, "finished_at": "2026-11-08T13:23:36.714996+00:00", "reserved_yuan": 0}

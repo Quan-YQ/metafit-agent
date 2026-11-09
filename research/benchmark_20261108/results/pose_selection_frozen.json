@@ -1,0 +1,135 @@
+{
+  "candidates": [
+    {
+      "name": "ridge_10.0",
+      "validation_mpjpe_cm": 8.288536429405212
+    },
+    {
+      "name": "ridge_100.0",
+      "validation_mpjpe_cm": 8.273518323898315
+    },
+    {
+      "name": "ridge_1000.0",
+      "validation_mpjpe_cm": 8.381216883659363
+    },
+    {
+      "name": "mlp",
+      "validation_mpjpe_cm": 6.670201599597931,
+      "best_epoch": 19,
+      "history": [
+        {
+          "epoch": 1,
+          "validation_mpjpe_cm": 8.635493993759155
+        },
+        {
+          "epoch": 2,
+          "validation_mpjpe_cm": 8.656075835227966
+        },
+        {
+          "epoch": 3,
+          "validation_mpjpe_cm": 8.022541522979736
+        },
+        {
+          "epoch": 4,
+          "validation_mpjpe_cm": 7.603343367576599
+        },
+        {
+          "epoch": 5,
+          "validation_mpjpe_cm": 7.53303337097168
+        },
+        {
+          "epoch": 6,
+          "validation_mpjpe_cm": 7.488221049308777
+        },
+        {
+          "epoch": 7,
+          "validation_mpjpe_cm": 7.471156716346741
+        },
+        {
+          "epoch": 8,
+          "validation_mpjpe_cm": 7.319595813751221
+        },
+        {
+          "epoch": 9,
+          "validation_mpjpe_cm": 7.35386049747467
+        },
+        {
+          "epoch": 10,
+          "validation_mpjpe_cm": 7.203126549720764
+        },
+        {
+          "epoch": 11,
+          "validation_mpjpe_cm": 7.162506461143494
+        },
+        {
+          "epoch": 12,
+          "validation_mpjpe_cm": 7.097957134246826
+        },
+        {
+          "epoch": 13,
+          "validation_mpjpe_cm": 6.981206059455872
+        },
+        {
+          "epoch": 14,
+          "validation_mpjpe_cm": 6.939242601394653
+        },
+        {
+          "epoch": 15,
+          "validation_mpjpe_cm": 6.887758493423462
+        },
+        {
+          "epoch": 16,
+          "validation_mpjpe_cm": 6.881861329078674
+        },
+        {
+          "epoch": 17,
+          "validation_mpjpe_cm": 6.818018198013306
+        },
+        {
+          "epoch": 18,
+          "validation_mpjpe_cm": 6.801667928695679
+        },
+        {
+          "epoch": 19,
+          "validation_mpjpe_cm": 6.670201599597931
+        },
+        {
+          "epoch": 20,
+          "validation_mpjpe_cm": 6.7524813413619995
+        },
+        {
+          "epoch": 21,
+          "validation_mpjpe_cm": 6.762029051780701
+        },
+        {
+          "epoch": 22,
+          "validation_mpjpe_cm": 6.729310512542725
+        },
+        {
+          "epoch": 23,
+          "validation_mpjpe_cm": 6.71999990940094
+        },
+        {
+          "epoch": 24,
+          "validation_mpjpe_cm": 6.715783715248108
+        }
+      ]
+    }
+  ],
+  "selected": "mlp",
+  "seed": 42,
+  "training_frames": 35165,
+  "train_subjects": [
+    "00",
+    "01",
+    "02"
+  ],
+  "validation_subjects": [
+    "03"
+  ],
+  "test_subjects": [
+    "04"
+  ],
+  "selection_metric": "validation recording macro canonical22_mpjpe_cm",
+  "baseline_sha256": "69a373ea417320a3cd0a933b5d276ecbbeca9124cd721df9a78d5953a60f48ea"
+}

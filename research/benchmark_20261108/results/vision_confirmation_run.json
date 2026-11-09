@@ -1,0 +1,10 @@
+{
+  "manifest_sha256": "05980e15ec55e96ef9db41919c534395423703820bef695751c825a0c87afdab",
+  "registry_sha256": "08b617ab68486be5b65205d73ba0dcc3a7c5ba5f311b45466bc8269a4398468d",
+  "prompt_sha256": "5f503c4d8147ee22fbd3cb4d579853add234586a0f0b7d0c545415ed396551e4",
+  "stage": "confirmation",
+  "code_sha256": "08334edd90aeaeea417d5c152b36800412019e78761dff0599fca1463898ca66",
+  "started_at": "2026-11-08T13:19:56.378284+00:00",
+  "budget_cap_yuan": 10,
+  "inherited_results_sha256": "532ce7558e329fdcde6e14e29c5f1740391223d61e2ba6ebd85a52c47fe868f1"
+}
