@@ -1,0 +1,38 @@
+"""Independently check all visual labels, source files and paired styles offline."""
+from collections import Counter
+from io import BytesIO
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+import numpy as np
+from PIL import Image
+
+HERE=Path(__file__).resolve().parent
+PROJECT=Path('D:/GithubProjects/metafit-agent')
+sys.path.insert(0,str(PROJECT/'research/continuous_20261108'))
+from marker_geometry import classify
+data=json.loads((HERE/'manifest.json').read_text(encoding='utf-8'))
+for name,expected in data['sources'].items():
+    path=PROJECT/'.tmp/vision_sources_20261108'/(name+'.bvh')
+    if hashlib.sha256(path.read_bytes()).hexdigest()!=expected:raise ValueError('source hash mismatch')
+cases=data['cases'];cmu=[c for c in cases if c['style'] in ('guided','unguided')]
+ids={c['id']:c for c in cmu};counts=Counter(c['label'] for c in cmu)
+if counts!={'up':40,'down':40,'no_clear_change':40}:raise ValueError('unbalanced labels')
+for c in cmu:
+    if c['style']!='guided':continue
+    other=ids[c['id'][:-1]+'u']
+    if (other['label'],other['cluster'])!=(c['label'],c['cluster']):raise ValueError('style pairing differs')
+    ga=(HERE/'images'/(c['id']+'.png')).read_bytes()
+    ua=(HERE/'images'/(other['id']+'.png')).read_bytes()
+    if classify(ga)!=c['label']:raise ValueError('pixel score mismatch')
+    g=np.asarray(Image.open(BytesIO(ga)).convert('RGB'))
+    u=np.asarray(Image.open(BytesIO(ua)).convert('RGB'))
+    delta=np.any(g!=u,axis=2)
+    green=np.all(g==np.array([0,145,70]),axis=2)
+    if np.any(delta & ~green):raise ValueError('paired images differ outside guide lines')
+    if not np.any(delta):raise ValueError('guide line missing')
+print(json.dumps({'verified_sources':len(data['sources']),'verified_image_pairs':len(cmu)//2,
+                  'independent_pixel_labels':'passed','style_difference':'guide_line_pixels_only',
+                  'classes':counts,'network_calls':0},ensure_ascii=False,indent=2))

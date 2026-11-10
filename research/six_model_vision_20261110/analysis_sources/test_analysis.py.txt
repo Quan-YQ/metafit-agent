@@ -1,0 +1,36 @@
+from pathlib import Path
+import sys
+import pytest
+
+sys.path.insert(0,str(Path(__file__).parent))
+from analyze import metrics,cluster_ci,paired_difference_ci
+
+def row(answer,content=None,error=None):
+    return {'answer':answer,'provider_error':error,'elapsed_ms':1000,
+            'estimated_yuan':0.01,'finish_reason':'stop',
+            'raw_content':content or '{"hip_change":"'+answer+'","explanation":"visible"}'}
+
+def test_macro_score_does_not_overweight_majority():
+    cases=[{'id':str(i),'label':label,'subject':str(i%2)} for i,label in enumerate(
+        ('up','up','down','down','down','down','no_clear_change'))]
+    rows={c['id']:row(c['label'] if c['label']!='down' else 'up') for c in cases}
+    m=metrics(cases,rows)
+    assert m['accuracy']==pytest.approx(3/7)
+    assert m['balanced_accuracy']==pytest.approx(2/3)
+    assert m['per_class']['down']=={'correct':0,'total':4}
+
+def test_lenient_json_metric_only_as_sensitivity():
+    cases=[{'id':'1','label':'up','subject':'a'}]
+    rows={'1':row('invalid','{"type":"json_object","hip_change":"up","explanation":"visible"}')}
+    m=metrics(cases,rows)
+    assert m['correct']==0 and m['invalid']==1 and m['relaxed_json_correct']==1
+
+def test_subject_bootstrap_is_reproducible_and_groups_sources():
+    cases=[{'id':f'{s}-{label}','label':label,'subject':s} for s in ('a','b','c')
+           for label in ('up','down','no_clear_change')]
+    rows={c['id']:row(c['label']) for c in cases}
+    ci=cluster_ci(cases,rows,iterations=100)
+    assert ci['low']==1 and ci['high']==1 and ci['subjects']==3
+    assert ci==cluster_ci(cases,rows,iterations=100)
+    diff=paired_difference_ci(cases,rows,rows,iterations=100)
+    assert diff['low']==0 and diff['high']==0 and diff['subjects']==3

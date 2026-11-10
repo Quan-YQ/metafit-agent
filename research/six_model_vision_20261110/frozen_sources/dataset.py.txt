@@ -1,0 +1,108 @@
+"""Create balanced same-image multi-model research cases from public CMU sources."""
+from collections import Counter
+import hashlib
+from io import BytesIO
+import json
+from pathlib import Path
+import random
+import sys
+
+from PIL import Image,ImageDraw
+
+PROJECT=Path('D:/GithubProjects/metafit-agent')
+HERE=Path(__file__).resolve().parent
+sys.path.insert(0,str(PROJECT/'research/benchmark_20261108'))
+sys.path.insert(0,str(PROJECT/'research/continuous_20261108'))
+from vision_dataset import SOURCE_SHA256, render as render_guided, CMU_REVISION
+from render_motion_sample import load_bvh,world_positions,render_frames
+from marker_geometry import classify
+
+BASE=('图片展示同一人物从左到右排列的六个时刻，上下两排是两个视角，紫色大点表示髋部。'
+      '以六帧骨架在图中的整体竖直范围为基准，只比较第六列和第一列的紫色髋部点。'
+      '上升至少5%回答up，下降至少5%回答down，不到5%回答no_clear_change；'
+      '看不清或无法判断时回答uncertain。只根据图片，不猜测动作名称。')
+GUIDE='绿色虚线位于第一列髋部上下各5%的高度；末帧点在线外表示升高或下降，线之间表示无明显变化。'
+OUTPUT='只输出JSON对象，格式为{"hip_change":"up|down|no_clear_change|uncertain","explanation":"一句话"}。'
+
+def bare(joints,frames):
+    indices=[round(i*(len(frames)-1)/5) for i in range(6)]
+    selected=[frames[i] for i in indices]
+    poses=[world_positions(joints,f) for f in selected]
+    root=next(i for i,j in enumerate(joints) if j.name=='Hips')
+    low=min(p[1] for pose in poses for p in pose)
+    high=max(p[1] for pose in poses for p in pose)
+    extent=max(max(abs(p[0]-pose[0][0]),abs(p[2]-pose[0][2])) for pose in poses for p in pose)
+    scale=min(155/max(high-low,1),78/max(extent,1))
+    img=Image.open(BytesIO(render_frames(joints,selected))).convert('RGB')
+    draw=ImageDraw.Draw(img)
+    for row in range(2):
+        for col,pose in enumerate(poses):
+            x=100+col*200;y=round(row*230+205-(pose[root][1]-low)*scale)
+            draw.ellipse((x-6,y-6,x+6,y+6),fill=(170,0,190),outline='white',width=1)
+    out=BytesIO();img.save(out,format='PNG');return out.getvalue()
+
+def prepare():
+    cache=PROJECT/'.tmp/vision_sources_20261108'
+    pool=[]; subject_data={}
+    for name,expected in SOURCE_SHA256.items():
+        source=cache/(name+'.bvh')
+        if hashlib.sha256(source.read_bytes()).hexdigest()!=expected:
+            raise ValueError('source hash mismatch')
+        joints,frames=load_bvh(source); subject_data[name]=(joints,frames)
+        root=next(i for i,j in enumerate(joints) if j.name=='Hips')
+        for win in range(12):
+            start,end=win*len(frames)//12,(win+1)*len(frames)//12
+            if end-start<6:continue
+            sampled=[frames[start+round(i*(end-start-1)/5)] for i in range(6)]
+            poses=[world_positions(joints,f) for f in sampled]
+            low=min(p[1] for pose in poses for p in pose);high=max(p[1] for pose in poses for p in pose)
+            span=high-low
+            if span<=1e-9:continue
+            extent=max(max(abs(p[0]-pose[0][0]),abs(p[2]-pose[0][2])) for pose in poses for p in pose)
+            scale=min(155/max(span,1),78/max(extent,1))
+            ratio=(poses[-1][root][1]-poses[0][root][1])/span
+            if abs(abs(ratio)-.05)*span*scale<4: continue
+            for reverse in (False,True):
+                r=-ratio if reverse else ratio
+                label='up' if r>=.05 else 'down' if r<=-.05 else 'no_clear_change'
+                pool.append({'source':name,'subject':name.split('_')[0],'window':win,'start':start,
+                    'end_exclusive':end,'reverse':reverse,'ratio':r,'label':label,
+                    'cluster':f'{name}_{win}'})
+    rng=random.Random(20261110);rng.shuffle(pool)
+    chosen=[];used=set();source_total=Counter();source_per=Counter()
+    for label in ('up','down','no_clear_change'):
+        for _ in range(20):
+            available=[c for c in pool if c['label']==label and c['cluster'] not in used]
+            if not available:raise ValueError('insufficient independent windows '+label)
+            case=min(available,key=lambda c:(source_per[(label,c['source'])],source_total[c['source']]))
+            chosen.append(case);used.add(case['cluster']);source_total[case['source']]+=1;source_per[(label,case['source'])]+=1
+    out=HERE/'images';out.mkdir(exist_ok=False)
+    cases=[]
+    # Six pilot cells: the first selected up/down/static window, each once per image style.
+    for i,case in enumerate(chosen):
+        joints,frames=subject_data[case['source']]
+        clip=frames[case['start']:case['end_exclusive']]
+        if case['reverse']:clip=list(reversed(clip))
+        guided,ref=render_guided(joints,clip)
+        if ref['direction']!=case['label'] or classify(guided)!=case['label']:
+            raise ValueError('coordinate and independent pixel scorer disagree')
+        unguided=bare(joints,clip)
+        for style,image in (('guided',guided),('unguided',unguided)):
+            ident=f'case_{i:03d}_{style[0]}'
+            (out/(ident+'.png')).write_bytes(image)
+            prompt=BASE+(GUIDE if style=='guided' else '')+OUTPUT
+            cases.append({**case,'id':ident,'style':style,'stage':'pilot' if i in (0,20,40) else 'main',
+                'prompt':prompt,'prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),
+                'image_sha256':hashlib.sha256(image).hexdigest(),'reference':ref})
+    cases.sort(key=lambda c:(c['stage']!='pilot',c['id']))
+    manifest={'schema':'six-model-benchmark-dataset-1','cases':cases,'counts':dict(Counter(c['label'] for c in cases)),
+        'sources':SOURCE_SHA256,'source_revision':CMU_REVISION,'source_recordings':len(subject_data),
+        'unique_windows':len(chosen),'images':len(cases),'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'scope':'Public CMU mocap; controlled skeleton imagery, not IMU. Same windows rendered with/without threshold guide. No label sent to model. Not 120 independent persons.',
+        'licensing':'CMU Graphics Lab Motion Capture Database; BVH converted by una-dinosauria/cmu-mocap, MIT conversion software.',
+        'sampling':'12 windows per recording, frozen seeded greedy selection balanced by label and source; at least 4 image pixels from threshold; unique windows across labels.'}
+    (HERE/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps({'images':len(cases),'unique_windows':len(chosen),'sources':len(subject_data),
+        'class_counts':manifest['counts'],'source_distribution':dict(source_total),'independent_pixel_audits':len(chosen)},ensure_ascii=False))
+
+if __name__=='__main__':prepare()

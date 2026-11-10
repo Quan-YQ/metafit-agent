@@ -1,0 +1,24 @@
+{
+  "schema": "six-model-frozen-1",
+  "hashes": {
+    "models.json": "33b7588e09e4a2922838aebc1d15623dccd62196edb7a8f6ad252ebb493eeff1",
+    "manifest.json": "6f1a206b2c283141d8a0d4b575f0843941adb6ef7e82b364b3d878e9576f99f7",
+    "dataset.py": "953d0200b43f40fe857e80fbddd9acd7d2f0295892e80c53c60708f9f73f4b9b",
+    "append_imu.py": "3fe643c38a6c81104f7cca75f0fce783a1c5a54c8c0132e089b4b4a20a830b88",
+    "benchmark.py": "f1c6f602c491a407b625c48be0b3bce16f06ede260aa0957cb53f79bf7f0565b",
+    "PREREGISTRATION.md": "8090f5d8395d2953767b8bbf73e18832256616b3c8fabfea55db3b344c988dc5",
+    "inheritance.json": "710669a763496781ed0005d896751f372d18eae70520c894f76aee43ba7a563e",
+    "inherited_budget.json": "b52bfc7662994cebf62201da8ee1d080af16a2f8e7e95570ac966ce66997cab1",
+    "pilot_summary.json": "b3fe0190c175805ba019fa2e2569f09d8da512b8f1e5358c6602bb71840faf5e"
+  },
+  "created_at": "2026-11-10T08:17:52.760111+00:00",
+  "models": [
+    "qwen3.8-max-2026-09-02",
+    "glm-5v-turbo",
+    "deepseek-flash",
+    "doubao-seed-2-1-pro-260915",
+    "kimi-k3.1-pro",
+    "hy4"
+  ],
+  "budget_cap_yuan": 10.0
+}

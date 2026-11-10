@@ -1,0 +1,132 @@
+"""Offline paired scorer and subject-cluster sensitivity analysis."""
+from collections import Counter,defaultdict
+from pathlib import Path
+import argparse
+import hashlib
+import json
+import random
+import statistics
+
+HERE=Path(__file__).resolve().parent
+LABELS=('up','down','no_clear_change')
+def read(p):return json.loads(Path(p).read_text(encoding='utf-8'))
+def percentile(xs,f):
+    xs=sorted(xs);idx=(len(xs)-1)*f;lo=int(idx);hi=min(lo+1,len(xs)-1)
+    return xs[lo]+(xs[hi]-xs[lo])*(idx-lo)
+
+def metrics(cases,rows):
+    counts=Counter(c['label'] for c in cases)
+    per={label:{'correct':sum(rows[c['id']]['answer']==label for c in cases if c['label']==label),
+                'total':counts[label]} for label in LABELS if counts[label]}
+    count=len(cases);correct=sum(v['correct'] for v in per.values())
+    times=[rows[c['id']]['elapsed_ms']/1000 for c in cases]
+    def relaxed(c):
+        row=rows[c['id']]
+        try:
+            from benchmark import unique_pairs
+            obj=json.loads(row.get('raw_content') or '',object_pairs_hook=unique_pairs,
+                parse_constant=lambda value:(_ for _ in ()).throw(ValueError('nonfinite')))
+            value=obj['hip_change']; explanation=obj['explanation']
+            if value not in (*LABELS,'uncertain') or not isinstance(explanation,str) or not explanation.strip() or row['finish_reason']!='stop':return 'invalid'
+            return value
+        except (ValueError,TypeError,KeyError):return 'invalid'
+    return {'cases':count,'correct':correct,'accuracy':correct/count if count else None,
+        'balanced_accuracy':statistics.mean(v['correct']/v['total'] for v in per.values()) if per else None,
+        'per_class':per,'uncertain':sum(rows[c['id']]['answer']=='uncertain' for c in cases),
+        'invalid':sum(rows[c['id']]['answer']=='invalid' for c in cases),
+        'provider_errors':sum(bool(rows[c['id']]['provider_error']) for c in cases),
+        'relaxed_json_correct':sum(relaxed(c)==c['label'] for c in cases),
+        'median_latency_s':statistics.median(times) if times else None,
+        'p95_latency_s':percentile(times,.95) if times else None,
+        'estimated_yuan':sum(rows[c['id']]['estimated_yuan'] or 0 for c in cases),
+        'unknown_cost_count':sum(rows[c['id']]['estimated_yuan'] is None for c in cases)}
+
+def cluster_ci(cases,rows,seed=20261110,iterations=2000):
+    by_subject=defaultdict(list)
+    for c in cases:by_subject[c['subject']].append(c)
+    subjects=sorted(by_subject)
+    if len(subjects)<2:return None
+    rng=random.Random(seed);out=[]
+    for _ in range(iterations):
+        draw=[rng.choice(subjects) for _ in subjects]
+        group=[c for s in draw for c in by_subject[s]]
+        sums=[]
+        for label in LABELS:
+            items=[c for c in group if c['label']==label]
+            if items:sums.append(sum(rows[c['id']]['answer']==label for c in items)/len(items))
+        if len(sums)==3:out.append(statistics.mean(sums))
+    return {'low':percentile(out,.025),'high':percentile(out,.975),'bootstrap_samples':len(out),
+            'sampling_units':'subject_id','subjects':len(subjects)} if out else None
+
+def paired_difference_ci(cases,first,second,seed=20261110,iterations=2000):
+    grouped=defaultdict(list)
+    for c in cases:grouped[c['subject']].append(c)
+    subjects=sorted(grouped)
+    if len(subjects)<2:return None
+    rng=random.Random(seed);differences=[]
+    for _ in range(iterations):
+        selected=[c for _ in subjects for c in grouped[rng.choice(subjects)]]
+        parts=[]
+        for label in LABELS:
+            items=[c for c in selected if c['label']==label]
+            if items:
+                parts.append(sum((first[c['id']]['answer']==label)-(second[c['id']]['answer']==label) for c in items)/len(items))
+        if len(parts)==3:differences.append(statistics.mean(parts))
+    return {'low':percentile(differences,.025),'high':percentile(differences,.975),
+            'bootstrap_samples':len(differences),'subjects':len(subjects)} if differences else None
+
+def analyze():
+    from benchmark import config,verify,LEDGER,RESULTS,parse
+    cfg,manifest=verify();providers=[m['provider'] for m in cfg['models']]
+    if (HERE/'running.lock').exists():raise ValueError('live job still running; snapshot only after it stops')
+    rows={p:{} for p in providers}
+    for p in providers:
+        for path in sorted((RESULTS/p).glob('*.json')):
+            row=read(path)
+            if row['provider']!=p:raise ValueError('provider mismatch')
+            rows[p][row['case_id']]=row
+    common=set.intersection(*(set(rows[p]) for p in providers))
+    allcases=manifest['cases'];planned={c['id']:c for c in allcases}
+    if not common <= set(planned):raise ValueError('unknown case')
+    for ident in common:
+        case=planned[ident]
+        for p in providers:
+            row=rows[p][ident]
+            if row['image_sha256']!=case['image_sha256'] or row['prompt_sha256']!=case['prompt_sha256']:
+                raise ValueError('input hash mismatch')
+            if row['answer']!=parse(row.get('raw_content'),row['finish_reason'])[0] and not row['provider_error']:
+                raise ValueError('score drift')
+    cmu=[c for c in allcases if c['id'] in common and c['style']!='imu_prediction']
+    imu=[c for c in allcases if c['id'] in common and c['style']=='imu_prediction']
+    if not cmu:raise ValueError('no paired observations')
+    result={}
+    for model in cfg['models']:
+        p=model['provider'];r=rows[p]
+        groups={'cmu_all':cmu,'cmu_guided':[c for c in cmu if c['style']=='guided'],
+                'cmu_unguided':[c for c in cmu if c['style']=='unguided'], 'imu':imu}
+        result[p]={'model':model['model'],'estimate_is_official_price':model['official_price'],
+            'price_note':model.get('price_note',''),'metrics':{k:metrics(v,r) for k,v in groups.items()},
+            'subject_cluster_bootstrap_95':cluster_ci(cmu,r),
+            'total_recorded':len(r),'planned_total':len(allcases)}
+    ranking=sorted(providers,key=lambda p:(-result[p]['metrics']['cmu_all']['balanced_accuracy'],
+        result[p]['metrics']['cmu_all']['invalid'],result[p]['metrics']['cmu_all']['estimated_yuan'],
+        result[p]['metrics']['cmu_all']['median_latency_s']))
+    ledger=read(LEDGER)
+    return {'schema':'six-model-paired-results-1','ranking':ranking,'models':result,
+        'first_minus_second_paired_subject_bootstrap_95':paired_difference_ci(cmu,rows[ranking[0]],rows[ranking[1]]),
+        'paired_coverage':{'total':len(common),'cmu':len(cmu),'imu':len(imu),
+            'planned_total':len(allcases),'planned_cmu':120,'planned_imu':18,
+            'cmu_subjects':len({c['subject'] for c in cmu}),'cmu_unique_windows':len({c['cluster'] for c in cmu}),
+            'cmu_by_class':dict(Counter(c['label'] for c in cmu)),
+            'cmu_by_style':dict(Counter(c['style'] for c in cmu)),
+            'paired_ids_sha256':hashlib.sha256('\n'.join(sorted(common)).encode()).hexdigest()},
+        'budget':{'cap_yuan':ledger['cap_yuan'],'spent_estimate_yuan':sum(e['charged_or_reserved_yuan'] for e in ledger['entries'] if e['status']=='usage_confirmed'),
+            'unconfirmed_reserved_yuan':sum(e['charged_or_reserved_yuan'] for e in ledger['entries'] if e['status']!='usage_confirmed'),
+            'provider_requests_started':len(ledger['entries']),'ledger_sha256':hashlib.sha256(LEDGER.read_bytes()).hexdigest()},
+        'notice':'Comparative controlled skeleton imagery, not physical training quality; repeated style variants are clustered; costs include conservative assumptions.'}
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True)
+    args=parser.parse_args();result=analyze()
+    with args.output.open('x',encoding='utf-8') as f:json.dump(result,f,ensure_ascii=False,indent=2,allow_nan=False)
+    print(json.dumps({'paired_coverage':result['paired_coverage'],'ranking':result['ranking'],'budget':result['budget']},ensure_ascii=False,indent=2))

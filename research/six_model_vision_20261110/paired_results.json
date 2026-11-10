@@ -1,0 +1,815 @@
+{
+  "schema": "six-model-paired-results-1",
+  "ranking": [
+    "kimi",
+    "doubao",
+    "qwen",
+    "zhipu",
+    "deepseek",
+    "hunyuan"
+  ],
+  "models": {
+    "qwen": {
+      "model": "qwen3.8-max-2026-09-02",
+      "estimate_is_official_price": true,
+      "price_note": "",
+      "metrics": {
+        "cmu_all": {
+          "cases": 90,
+          "correct": 75,
+          "accuracy": 0.8333333333333334,
+          "balanced_accuracy": 0.8333333333333334,
+          "per_class": {
+            "up": {
+              "correct": 24,
+              "total": 30
+            },
+            "down": {
+              "correct": 24,
+              "total": 30
+            },
+            "no_clear_change": {
+              "correct": 27,
+              "total": 30
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 75,
+          "median_latency_s": 2.7816595,
+          "p95_latency_s": 3.7432231499999995,
+          "estimated_yuan": 0.90594,
+          "unknown_cost_count": 0
+        },
+        "cmu_guided": {
+          "cases": 45,
+          "correct": 40,
+          "accuracy": 0.8888888888888888,
+          "balanced_accuracy": 0.888888888888889,
+          "per_class": {
+            "up": {
+              "correct": 12,
+              "total": 15
+            },
+            "down": {
+              "correct": 13,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 15,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 40,
+          "median_latency_s": 2.763903,
+          "p95_latency_s": 3.7700476,
+          "estimated_yuan": 0.459108,
+          "unknown_cost_count": 0
+        },
+        "cmu_unguided": {
+          "cases": 45,
+          "correct": 35,
+          "accuracy": 0.7777777777777778,
+          "balanced_accuracy": 0.7777777777777778,
+          "per_class": {
+            "up": {
+              "correct": 12,
+              "total": 15
+            },
+            "down": {
+              "correct": 11,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 12,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 35,
+          "median_latency_s": 2.782159,
+          "p95_latency_s": 3.6581778,
+          "estimated_yuan": 0.446832,
+          "unknown_cost_count": 0
+        },
+        "imu": {
+          "cases": 14,
+          "correct": 11,
+          "accuracy": 0.7857142857142857,
+          "balanced_accuracy": 0.5,
+          "per_class": {
+            "up": {
+              "correct": 1,
+              "total": 2
+            },
+            "down": {
+              "correct": 0,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 10,
+              "total": 10
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 11,
+          "median_latency_s": 2.8516019999999997,
+          "p95_latency_s": 3.59969925,
+          "estimated_yuan": 0.145092,
+          "unknown_cost_count": 0
+        }
+      },
+      "subject_cluster_bootstrap_95": {
+        "low": 0.6549506578947368,
+        "high": 0.9489867448047594,
+        "bootstrap_samples": 2000,
+        "sampling_units": "subject_id",
+        "subjects": 12
+      },
+      "total_recorded": 104,
+      "planned_total": 138
+    },
+    "zhipu": {
+      "model": "glm-5v-turbo",
+      "estimate_is_official_price": false,
+      "price_note": "Conservative upper estimator; official BigModel price page is JavaScript-only. Cross-check actual bills; third-party quotes 5/22 CNY per million.",
+      "metrics": {
+        "cmu_all": {
+          "cases": 90,
+          "correct": 71,
+          "accuracy": 0.7888888888888889,
+          "balanced_accuracy": 0.7888888888888889,
+          "per_class": {
+            "up": {
+              "correct": 30,
+              "total": 30
+            },
+            "down": {
+              "correct": 20,
+              "total": 30
+            },
+            "no_clear_change": {
+              "correct": 21,
+              "total": 30
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 71,
+          "median_latency_s": 2.0600505,
+          "p95_latency_s": 2.8929760999999994,
+          "estimated_yuan": 0.9667479999999999,
+          "unknown_cost_count": 0
+        },
+        "cmu_guided": {
+          "cases": 45,
+          "correct": 37,
+          "accuracy": 0.8222222222222222,
+          "balanced_accuracy": 0.8222222222222222,
+          "per_class": {
+            "up": {
+              "correct": 15,
+              "total": 15
+            },
+            "down": {
+              "correct": 10,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 12,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 37,
+          "median_latency_s": 2.068565,
+          "p95_latency_s": 2.769964999999999,
+          "estimated_yuan": 0.49426,
+          "unknown_cost_count": 0
+        },
+        "cmu_unguided": {
+          "cases": 45,
+          "correct": 34,
+          "accuracy": 0.7555555555555555,
+          "balanced_accuracy": 0.7555555555555555,
+          "per_class": {
+            "up": {
+              "correct": 15,
+              "total": 15
+            },
+            "down": {
+              "correct": 10,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 9,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 34,
+          "median_latency_s": 2.041154,
+          "p95_latency_s": 2.902112999999999,
+          "estimated_yuan": 0.472488,
+          "unknown_cost_count": 0
+        },
+        "imu": {
+          "cases": 14,
+          "correct": 11,
+          "accuracy": 0.7857142857142857,
+          "balanced_accuracy": 0.9,
+          "per_class": {
+            "up": {
+              "correct": 2,
+              "total": 2
+            },
+            "down": {
+              "correct": 2,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 7,
+              "total": 10
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 11,
+          "median_latency_s": 2.4065209999999997,
+          "p95_latency_s": 2.6599993,
+          "estimated_yuan": 0.160764,
+          "unknown_cost_count": 0
+        }
+      },
+      "subject_cluster_bootstrap_95": {
+        "low": 0.6878125,
+        "high": 0.8833333333333333,
+        "bootstrap_samples": 2000,
+        "sampling_units": "subject_id",
+        "subjects": 12
+      },
+      "total_recorded": 104,
+      "planned_total": 138
+    },
+    "deepseek": {
+      "model": "deepseek-flash",
+      "estimate_is_official_price": true,
+      "price_note": "Peak non-cache price; conservative outside peak.",
+      "metrics": {
+        "cmu_all": {
+          "cases": 90,
+          "correct": 68,
+          "accuracy": 0.7555555555555555,
+          "balanced_accuracy": 0.7555555555555555,
+          "per_class": {
+            "up": {
+              "correct": 27,
+              "total": 30
+            },
+            "down": {
+              "correct": 21,
+              "total": 30
+            },
+            "no_clear_change": {
+              "correct": 20,
+              "total": 30
+            }
+          },
+          "uncertain": 0,
+          "invalid": 4,
+          "provider_errors": 0,
+          "relaxed_json_correct": 70,
+          "median_latency_s": 1.1385954999999999,
+          "p95_latency_s": 1.61013585,
+          "estimated_yuan": 0.11457400000000001,
+          "unknown_cost_count": 0
+        },
+        "cmu_guided": {
+          "cases": 45,
+          "correct": 33,
+          "accuracy": 0.7333333333333333,
+          "balanced_accuracy": 0.7333333333333333,
+          "per_class": {
+            "up": {
+              "correct": 13,
+              "total": 15
+            },
+            "down": {
+              "correct": 10,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 10,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 4,
+          "provider_errors": 0,
+          "relaxed_json_correct": 35,
+          "median_latency_s": 1.159999,
+          "p95_latency_s": 1.6344112,
+          "estimated_yuan": 0.059544,
+          "unknown_cost_count": 0
+        },
+        "cmu_unguided": {
+          "cases": 45,
+          "correct": 35,
+          "accuracy": 0.7777777777777778,
+          "balanced_accuracy": 0.7777777777777778,
+          "per_class": {
+            "up": {
+              "correct": 14,
+              "total": 15
+            },
+            "down": {
+              "correct": 11,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 10,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 35,
+          "median_latency_s": 1.101723,
+          "p95_latency_s": 1.5311533999999996,
+          "estimated_yuan": 0.05503,
+          "unknown_cost_count": 0
+        },
+        "imu": {
+          "cases": 14,
+          "correct": 11,
+          "accuracy": 0.7857142857142857,
+          "balanced_accuracy": 0.6333333333333333,
+          "per_class": {
+            "up": {
+              "correct": 1,
+              "total": 2
+            },
+            "down": {
+              "correct": 1,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 9,
+              "total": 10
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 11,
+          "median_latency_s": 1.2342515,
+          "p95_latency_s": 1.4166284999999998,
+          "estimated_yuan": 0.018152,
+          "unknown_cost_count": 0
+        }
+      },
+      "subject_cluster_bootstrap_95": {
+        "low": 0.6484161607226623,
+        "high": 0.8635629648129648,
+        "bootstrap_samples": 2000,
+        "sampling_units": "subject_id",
+        "subjects": 12
+      },
+      "total_recorded": 104,
+      "planned_total": 138
+    },
+    "doubao": {
+      "model": "doubao-seed-2-1-pro-260915",
+      "estimate_is_official_price": true,
+      "price_note": "",
+      "metrics": {
+        "cmu_all": {
+          "cases": 90,
+          "correct": 81,
+          "accuracy": 0.9,
+          "balanced_accuracy": 0.9,
+          "per_class": {
+            "up": {
+              "correct": 28,
+              "total": 30
+            },
+            "down": {
+              "correct": 30,
+              "total": 30
+            },
+            "no_clear_change": {
+              "correct": 23,
+              "total": 30
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 81,
+          "median_latency_s": 3.1916865000000003,
+          "p95_latency_s": 4.666909749999999,
+          "estimated_yuan": 0.95199,
+          "unknown_cost_count": 0
+        },
+        "cmu_guided": {
+          "cases": 45,
+          "correct": 42,
+          "accuracy": 0.9333333333333333,
+          "balanced_accuracy": 0.9333333333333333,
+          "per_class": {
+            "up": {
+              "correct": 13,
+              "total": 15
+            },
+            "down": {
+              "correct": 15,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 14,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 42,
+          "median_latency_s": 3.21944,
+          "p95_latency_s": 4.2305475999999995,
+          "estimated_yuan": 0.48102,
+          "unknown_cost_count": 0
+        },
+        "cmu_unguided": {
+          "cases": 45,
+          "correct": 39,
+          "accuracy": 0.8666666666666667,
+          "balanced_accuracy": 0.8666666666666667,
+          "per_class": {
+            "up": {
+              "correct": 15,
+              "total": 15
+            },
+            "down": {
+              "correct": 15,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 9,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 39,
+          "median_latency_s": 3.175951,
+          "p95_latency_s": 4.7805716,
+          "estimated_yuan": 0.47097,
+          "unknown_cost_count": 0
+        },
+        "imu": {
+          "cases": 14,
+          "correct": 6,
+          "accuracy": 0.42857142857142855,
+          "balanced_accuracy": 0.7333333333333334,
+          "per_class": {
+            "up": {
+              "correct": 2,
+              "total": 2
+            },
+            "down": {
+              "correct": 2,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 2,
+              "total": 10
+            }
+          },
+          "uncertain": 0,
+          "invalid": 1,
+          "provider_errors": 0,
+          "relaxed_json_correct": 6,
+          "median_latency_s": 3.3293135,
+          "p95_latency_s": 5.0777987,
+          "estimated_yuan": 0.149142,
+          "unknown_cost_count": 0
+        }
+      },
+      "subject_cluster_bootstrap_95": {
+        "low": 0.8472181372549019,
+        "high": 0.9511217948717948,
+        "bootstrap_samples": 2000,
+        "sampling_units": "subject_id",
+        "subjects": 12
+      },
+      "total_recorded": 104,
+      "planned_total": 138
+    },
+    "kimi": {
+      "model": "kimi-k3.1-pro",
+      "estimate_is_official_price": true,
+      "price_note": "Input estimate includes the highest listed 1h cache-write price; output includes thinking tokens.",
+      "metrics": {
+        "cmu_all": {
+          "cases": 90,
+          "correct": 87,
+          "accuracy": 0.9666666666666667,
+          "balanced_accuracy": 0.9666666666666667,
+          "per_class": {
+            "up": {
+              "correct": 29,
+              "total": 30
+            },
+            "down": {
+              "correct": 29,
+              "total": 30
+            },
+            "no_clear_change": {
+              "correct": 29,
+              "total": 30
+            }
+          },
+          "uncertain": 0,
+          "invalid": 1,
+          "provider_errors": 1,
+          "relaxed_json_correct": 87,
+          "median_latency_s": 7.5219965,
+          "p95_latency_s": 10.2468892,
+          "estimated_yuan": 3.209078,
+          "unknown_cost_count": 1
+        },
+        "cmu_guided": {
+          "cases": 45,
+          "correct": 45,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "per_class": {
+            "up": {
+              "correct": 15,
+              "total": 15
+            },
+            "down": {
+              "correct": 15,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 15,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 45,
+          "median_latency_s": 7.487738,
+          "p95_latency_s": 9.180633199999999,
+          "estimated_yuan": 1.59917,
+          "unknown_cost_count": 0
+        },
+        "cmu_unguided": {
+          "cases": 45,
+          "correct": 42,
+          "accuracy": 0.9333333333333333,
+          "balanced_accuracy": 0.9333333333333333,
+          "per_class": {
+            "up": {
+              "correct": 14,
+              "total": 15
+            },
+            "down": {
+              "correct": 14,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 14,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 1,
+          "provider_errors": 1,
+          "relaxed_json_correct": 42,
+          "median_latency_s": 7.81649,
+          "p95_latency_s": 13.469713199999989,
+          "estimated_yuan": 1.6099080000000001,
+          "unknown_cost_count": 1
+        },
+        "imu": {
+          "cases": 14,
+          "correct": 11,
+          "accuracy": 0.7857142857142857,
+          "balanced_accuracy": 0.9,
+          "per_class": {
+            "up": {
+              "correct": 2,
+              "total": 2
+            },
+            "down": {
+              "correct": 2,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 7,
+              "total": 10
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 11,
+          "median_latency_s": 8.19981,
+          "p95_latency_s": 14.118421999999999,
+          "estimated_yuan": 0.541776,
+          "unknown_cost_count": 0
+        }
+      },
+      "subject_cluster_bootstrap_95": {
+        "low": 0.9259237107921319,
+        "high": 1.0,
+        "bootstrap_samples": 2000,
+        "sampling_units": "subject_id",
+        "subjects": 12
+      },
+      "total_recorded": 105,
+      "planned_total": 138
+    },
+    "hunyuan": {
+      "model": "hy4",
+      "estimate_is_official_price": true,
+      "price_note": "Catalog price, without limited-time discount.",
+      "metrics": {
+        "cmu_all": {
+          "cases": 90,
+          "correct": 49,
+          "accuracy": 0.5444444444444444,
+          "balanced_accuracy": 0.5444444444444445,
+          "per_class": {
+            "up": {
+              "correct": 15,
+              "total": 30
+            },
+            "down": {
+              "correct": 6,
+              "total": 30
+            },
+            "no_clear_change": {
+              "correct": 28,
+              "total": 30
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 49,
+          "median_latency_s": 3.9408529999999997,
+          "p95_latency_s": 5.4578099,
+          "estimated_yuan": 0.443034,
+          "unknown_cost_count": 0
+        },
+        "cmu_guided": {
+          "cases": 45,
+          "correct": 28,
+          "accuracy": 0.6222222222222222,
+          "balanced_accuracy": 0.6222222222222222,
+          "per_class": {
+            "up": {
+              "correct": 8,
+              "total": 15
+            },
+            "down": {
+              "correct": 5,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 15,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 28,
+          "median_latency_s": 3.830925,
+          "p95_latency_s": 5.221331,
+          "estimated_yuan": 0.22527,
+          "unknown_cost_count": 0
+        },
+        "cmu_unguided": {
+          "cases": 45,
+          "correct": 21,
+          "accuracy": 0.4666666666666667,
+          "balanced_accuracy": 0.4666666666666667,
+          "per_class": {
+            "up": {
+              "correct": 7,
+              "total": 15
+            },
+            "down": {
+              "correct": 1,
+              "total": 15
+            },
+            "no_clear_change": {
+              "correct": 13,
+              "total": 15
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 21,
+          "median_latency_s": 4.125801999999999,
+          "p95_latency_s": 5.4795694,
+          "estimated_yuan": 0.21776399999999999,
+          "unknown_cost_count": 0
+        },
+        "imu": {
+          "cases": 14,
+          "correct": 8,
+          "accuracy": 0.5714285714285714,
+          "balanced_accuracy": 0.26666666666666666,
+          "per_class": {
+            "up": {
+              "correct": 0,
+              "total": 2
+            },
+            "down": {
+              "correct": 0,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 8,
+              "total": 10
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "provider_errors": 0,
+          "relaxed_json_correct": 8,
+          "median_latency_s": 4.2206905,
+          "p95_latency_s": 5.0437315,
+          "estimated_yuan": 0.0684,
+          "unknown_cost_count": 0
+        }
+      },
+      "subject_cluster_bootstrap_95": {
+        "low": 0.4091163340336134,
+        "high": 0.6620032051282049,
+        "bootstrap_samples": 2000,
+        "sampling_units": "subject_id",
+        "subjects": 12
+      },
+      "total_recorded": 104,
+      "planned_total": 138
+    }
+  },
+  "first_minus_second_paired_subject_bootstrap_95": {
+    "low": 0.016096663752913753,
+    "high": 0.12063316993464047,
+    "bootstrap_samples": 2000,
+    "subjects": 12
+  },
+  "paired_coverage": {
+    "total": 104,
+    "cmu": 90,
+    "imu": 14,
+    "planned_total": 138,
+    "planned_cmu": 120,
+    "planned_imu": 18,
+    "cmu_subjects": 12,
+    "cmu_unique_windows": 45,
+    "cmu_by_class": {
+      "up": 30,
+      "down": 30,
+      "no_clear_change": 30
+    },
+    "cmu_by_style": {
+      "guided": 45,
+      "unguided": 45
+    },
+    "paired_ids_sha256": "e38eeb626c6962c214d33765708ee92bdf5515bbebdb3cd65d951d1478841446"
+  },
+  "budget": {
+    "cap_yuan": 10.0,
+    "spent_estimate_yuan": 7.67469,
+    "unconfirmed_reserved_yuan": 1.409024,
+    "provider_requests_started": 625,
+    "ledger_sha256": "643e83ec2aa7126519c59ce99723497626aa3c351327bb0a60c0f85fa8d046c4"
+  },
+  "notice": "Comparative controlled skeleton imagery, not physical training quality; repeated style variants are clustered; costs include conservative assumptions."
+}

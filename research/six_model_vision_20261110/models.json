@@ -1,0 +1,14 @@
+{
+  "verified_date": "2026-11-10",
+  "currency": "CNY",
+  "budget_cap": 10.0,
+  "input_token_reservation": 16384,
+  "models": [
+    {"provider":"qwen","model":"qwen3.8-max-2026-09-02","key":"DASHSCOPE_API_KEY","endpoint":"https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions","input_rate":12,"output_rate":36,"max_output":2048,"extra":{"enable_thinking":false},"official_price":true,"price_source":"https://help.aliyun.com/zh/model-studio/qwen3-8-max"},
+    {"provider":"zhipu","model":"glm-5v-turbo","key":"ZHIPUAI_API_KEY","endpoint":"https://open.bigmodel.cn/api/paas/v4/chat/completions","input_rate":10,"output_rate":44,"max_output":2048,"extra":{"thinking":{"type":"disabled"}},"official_price":false,"price_note":"Conservative upper estimator; official BigModel price page is JavaScript-only. Cross-check actual bills; third-party quotes 5/22 CNY per million.","price_source":"https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5v-turbo"},
+    {"provider":"deepseek","model":"deepseek-flash","key":"DEEPSEEK_API_KEY","endpoint":"https://api.deepseek.com/chat/completions","input_rate":2,"output_rate":8,"max_output":2048,"extra":{"thinking":{"type":"disabled"}},"official_price":true,"price_note":"Peak non-cache price; conservative outside peak.","price_source":"https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"},
+    {"provider":"doubao","model":"doubao-seed-2-1-pro-260915","key":"ARK_API_KEY","endpoint":"https://ark.cn-beijing.volces.com/api/v3/chat/completions","input_rate":6,"output_rate":30,"max_output":2048,"extra":{"thinking":{"type":"disabled"}},"official_price":true,"price_source":"https://docs.volcengine.com/docs/ark/model-pricing?lang=zh"},
+    {"provider":"kimi","model":"kimi-k3.1-pro","key":"MOONSHOT_API_KEY","endpoint":"https://api.moonshot.cn/v1/chat/completions","input_rate":26,"output_rate":68,"max_output":4096,"extra":{"reasoning_effort":"low"},"official_price":true,"price_note":"Input estimate includes the highest listed 1h cache-write price; output includes thinking tokens.","price_source":"https://www.kimi.com/news/kimi-k3-1-pro"},
+    {"provider":"hunyuan","model":"hy4","key":"HUNYUAN_API_KEY","endpoint":"https://tokenhub.tencentmaas.com/v1/chat/completions","input_rate":6,"output_rate":18,"max_output":2048,"extra":{"thinking":{"type":"disabled"}},"official_price":true,"price_note":"Catalog price, without limited-time discount.","price_source":"https://cloud.tencent.com/document/product/1823/130055"}
+  ]
+}

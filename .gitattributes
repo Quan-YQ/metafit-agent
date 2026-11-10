@@ -14,6 +14,7 @@ MANIFEST.in text eol=lf
 research/benchmark_20261108/results/** -text
 research/benchmark_20261108/source_audit/** -text
 research/live_chain_20261110/results/** -text
+research/six_model_vision_20261110/** -text
 research/live_chain_20261110/models.json text eol=lf
 docs/两项优化_DynaIP与视觉模型对比_20261108.md -text
 *.png binary

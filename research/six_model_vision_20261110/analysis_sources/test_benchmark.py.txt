@@ -1,0 +1,62 @@
+import json
+from pathlib import Path
+import sys
+import threading
+from unittest.mock import patch
+
+import pytest
+sys.path.insert(0,str(Path(__file__).parent))
+import benchmark as b
+
+
+def test_strict_output_and_uncertainty():
+    assert b.parse('{"hip_change":"uncertain","explanation":"看不清"}','stop')==('uncertain',None)
+    assert b.parse('{"hip_change":"up","hip_change":"down","explanation":"x"}','stop')[0]=='invalid'
+    assert b.parse('{"hip_change":"up","explanation":"x"}','length')[0]=='invalid'
+    assert b.parse('{"hip_change":"up","explanation":"x","extra":1}','stop')[0]=='invalid'
+
+
+def test_missing_uncertain_and_errors_count_against_planned_total():
+    cases=[{'id':'1','label':'up'},{'id':'2','label':'down'},{'id':'3','label':'no_clear_change'}]
+    rows=[{'case_id':'1','answer':'up','provider_error':None,'elapsed_ms':100,'estimated_yuan':0.01},
+          {'case_id':'2','answer':'uncertain','provider_error':None,'elapsed_ms':300,'estimated_yuan':0.02}]
+    result=b.subset_metrics(rows,cases)
+    assert result['correct']==1 and result['planned']==3 and result['missing']==1
+    assert result['accuracy']==pytest.approx(1/3) and result['class_macro_accuracy']==pytest.approx(1/3)
+
+
+def test_ledger_reserves_and_settles_no_duplicate_requests(tmp_path,monkeypatch):
+    monkeypatch.setattr(b,'LEDGER',tmp_path/'budget.json')
+    monkeypatch.setattr(b,'FREEZE',tmp_path/'freeze.json')
+    b.save(b.FREEZE,{'frozen':True},True)
+    b.save(b.LEDGER,{'cap_yuan':10.0,'halted':False,'entries':[]},True)
+    model={'provider':'x','input_rate':10,'output_rate':40,'max_output':1000}
+    case={'id':'case_001_g'};cfg={'input_token_reservation':16000}
+    rid,reserved=b.reserve(model,case,cfg)
+    assert reserved==pytest.approx(.2)
+    with pytest.raises(ValueError,match='already_attempted'):b.reserve(model,case,cfg)
+    assert b.settle(rid,model,{'prompt_tokens':1000,'completion_tokens':100},cfg)==pytest.approx(.014)
+    entry=b.read(b.LEDGER)['entries'][0]
+    assert entry['status']=='usage_confirmed' and entry['charged_or_reserved_yuan']==pytest.approx(.014)
+
+
+def test_unknown_cost_keeps_reservation_and_budget_stops(tmp_path,monkeypatch):
+    monkeypatch.setattr(b,'LEDGER',tmp_path/'budget.json')
+    monkeypatch.setattr(b,'FREEZE',tmp_path/'freeze.json')
+    b.save(b.FREEZE,{'frozen':True},True)
+    b.save(b.LEDGER,{'cap_yuan':.1,'halted':False,'entries':[]},True)
+    model={'provider':'x','input_rate':10,'output_rate':40,'max_output':1000}
+    with pytest.raises(ValueError,match='budget_exhausted'):
+        b.reserve(model,{'id':'a'},{'input_token_reservation':16000})
+    assert not b.read(b.LEDGER)['entries']
+
+
+def test_image_and_prompt_only_no_reference_or_key_sent_to_wrong_endpoint():
+    cfg=b.config();manifest=b.read(b.MANIFEST);cases=b.check_input(manifest)
+    assert len(cases)==138
+    assert set(m['provider'] for m in cfg['models'])==set(b.ALLOWED)
+    for m in cfg['models']:assert m['endpoint']==b.ALLOWED[m['provider']]
+    for c in cases:
+        assert c['label'] not in c['id']
+    for style in ('guided','unguided','imu_prediction'):
+        assert len({c['prompt'] for c in cases if c['style']==style})==1

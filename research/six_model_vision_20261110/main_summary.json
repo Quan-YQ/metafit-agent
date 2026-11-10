@@ -1,0 +1,902 @@
+{
+  "stage": "main",
+  "planned_cases": 132,
+  "models": {
+    "qwen": {
+      "model": "qwen3.8-max-2026-09-02",
+      "overall_cmu": {
+        "planned": 114,
+        "completed": 84,
+        "correct": 70,
+        "accuracy": 0.6140350877192983,
+        "class_macro_accuracy": 0.6140350877192983,
+        "per_class": {
+          "up": {
+            "correct": 23,
+            "total": 38
+          },
+          "down": {
+            "correct": 22,
+            "total": 38
+          },
+          "no_clear_change": {
+            "correct": 25,
+            "total": 38
+          }
+        },
+        "uncertain": 0,
+        "invalid": 0,
+        "missing": 30,
+        "provider_errors": 0,
+        "median_latency_seconds": 2.782,
+        "estimated_yuan": 0.845496,
+        "unconfirmed_cost_count": 0
+      },
+      "styles": {
+        "guided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 37,
+          "accuracy": 0.6491228070175439,
+          "class_macro_accuracy": 0.6491228070175439,
+          "per_class": {
+            "up": {
+              "correct": 11,
+              "total": 19
+            },
+            "down": {
+              "correct": 12,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 14,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 2.745,
+          "estimated_yuan": 0.428544,
+          "unconfirmed_cost_count": 0
+        },
+        "unguided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 33,
+          "accuracy": 0.5789473684210527,
+          "class_macro_accuracy": 0.5789473684210527,
+          "per_class": {
+            "up": {
+              "correct": 12,
+              "total": 19
+            },
+            "down": {
+              "correct": 10,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 11,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 2.785,
+          "estimated_yuan": 0.416952,
+          "unconfirmed_cost_count": 0
+        },
+        "imu_prediction": {
+          "planned": 18,
+          "completed": 14,
+          "correct": 11,
+          "accuracy": 0.6111111111111112,
+          "class_macro_accuracy": 0.40476190476190477,
+          "per_class": {
+            "down": {
+              "correct": 0,
+              "total": 2
+            },
+            "up": {
+              "correct": 1,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 10,
+              "total": 14
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 4,
+          "provider_errors": 0,
+          "median_latency_seconds": 2.852,
+          "estimated_yuan": 0.145092,
+          "unconfirmed_cost_count": 0
+        }
+      },
+      "all_cases": {
+        "planned": 132,
+        "completed": 98,
+        "correct": 81,
+        "accuracy": 0.6136363636363636,
+        "class_macro_accuracy": 0.6076923076923078,
+        "per_class": {
+          "up": {
+            "correct": 24,
+            "total": 40
+          },
+          "down": {
+            "correct": 22,
+            "total": 40
+          },
+          "no_clear_change": {
+            "correct": 35,
+            "total": 52
+          }
+        },
+        "uncertain": 0,
+        "invalid": 0,
+        "missing": 34,
+        "provider_errors": 0,
+        "median_latency_seconds": 2.785,
+        "estimated_yuan": 0.990588,
+        "unconfirmed_cost_count": 0
+      }
+    },
+    "zhipu": {
+      "model": "glm-5v-turbo",
+      "overall_cmu": {
+        "planned": 114,
+        "completed": 84,
+        "correct": 66,
+        "accuracy": 0.5789473684210527,
+        "class_macro_accuracy": 0.5789473684210527,
+        "per_class": {
+          "up": {
+            "correct": 28,
+            "total": 38
+          },
+          "down": {
+            "correct": 19,
+            "total": 38
+          },
+          "no_clear_change": {
+            "correct": 19,
+            "total": 38
+          }
+        },
+        "uncertain": 0,
+        "invalid": 0,
+        "missing": 30,
+        "provider_errors": 0,
+        "median_latency_seconds": 2.06,
+        "estimated_yuan": 0.901644,
+        "unconfirmed_cost_count": 0
+      },
+      "styles": {
+        "guided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 34,
+          "accuracy": 0.5964912280701754,
+          "class_macro_accuracy": 0.5964912280701754,
+          "per_class": {
+            "up": {
+              "correct": 14,
+              "total": 19
+            },
+            "down": {
+              "correct": 9,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 11,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 2.067,
+          "estimated_yuan": 0.461104,
+          "unconfirmed_cost_count": 0
+        },
+        "unguided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 32,
+          "accuracy": 0.5614035087719298,
+          "class_macro_accuracy": 0.5614035087719298,
+          "per_class": {
+            "up": {
+              "correct": 14,
+              "total": 19
+            },
+            "down": {
+              "correct": 10,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 8,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 2.047,
+          "estimated_yuan": 0.44054,
+          "unconfirmed_cost_count": 0
+        },
+        "imu_prediction": {
+          "planned": 18,
+          "completed": 14,
+          "correct": 11,
+          "accuracy": 0.6111111111111112,
+          "class_macro_accuracy": 0.8333333333333334,
+          "per_class": {
+            "down": {
+              "correct": 2,
+              "total": 2
+            },
+            "up": {
+              "correct": 2,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 7,
+              "total": 14
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 4,
+          "provider_errors": 0,
+          "median_latency_seconds": 2.407,
+          "estimated_yuan": 0.160764,
+          "unconfirmed_cost_count": 0
+        }
+      },
+      "all_cases": {
+        "planned": 132,
+        "completed": 98,
+        "correct": 77,
+        "accuracy": 0.5833333333333334,
+        "class_macro_accuracy": 0.5916666666666667,
+        "per_class": {
+          "up": {
+            "correct": 30,
+            "total": 40
+          },
+          "down": {
+            "correct": 21,
+            "total": 40
+          },
+          "no_clear_change": {
+            "correct": 26,
+            "total": 52
+          }
+        },
+        "uncertain": 0,
+        "invalid": 0,
+        "missing": 34,
+        "provider_errors": 0,
+        "median_latency_seconds": 2.081,
+        "estimated_yuan": 1.062408,
+        "unconfirmed_cost_count": 0
+      }
+    },
+    "deepseek": {
+      "model": "deepseek-flash",
+      "overall_cmu": {
+        "planned": 114,
+        "completed": 84,
+        "correct": 65,
+        "accuracy": 0.5701754385964912,
+        "class_macro_accuracy": 0.5701754385964912,
+        "per_class": {
+          "up": {
+            "correct": 26,
+            "total": 38
+          },
+          "down": {
+            "correct": 19,
+            "total": 38
+          },
+          "no_clear_change": {
+            "correct": 20,
+            "total": 38
+          }
+        },
+        "uncertain": 0,
+        "invalid": 3,
+        "missing": 30,
+        "provider_errors": 0,
+        "median_latency_seconds": 1.134,
+        "estimated_yuan": 0.106844,
+        "unconfirmed_cost_count": 0
+      },
+      "styles": {
+        "guided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 31,
+          "accuracy": 0.543859649122807,
+          "class_macro_accuracy": 0.5438596491228069,
+          "per_class": {
+            "up": {
+              "correct": 12,
+              "total": 19
+            },
+            "down": {
+              "correct": 9,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 10,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 3,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 1.151,
+          "estimated_yuan": 0.055512,
+          "unconfirmed_cost_count": 0
+        },
+        "unguided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 34,
+          "accuracy": 0.5964912280701754,
+          "class_macro_accuracy": 0.5964912280701754,
+          "per_class": {
+            "up": {
+              "correct": 14,
+              "total": 19
+            },
+            "down": {
+              "correct": 10,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 10,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 1.09,
+          "estimated_yuan": 0.051332,
+          "unconfirmed_cost_count": 0
+        },
+        "imu_prediction": {
+          "planned": 18,
+          "completed": 14,
+          "correct": 11,
+          "accuracy": 0.6111111111111112,
+          "class_macro_accuracy": 0.5476190476190477,
+          "per_class": {
+            "down": {
+              "correct": 1,
+              "total": 2
+            },
+            "up": {
+              "correct": 1,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 9,
+              "total": 14
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 4,
+          "provider_errors": 0,
+          "median_latency_seconds": 1.234,
+          "estimated_yuan": 0.018152,
+          "unconfirmed_cost_count": 0
+        }
+      },
+      "all_cases": {
+        "planned": 132,
+        "completed": 98,
+        "correct": 76,
+        "accuracy": 0.5757575757575758,
+        "class_macro_accuracy": 0.5775641025641026,
+        "per_class": {
+          "up": {
+            "correct": 27,
+            "total": 40
+          },
+          "down": {
+            "correct": 20,
+            "total": 40
+          },
+          "no_clear_change": {
+            "correct": 29,
+            "total": 52
+          }
+        },
+        "uncertain": 0,
+        "invalid": 3,
+        "missing": 34,
+        "provider_errors": 0,
+        "median_latency_seconds": 1.147,
+        "estimated_yuan": 0.124996,
+        "unconfirmed_cost_count": 0
+      }
+    },
+    "doubao": {
+      "model": "doubao-seed-2-1-pro-260915",
+      "overall_cmu": {
+        "planned": 114,
+        "completed": 84,
+        "correct": 77,
+        "accuracy": 0.6754385964912281,
+        "class_macro_accuracy": 0.6754385964912281,
+        "per_class": {
+          "up": {
+            "correct": 27,
+            "total": 38
+          },
+          "down": {
+            "correct": 28,
+            "total": 38
+          },
+          "no_clear_change": {
+            "correct": 22,
+            "total": 38
+          }
+        },
+        "uncertain": 0,
+        "invalid": 0,
+        "missing": 30,
+        "provider_errors": 0,
+        "median_latency_seconds": 3.168,
+        "estimated_yuan": 0.888648,
+        "unconfirmed_cost_count": 0
+      },
+      "styles": {
+        "guided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 40,
+          "accuracy": 0.7017543859649122,
+          "class_macro_accuracy": 0.7017543859649122,
+          "per_class": {
+            "up": {
+              "correct": 13,
+              "total": 19
+            },
+            "down": {
+              "correct": 14,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 13,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 3.158,
+          "estimated_yuan": 0.4491,
+          "unconfirmed_cost_count": 0
+        },
+        "unguided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 37,
+          "accuracy": 0.6491228070175439,
+          "class_macro_accuracy": 0.6491228070175439,
+          "per_class": {
+            "up": {
+              "correct": 14,
+              "total": 19
+            },
+            "down": {
+              "correct": 14,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 9,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 3.192,
+          "estimated_yuan": 0.439548,
+          "unconfirmed_cost_count": 0
+        },
+        "imu_prediction": {
+          "planned": 18,
+          "completed": 14,
+          "correct": 6,
+          "accuracy": 0.3333333333333333,
+          "class_macro_accuracy": 0.7142857142857143,
+          "per_class": {
+            "down": {
+              "correct": 2,
+              "total": 2
+            },
+            "up": {
+              "correct": 2,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 2,
+              "total": 14
+            }
+          },
+          "uncertain": 0,
+          "invalid": 1,
+          "missing": 4,
+          "provider_errors": 0,
+          "median_latency_seconds": 3.329,
+          "estimated_yuan": 0.149142,
+          "unconfirmed_cost_count": 0
+        }
+      },
+      "all_cases": {
+        "planned": 132,
+        "completed": 98,
+        "correct": 83,
+        "accuracy": 0.6287878787878788,
+        "class_macro_accuracy": 0.6455128205128206,
+        "per_class": {
+          "up": {
+            "correct": 29,
+            "total": 40
+          },
+          "down": {
+            "correct": 30,
+            "total": 40
+          },
+          "no_clear_change": {
+            "correct": 24,
+            "total": 52
+          }
+        },
+        "uncertain": 0,
+        "invalid": 1,
+        "missing": 34,
+        "provider_errors": 0,
+        "median_latency_seconds": 3.208,
+        "estimated_yuan": 1.03779,
+        "unconfirmed_cost_count": 0
+      }
+    },
+    "kimi": {
+      "model": "kimi-k3.1-pro",
+      "overall_cmu": {
+        "planned": 114,
+        "completed": 85,
+        "correct": 82,
+        "accuracy": 0.7192982456140351,
+        "class_macro_accuracy": 0.7192982456140351,
+        "per_class": {
+          "up": {
+            "correct": 27,
+            "total": 38
+          },
+          "down": {
+            "correct": 27,
+            "total": 38
+          },
+          "no_clear_change": {
+            "correct": 28,
+            "total": 38
+          }
+        },
+        "uncertain": 0,
+        "invalid": 1,
+        "missing": 29,
+        "provider_errors": 1,
+        "median_latency_seconds": 7.523,
+        "estimated_yuan": 2.995492,
+        "unconfirmed_cost_count": 1
+      },
+      "styles": {
+        "guided": {
+          "planned": 57,
+          "completed": 43,
+          "correct": 42,
+          "accuracy": 0.7368421052631579,
+          "class_macro_accuracy": 0.7368421052631579,
+          "per_class": {
+            "up": {
+              "correct": 14,
+              "total": 19
+            },
+            "down": {
+              "correct": 14,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 14,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 1,
+          "missing": 14,
+          "provider_errors": 1,
+          "median_latency_seconds": 7.508,
+          "estimated_yuan": 1.491992,
+          "unconfirmed_cost_count": 1
+        },
+        "unguided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 40,
+          "accuracy": 0.7017543859649122,
+          "class_macro_accuracy": 0.7017543859649122,
+          "per_class": {
+            "up": {
+              "correct": 13,
+              "total": 19
+            },
+            "down": {
+              "correct": 13,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 14,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 7.712,
+          "estimated_yuan": 1.5035,
+          "unconfirmed_cost_count": 0
+        },
+        "imu_prediction": {
+          "planned": 18,
+          "completed": 14,
+          "correct": 11,
+          "accuracy": 0.6111111111111112,
+          "class_macro_accuracy": 0.8333333333333334,
+          "per_class": {
+            "down": {
+              "correct": 2,
+              "total": 2
+            },
+            "up": {
+              "correct": 2,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 7,
+              "total": 14
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 4,
+          "provider_errors": 0,
+          "median_latency_seconds": 8.2,
+          "estimated_yuan": 0.541776,
+          "unconfirmed_cost_count": 0
+        }
+      },
+      "all_cases": {
+        "planned": 132,
+        "completed": 99,
+        "correct": 93,
+        "accuracy": 0.7045454545454546,
+        "class_macro_accuracy": 0.7076923076923077,
+        "per_class": {
+          "up": {
+            "correct": 29,
+            "total": 40
+          },
+          "down": {
+            "correct": 29,
+            "total": 40
+          },
+          "no_clear_change": {
+            "correct": 35,
+            "total": 52
+          }
+        },
+        "uncertain": 0,
+        "invalid": 1,
+        "missing": 33,
+        "provider_errors": 1,
+        "median_latency_seconds": 7.653,
+        "estimated_yuan": 3.537268,
+        "unconfirmed_cost_count": 1
+      }
+    },
+    "hunyuan": {
+      "model": "hy4",
+      "overall_cmu": {
+        "planned": 114,
+        "completed": 84,
+        "correct": 47,
+        "accuracy": 0.41228070175438597,
+        "class_macro_accuracy": 0.41228070175438597,
+        "per_class": {
+          "up": {
+            "correct": 15,
+            "total": 38
+          },
+          "down": {
+            "correct": 6,
+            "total": 38
+          },
+          "no_clear_change": {
+            "correct": 26,
+            "total": 38
+          }
+        },
+        "uncertain": 0,
+        "invalid": 0,
+        "missing": 30,
+        "provider_errors": 0,
+        "median_latency_seconds": 3.924,
+        "estimated_yuan": 0.41346,
+        "unconfirmed_cost_count": 0
+      },
+      "styles": {
+        "guided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 27,
+          "accuracy": 0.47368421052631576,
+          "class_macro_accuracy": 0.47368421052631576,
+          "per_class": {
+            "up": {
+              "correct": 8,
+              "total": 19
+            },
+            "down": {
+              "correct": 5,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 14,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 3.792,
+          "estimated_yuan": 0.210186,
+          "unconfirmed_cost_count": 0
+        },
+        "unguided": {
+          "planned": 57,
+          "completed": 42,
+          "correct": 20,
+          "accuracy": 0.3508771929824561,
+          "class_macro_accuracy": 0.3508771929824561,
+          "per_class": {
+            "up": {
+              "correct": 7,
+              "total": 19
+            },
+            "down": {
+              "correct": 1,
+              "total": 19
+            },
+            "no_clear_change": {
+              "correct": 12,
+              "total": 19
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 15,
+          "provider_errors": 0,
+          "median_latency_seconds": 4.194,
+          "estimated_yuan": 0.203274,
+          "unconfirmed_cost_count": 0
+        },
+        "imu_prediction": {
+          "planned": 18,
+          "completed": 14,
+          "correct": 8,
+          "accuracy": 0.4444444444444444,
+          "class_macro_accuracy": 0.19047619047619047,
+          "per_class": {
+            "down": {
+              "correct": 0,
+              "total": 2
+            },
+            "up": {
+              "correct": 0,
+              "total": 2
+            },
+            "no_clear_change": {
+              "correct": 8,
+              "total": 14
+            }
+          },
+          "uncertain": 0,
+          "invalid": 0,
+          "missing": 4,
+          "provider_errors": 0,
+          "median_latency_seconds": 4.221,
+          "estimated_yuan": 0.0684,
+          "unconfirmed_cost_count": 0
+        }
+      },
+      "all_cases": {
+        "planned": 132,
+        "completed": 98,
+        "correct": 55,
+        "accuracy": 0.4166666666666667,
+        "class_macro_accuracy": 0.39294871794871794,
+        "per_class": {
+          "up": {
+            "correct": 15,
+            "total": 40
+          },
+          "down": {
+            "correct": 6,
+            "total": 40
+          },
+          "no_clear_change": {
+            "correct": 34,
+            "total": 52
+          }
+        },
+        "uncertain": 0,
+        "invalid": 0,
+        "missing": 34,
+        "provider_errors": 0,
+        "median_latency_seconds": 3.971,
+        "estimated_yuan": 0.48186,
+        "unconfirmed_cost_count": 0
+      }
+    }
+  },
+  "provider_errors": [
+    {
+      "provider": "kimi",
+      "case_id": "case_015_g",
+      "error": "transport_or_timeout"
+    }
+  ],
+  "budget": {
+    "known_or_reserved_yuan": 9.083714,
+    "unconfirmed_count": 2,
+    "requests_started": 625,
+    "cap_yuan": 10.0
+  },
+  "finished_at": "2026-11-10T08:53:28.302370+00:00",
+  "outcomes": [
+    {
+      "stopped": "provider_error",
+      "case_id": "case_015_g",
+      "errors": [
+        {
+          "provider": "kimi",
+          "error": "transport_or_timeout"
+        }
+      ]
+    }
+  ]
+}

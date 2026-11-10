@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "network_calls": 0,
+  "images_verified": 138,
+  "cases_per_provider": 138,
+  "classes": {
+    "up": 40,
+    "down": 40,
+    "no_clear_change": 40
+  },
+  "models": [
+    "qwen3.8-max-2026-09-02",
+    "glm-5v-turbo",
+    "deepseek-flash",
+    "doubao-seed-2-1-pro-260915",
+    "kimi-k3.1-pro",
+    "hy4"
+  ]
+}

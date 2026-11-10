@@ -1,0 +1,61 @@
+"""Build readable, offline Markdown and HTML reports from paired scores."""
+from datetime import datetime
+import html
+import json
+from pathlib import Path
+
+HERE=Path(__file__).resolve().parent
+report=json.loads((HERE/'paired_results.json').read_text(encoding='utf-8'))
+coverage=report['paired_coverage'];budget=report['budget'];models=report['models'];ranking=report['ranking']
+names={'qwen':'千问','zhipu':'智谱','deepseek':'DeepSeek','doubao':'豆包','kimi':'Kimi','hunyuan':'腾讯混元'}
+def ratio(m):return f"{m['correct']}/{m['cases']}（{m['accuracy']:.1%}）" if m['cases'] else '未完成'
+def rate(m):return f"{m['balanced_accuracy']:.1%}" if m['balanced_accuracy'] is not None else '—'
+rows=[]
+for rank,p in enumerate(ranking,1):
+    item=models[p];m=item['metrics'];cmu=m['cmu_all'];guided=m['cmu_guided'];plain=m['cmu_unguided'];imu=m['imu']
+    cost=cmu['estimated_yuan']+imu['estimated_yuan']
+    rows.append({'rank':rank,'provider':names[p],'model':item['model'],'overall':ratio(cmu),'macro':rate(cmu),
+        'guided':ratio(guided),'unguided':ratio(plain),'imu':ratio(imu),'invalid':cmu['invalid'],
+        'uncertain':cmu['uncertain'],'latency':f"{cmu['median_latency_s']:.2f}秒" if cmu['median_latency_s'] is not None else '—',
+        'estimated':f'¥{cost:.4f}','subject_ci':item['subject_cluster_bootstrap_95'],
+        'relaxed':cmu['relaxed_json_correct']})
+winner=rows[0]
+cmu_distribution='、'.join(f"{k} {coverage['cmu_by_class'].get(k,0)}" for k in ('up','down','no_clear_change'))
+mainstop=''
+if (HERE/'main_summary.json').exists():
+    outcomes=json.loads((HERE/'main_summary.json').read_text(encoding='utf-8')).get('outcomes',[])
+    if outcomes:mainstop=' 测试提前结束：Kimi 的一次请求超时，按规则停止，没有自动重试。'
+lines=['# 六家视觉模型骨架读图横评','',
+ f"结论：在本次**共同完成的{coverage['cmu']}张 CMU 图**上，按预先确定的三类平均正确率排序，**{winner['provider']} {winner['model']}**排第一，可作为下一轮优先模型。",
+ '',f"六家共同完成 {coverage['total']} / {coverage['planned_total']} 张：CMU {coverage['cmu']} / 120 张、IMU预测骨架 {coverage['imu']} / 18 张。CMU 来自 {coverage['cmu_subjects']} 个受试者编号、{coverage['cmu_unique_windows']} 个原始时间窗口；辅助线有无是同一窗口的两种版本。{mainstop}",
+ '', '## 同图结果','',
+ '| 排名 | 模型 | CMU正确/图数 | 三类平均正确率 | 有线 | 无线 | IMU补充 | 无效/不确定 | 中位响应 | 保守估算费用 |',
+ '|---|---|---|---|---|---|---|---|---|---|']
+for r in rows:
+    lines.append(f"| {r['rank']} | {r['provider']} `{r['model']}` | {r['overall']} | {r['macro']} | {r['guided']} | {r['unguided']} | {r['imu']} | {r['invalid']} / {r['uncertain']} | {r['latency']} | {r['estimated']} |")
+lines += ['',f"三类样本数：{cmu_distribution}。三类平均正确率把升高、下降、无明显变化各算一次平均，避免类别不均影响排名。模型不得分的格式错误、主动不确定和提供商错误都进入分母。",
+ '', '## 怎么理解这个结果','',
+ '- 六家每次看相同的骨架图片、回答相同的问题。主要比较首帧和末帧的髋部高度，分为有辅助线和无辅助线；模型未收到标准答案。动作中间下蹲又站回原位，也会按首尾高度接近归为“无明显变化”。',
+ '- 这些是控制条件下的骨架示意图；同一动作的两个图片版本有关联，不能当成两个人。CMU来自公开动作捕捉，IMU补充图来自已有预测模型，两个来源分别统计。',
+ '- 视觉观察只比较图形几何，不代表动作是否标准、安全，也不能直接推断各模型对其他关节或真实训练画面的能力。',
+ '- Kimi为配合平台每分钟3次限制采用低强度思考及限速；其他模型关闭思考。表内耗时是单次API耗时，Kimi批量等待另计。',
+ '- 智谱单价使用高于外部报价的保守估计（官方价页需登录或JS核验）；Kimi输入按较高缓存写入单价估算。表内费用不是平台账单。',
+ f"- 本轮已确认用量保守估计 **¥{budget['spent_estimate_yuan']:.4f}**；另为限流和超时两次费用未确认的请求合计预留 **¥{budget['unconfirmed_reserved_yuan']:.4f}**，合计 **¥{budget['spent_estimate_yuan']+budget['unconfirmed_reserved_yuan']:.4f} / ¥{budget['cap_yuan']:.2f}**。失败请求未自动重试。",
+ '- 如果最后一张图片只来得及请求部分模型，该次费用仍计入总账，比较表只统计六家均有记录的图片。',
+ '', '## 辅助解读','',
+ '- 有线图片的正确标签已与独立像素读取器核对；对这种固定标记，程序直接计算也能得到答案。无辅助线成绩更能观察模型独立读图的表现。',
+ '- 主排名采用严格JSON格式；附表记录只放宽额外JSON字段后的正确数，便于区分“看错”与“输出格式不符”。',
+ '| 模型 | 严格格式正确数 | 放宽额外字段后的正确数 |', '|---|---:|---:|']
+for r in rows:lines.append(f"| {r['provider']} | {models[ranking[r['rank']-1]]['metrics']['cmu_all']['correct']} | {r['relaxed']} |")
+diff=report.get('first_minus_second_paired_subject_bootstrap_95')
+if diff:
+    status='区间包含0，前两名优劣仍有不确定性' if diff['low']<=0<=diff['high'] else '区间未包含0，但仍需更多独立受试者确认'
+    lines += ['',f"按{diff['subjects']}个受试者编号做配对重采样，第一名减第二名的三类平均正确率差值估计区间为 {diff['low']:+.1%} 至 {diff['high']:+.1%}；{status}。"]
+lines+=['','所有逐图返回、输入摘要、原始记录、预登记和费用账本在本目录。运行 `python replay.py` 可离线核对成绩与请求记录；历史记录保持不变。','']
+(HERE/'横评报告.md').write_text('\n'.join(lines),encoding='utf-8')
+table=''.join('<tr>'+''.join('<td>'+html.escape(str(r[key]))+'</td>' for key in ('rank','provider','model','overall','macro','guided','unguided','imu','invalid','uncertain','latency','estimated'))+'</tr>' for r in rows)
+headers=('排名','模型家族','具体模型','CMU正确/图数','三类平均','有辅助线','无辅助线','IMU补充','无效','不确定','中位耗时','保守估价')
+title='六家视觉模型骨架读图横评'
+page='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>'+title+'</title><style>body{font:16px/1.7 system-ui,"Microsoft YaHei",sans-serif;max-width:1450px;margin:48px auto;padding:0 24px;color:#203047;background:#f7f9fc}h1{font-size:30px}table{border-collapse:collapse;width:100%;background:white}th,td{padding:9px;border-bottom:1px solid #dde4ee;text-align:left;white-space:nowrap}th{background:#e9eff7}small{color:#566}section{overflow-x:auto}a{color:#1763b7}</style><h1>'+title+'</h1><p>本次同图比较按三类平均正确率，首选 <strong>'+html.escape(winner['provider']+' '+winner['model'])+'</strong>。</p><p>共同完成CMU '+str(coverage['cmu'])+' / 120 张，IMU '+str(coverage['imu'])+' / 18 张；CMU包含 '+str(coverage['cmu_subjects'])+' 个受试者编号和 '+str(coverage['cmu_unique_windows'])+' 个原始动作窗口。</p><section><table><thead><tr>'+''.join('<th>'+html.escape(h)+'</th>' for h in headers)+'</tr></thead><tbody>'+table+'</tbody></table></section><p>本轮已确认用量保守估算 ¥'+f"{budget['spent_estimate_yuan']:.4f}"+'，未确认预留 ¥'+f"{budget['unconfirmed_reserved_yuan']:.4f}"+'，上限 ¥10。</p><p>主测试的任务是读取髋部升降；有线、无线和IMU分别统计。每组样本来自重复动作窗口，结论需以更多人物和动作继续检验。</p><p><a href="横评报告.md">完整说明</a> · <a href="paired_results.json">可复算数据</a> · <a href="PREREGISTRATION.md">预先确定的规则</a> · <a href="budget.json">预算记录</a></p></html>'
+(HERE/'index.html').write_text(page,encoding='utf-8')
+print(json.dumps({'winner':winner['provider'],'cmu_cases':coverage['cmu'],'imu_cases':coverage['imu'],'markdown':'横评报告.md','html':'index.html'},ensure_ascii=False))

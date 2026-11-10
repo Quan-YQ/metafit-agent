@@ -1,0 +1,365 @@
+"""Frozen, budgeted six-provider visual evaluation; paid calls are never retried."""
+import argparse
+import base64
+from collections import Counter
+from concurrent.futures import ThreadPoolExecutor,as_completed
+from datetime import datetime,timezone
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import re
+import statistics
+import sys
+import threading
+import time
+from urllib.error import HTTPError,URLError
+from urllib.request import Request,HTTPRedirectHandler,build_opener
+
+HERE=Path(__file__).resolve().parent
+CONFIG=HERE/'models.json';MANIFEST=HERE/'manifest.json';FREEZE=HERE/'freeze.json'
+LEDGER=HERE/'budget.json';RESULTS=HERE/'responses'
+ALLOWED={
+ 'qwen':'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
+ 'zhipu':'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+ 'deepseek':'https://api.deepseek.com/chat/completions',
+ 'doubao':'https://ark.cn-beijing.volces.com/api/v3/chat/completions',
+ 'kimi':'https://api.moonshot.cn/v1/chat/completions',
+ 'hunyuan':'https://tokenhub.tencentmaas.com/v1/chat/completions'}
+_mutex=threading.Lock()
+
+def now():return datetime.now(timezone.utc).isoformat()
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def read(p):return json.loads(Path(p).read_text(encoding='utf-8'))
+def canonical(x):return json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False).encode()
+def save(path,data,exclusive=False):
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+    if exclusive:
+        with path.open('x',encoding='utf-8') as f:json.dump(data,f,ensure_ascii=False,indent=2,allow_nan=False)
+    else:
+        tmp=path.with_suffix(path.suffix+'.pending')
+        with tmp.open('w',encoding='utf-8') as f:
+            json.dump(data,f,ensure_ascii=False,indent=2,allow_nan=False);f.flush();os.fsync(f.fileno())
+        os.replace(tmp,path)
+
+def key(name):
+    value=os.environ.get(name,'').strip()
+    if not value and os.name=='nt':
+        import winreg
+        try:
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER,'Environment') as h:value=winreg.QueryValueEx(h,name)[0].strip()
+        except (OSError,AttributeError):pass
+    return value
+
+def sanitize(text,secrets):
+    if not isinstance(text,str):return None
+    for secret in secrets:
+        if secret:text=text.replace(secret,'[REDACTED]')
+    return re.sub(r'(?i)(?:bearer\s+|sk-|ark-|ak-|org-)[A-Za-z0-9._-]{8,}','[REDACTED]',text)[:16000]
+
+def config():
+    cfg=read(CONFIG)
+    if cfg['budget_cap']!=10.0 or len(cfg['models'])!=6:raise ValueError('unexpected budget or model count')
+    if any(m['endpoint']!=ALLOWED.get(m['provider']) for m in cfg['models']):raise ValueError('unapproved provider endpoint')
+    return cfg
+
+def unique_pairs(pairs):
+    result={}
+    for k,v in pairs:
+        if k in result:raise ValueError('duplicate JSON key')
+        result[k]=v
+    return result
+
+def parse(content,finish):
+    if finish!='stop' or not isinstance(content,str) or len(content)>16000:return ('invalid','not_stop_or_nontext')
+    try:
+        value=json.loads(content,object_pairs_hook=unique_pairs,
+            parse_constant=lambda v:(_ for _ in ()).throw(ValueError('nonfinite')))
+        if not isinstance(value,dict) or set(value)!={'hip_change','explanation'}:raise ValueError('fields')
+        if value['hip_change'] not in ('up','down','no_clear_change','uncertain'):raise ValueError('label')
+        if not isinstance(value['explanation'],str) or not 1<=len(value['explanation'].strip())<=500:raise ValueError('explanation')
+        return value['hip_change'],None
+    except (ValueError,TypeError,RecursionError):return ('invalid','bad_json_or_fields')
+
+def check_input(manifest):
+    cases=manifest['cases'];ids=[c['id'] for c in cases]
+    if len(ids)!=len(set(ids)) or len(ids)!=138:raise ValueError('case count or identifiers differ')
+    for c in cases:
+        if not re.fullmatch(r'(?:case_\d{3}_[gu]|imu_\d{3})',c['id']):raise ValueError('invalid case id')
+        if sha(HERE/'images'/(c['id']+'.png'))!=c['image_sha256']:raise ValueError('image changed')
+        if hashlib.sha256(c['prompt'].encode()).hexdigest()!=c['prompt_sha256']:raise ValueError('prompt changed')
+    return cases
+
+def verify():
+    frozen=read(FREEZE)
+    for name,value in frozen['hashes'].items():
+        if sha(HERE/name)!=value:raise ValueError('preregistered file changed: '+name)
+    for name,value in read(HERE/'inheritance.json')['inherited_response_sha256'].items():
+        if sha(HERE/name)!=value:raise ValueError('inherited pilot response changed: '+name)
+    cfg=config();manifest=read(MANIFEST);check_input(manifest)
+    return cfg,manifest
+
+def freeze():
+    cfg=config();manifest=read(MANIFEST);cases=check_input(manifest)
+    if FREEZE.exists() or LEDGER.exists():raise ValueError('freeze already exists')
+    if Counter(c['label'] for c in cases if c['style'] in ('guided','unguided')) != {'up':40,'down':40,'no_clear_change':40}:
+        raise ValueError('main classes not balanced')
+    if len([c for c in cases if c['stage']=='pilot'])!=6:raise ValueError('wrong pilot count')
+    files=['models.json','manifest.json','dataset.py','append_imu.py','benchmark.py','PREREGISTRATION.md',
+           'inheritance.json','inherited_budget.json','pilot_summary.json']
+    value={'schema':'six-model-frozen-1','hashes':{p:sha(HERE/p) for p in files},'created_at':now(),
+        'models':[m['model'] for m in cfg['models']], 'budget_cap_yuan':10.0}
+    save(FREEZE,value,True)
+    inherited=read(HERE/'inherited_budget.json')
+    if inherited['cap_yuan']!=10.0 or inherited.get('halted'):
+        raise ValueError('inherited budget is unavailable')
+    save(LEDGER,inherited,True)
+    return value
+
+def reserve(model,case,cfg):
+    amount=(cfg['input_token_reservation']*model['input_rate']+model['max_output']*model['output_rate'])/1e6
+    rid=hashlib.sha256((model['provider']+':'+case['id']+':'+sha(FREEZE)).encode()).hexdigest()
+    with _mutex:
+        ledger=read(LEDGER)
+        if ledger['halted']:raise ValueError('budget_halted')
+        if any(e['id']==rid for e in ledger['entries']):raise ValueError('already_attempted')
+        if sum(e['charged_or_reserved_yuan'] for e in ledger['entries'])+amount>ledger['cap_yuan']+1e-10:
+            raise ValueError('budget_exhausted')
+        ledger['entries'].append({'id':rid,'provider':model['provider'],'case_id':case['id'],
+            'reserved_yuan':amount,'charged_or_reserved_yuan':amount,'status':'started','started_at':now()})
+        save(LEDGER,ledger)
+    return rid,amount
+
+def settle(rid,model,usage,cfg):
+    inp,out=usage['prompt_tokens'],usage['completion_tokens']
+    if type(inp)!=int or type(out)!=int or inp<0 or out<0:raise ValueError('invalid_usage')
+    amount=(inp*model['input_rate']+out*model['output_rate'])/1e6
+    with _mutex:
+        ledger=read(LEDGER);entry=next(e for e in ledger['entries'] if e['id']==rid)
+        if entry['status']!='started':raise ValueError('already_settled')
+        if inp>cfg['input_token_reservation'] or out>model['max_output'] or amount>entry['reserved_yuan']+1e-9:
+            entry.update(status='usage_exceeds_reservation',charged_or_reserved_yuan=max(amount,entry['reserved_yuan']))
+            ledger['halted']=True;save(LEDGER,ledger);raise ValueError('usage_exceeds_reservation')
+        entry.update(status='usage_confirmed',charged_or_reserved_yuan=amount,finished_at=now())
+        save(LEDGER,ledger)
+    return amount
+
+class NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self,*args,**kwargs):return None
+
+def one(model,case,cfg,secrets):
+    path=RESULTS/model['provider']/(case['id']+'.json')
+    if path.exists():return read(path)
+    image=(HERE/'images'/(case['id']+'.png')).read_bytes()
+    if hashlib.sha256(image).hexdigest()!=case['image_sha256']:raise ValueError('image changed during run')
+    messages=[{'role':'user','content':[{'type':'image_url','image_url':{'url':'data:image/png;base64,'+base64.b64encode(image).decode()}},
+                                       {'type':'text','text':case['prompt']}]}]
+    body={'model':model['model'],'messages':messages,'stream':False,'response_format':{'type':'json_object'},**model['extra']}
+    if model['provider']=='kimi':body['max_completion_tokens']=model['max_output']
+    else:body.update(max_tokens=model['max_output'],temperature=0)
+    request_sha=hashlib.sha256(canonical(body)).hexdigest()
+    api_key=key(model['key'])
+    if not api_key or '\n' in api_key or '\r' in api_key:raise ValueError('missing_or_invalid_key')
+    if model['provider']=='kimi':
+        past=[datetime.fromisoformat(e['started_at']) for e in read(LEDGER)['entries'] if e['provider']=='kimi']
+        if past:
+            delay=21.5-(datetime.now(timezone.utc)-max(past)).total_seconds()
+            if delay>0:time.sleep(delay)
+    rid,amount=reserve(model,case,cfg)
+    rec={'schema':'six-model-response-1','provider':model['provider'],'model':model['model'],
+        'case_id':case['id'],'image_sha256':case['image_sha256'],'prompt_sha256':case['prompt_sha256'],
+        'request_sha256':request_sha,'request_id_local':rid,'reserved_yuan':amount,'started_at':now(),
+        'estimated_yuan':None,'usage':None,'returned_model':None,'answer':'invalid',
+        'explanation':None,'finish_reason':None,'provider_error':None,'format_error':None}
+    request=Request(model['endpoint'],data=json.dumps(body,ensure_ascii=False).encode('utf-8'),
+        headers={'Authorization':'Bearer '+api_key,'Content-Type':'application/json'},method='POST')
+    started=time.perf_counter()
+    try:
+        with build_opener(NoRedirect()).open(request,timeout=120) as response:
+            raw=response.read(2_000_001)
+        if len(raw)>2_000_000:raise ValueError('response_too_large')
+        data=json.loads(raw)
+        usage=data['usage'];estimated=settle(rid,model,usage,cfg)
+        rec.update(usage={'prompt_tokens':usage['prompt_tokens'],'completion_tokens':usage['completion_tokens']},estimated_yuan=estimated)
+        choice=data['choices'][0];content=sanitize(choice['message']['content'],secrets)
+        rec['finish_reason']=sanitize(choice.get('finish_reason'),secrets)
+        rec['returned_model']=sanitize(data.get('model'),secrets)
+        rec['answer'],rec['format_error']=parse(content,rec['finish_reason'])
+        if content is not None:
+            rec['raw_content']=content
+            if rec['answer']!='invalid':rec['explanation']=json.loads(content)['explanation']
+    except HTTPError as exc:
+        rec['provider_error']='http_'+str(exc.code)
+        try:
+            info=json.loads(exc.read(16384))
+            err=info.get('error',{})
+            if isinstance(err,dict):rec['provider_error_detail']=sanitize(str(err.get('code',''))+' '+str(err.get('message','')),secrets)[:500]
+        except (ValueError,OSError,TypeError):pass
+    except (URLError,TimeoutError,OSError):rec['provider_error']='transport_or_timeout'
+    except (ValueError,KeyError,TypeError,IndexError):rec['provider_error']='response_or_usage_invalid'
+    rec['elapsed_ms']=round((time.perf_counter()-started)*1000,3);rec['finished_at']=now()
+    save(path,rec,True)
+    return rec
+
+def worker(model,cases,cfg,secrets):
+    completed=0
+    for case in cases:
+        existing=RESULTS/model['provider']/(case['id']+'.json')
+        if existing.exists():
+            row=read(existing)
+            if row['provider_error']:return {'provider':model['provider'],'stopped':row['provider_error'],'completed':completed}
+            completed+=1;continue
+        try:row=one(model,case,cfg,secrets)
+        except ValueError as e:return {'provider':model['provider'],'stopped':str(e),'completed':completed}
+        completed+=1
+        print(json.dumps({'provider':model['provider'],'completed':completed,'case_id':case['id'],
+            'answer':row['answer'],'error':row['provider_error']},ensure_ascii=False),flush=True)
+        if row['provider_error']:
+            return {'provider':model['provider'],'stopped':row['provider_error'],'completed':completed}
+    return {'provider':model['provider'],'stopped':None,'completed':completed}
+
+def execute(stage):
+    cfg,manifest=verify()
+    missing=[m['key'] for m in cfg['models'] if not key(m['key'])]
+    if missing:raise ValueError('missing keys: '+','.join(missing))
+    if stage=='main':
+        if not (HERE/'pilot_summary.json').exists():raise ValueError('pilot summary missing')
+        pilot=read(HERE/'pilot_summary.json')
+        if any(e['provider']!='kimi' or e['error']!='http_429' or e['case_id']!='case_040_u'
+               for e in pilot['provider_errors']):raise ValueError('unexpected pilot provider errors')
+        if any(v['all_cases']['completed']!=6 or v['all_cases']['invalid']>=6 for v in pilot['models'].values()):
+            raise ValueError('pilot incomplete or no parseable answer')
+    cases=[c for c in manifest['cases'] if c['stage']==stage]
+    if stage=='main':
+        # Interleave categories and image styles before any call; model providers
+        # advance together so a budget stop leaves matched balanced coverage.
+        groups={(style,label):[c for c in cases if c['style']==style and c['label']==label]
+                for style in ('guided','unguided') for label in ('up','down','no_clear_change')}
+        interleaved=[]
+        while any(groups.values()):
+            for label in ('up','down','no_clear_change'):
+                for style in ('guided','unguided'):
+                    if groups[(style,label)]:interleaved.append(groups[(style,label)].pop(0))
+        imu=[c for c in cases if c['style']=='imu_prediction']
+        cases=[]
+        for index,c in enumerate(interleaved,1):
+            cases.append(c)
+            if index%6==0 and imu:cases.append(imu.pop(0))
+        cases.extend(imu)
+    lock=HERE/'running.lock'
+    fd=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
+    os.write(fd,str(os.getpid()).encode());os.close(fd)
+    try:
+        secrets=[key(m['key']) for m in cfg['models']]
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            if stage=='pilot':
+                futures=[pool.submit(worker,m,cases,cfg,secrets) for m in cfg['models']]
+                outcomes=[future.result() for future in as_completed(futures)]
+            else:
+                outcomes=[]
+                for index,case in enumerate(cases):
+                    ledger=read(LEDGER)
+                    remaining=ledger['cap_yuan']-sum(e['charged_or_reserved_yuan'] for e in ledger['entries'])
+                    # Kimi runs first, then the other providers together. This
+                    # keeps worst-case reservations below the overall cap while
+                    # using more of a small budget; a final unmatched Kimi result
+                    # is excluded from the same-image comparison if necessary.
+                    kimi=next(m for m in cfg['models'] if m['provider']=='kimi')
+                    others=[m for m in cfg['models'] if m['provider']!='kimi']
+                    def estimate(m):
+                        return (cfg['input_token_reservation']*m['input_rate']+m['max_output']*m['output_rate'])/1e6
+                    kr=0 if (RESULTS/kimi['provider']/(case['id']+'.json')).exists() else estimate(kimi)
+                    rest=sum(estimate(m) for m in others if not (RESULTS/m['provider']/(case['id']+'.json')).exists())
+                    if remaining+1e-10<max(kr,rest):
+                        outcomes.append({'stopped':'budget_exhausted_before_balanced_round','case_id':case['id']});break
+                    first=one(kimi,case,cfg,secrets)
+                    ledger=read(LEDGER)
+                    remaining=ledger['cap_yuan']-sum(e['charged_or_reserved_yuan'] for e in ledger['entries'])
+                    if first['provider_error']:
+                        outcomes.append({'stopped':'provider_error','case_id':case['id'],
+                                         'errors':[{'provider':'kimi','error':first['provider_error']}]});break
+                    if remaining+1e-10<rest:
+                        outcomes.append({'stopped':'budget_exhausted_after_kimi','case_id':case['id']});break
+                    futures=[pool.submit(one,m,case,cfg,secrets) for m in others]
+                    rows=[first]+[f.result() for f in futures]
+                    errors=[{'provider':r['provider'],'error':r['provider_error']} for r in rows if r['provider_error']]
+                    print(json.dumps({'round':index+1,'rounds_planned':len(cases),'case_id':case['id'],
+                        'answers':{r['provider']:r['answer'] for r in rows},'errors':errors},ensure_ascii=False),flush=True)
+                    if errors:
+                        outcomes.append({'stopped':'provider_error','case_id':case['id'],'errors':errors});break
+        report=summarize(stage,cfg,manifest)
+        report['outcomes']=outcomes
+        save(HERE/(stage+'_summary.json'),report,True)
+        return report
+    finally:
+        lock.unlink(missing_ok=True)
+
+def subset_metrics(rows,cases):
+    labels={c['id']:c['label'] for c in cases};planned=len(cases)
+    correct=sum(r['answer']==labels[r['case_id']] for r in rows)
+    counts=Counter(c['label'] for c in cases)
+    per={label:{'correct':sum(r['answer']==label and labels[r['case_id']]==label for r in rows),'total':n}
+        for label,n in counts.items()}
+    valid=[r for r in rows if r['answer'] not in ('invalid','uncertain')]
+    return {'planned':planned,'completed':len(rows),'correct':correct,'accuracy':correct/planned if planned else None,
+        'class_macro_accuracy':statistics.mean(v['correct']/v['total'] for v in per.values()) if per else None,
+        'per_class':per,'uncertain':sum(r['answer']=='uncertain' for r in rows),
+        'invalid':sum(r['answer']=='invalid' for r in rows),'missing':planned-len(rows),
+        'provider_errors':sum(bool(r['provider_error']) for r in rows),
+        'median_latency_seconds':round(statistics.median(r['elapsed_ms'] for r in rows)/1000,3) if rows else None,
+        'estimated_yuan':round(sum(r['estimated_yuan'] or 0 for r in rows),6),
+        'unconfirmed_cost_count':sum(r['estimated_yuan'] is None for r in rows)}
+
+def summarize(stage,cfg,manifest):
+    cases=[c for c in manifest['cases'] if stage=='all' or c['stage']==stage]
+    results={};errors=[]
+    for m in cfg['models']:
+        rows=[]
+        for c in cases:
+            p=RESULTS/m['provider']/(c['id']+'.json')
+            if p.exists():
+                r=read(p)
+                if r['image_sha256']!=c['image_sha256'] or r['prompt_sha256']!=c['prompt_sha256']:raise ValueError('record mismatch')
+                if r['answer']!='invalid' and parse(r.get('raw_content'),r['finish_reason'])[0]!=r['answer']:raise ValueError('stored answer differs')
+                rows.append(r)
+                if r['provider_error']:errors.append({'provider':m['provider'],'case_id':c['id'],'error':r['provider_error']})
+        styles={}
+        for style in ('guided','unguided','imu_prediction'):
+            sub=[c for c in cases if c['style']==style]
+            if sub:
+                idset={c['id'] for c in sub};styles[style]=subset_metrics([r for r in rows if r['case_id'] in idset],sub)
+        main=[c for c in cases if c['style'] in ('guided','unguided')];mainids={c['id'] for c in main}
+        results[m['provider']]={'model':m['model'],'overall_cmu':subset_metrics([r for r in rows if r['case_id'] in mainids],main),
+                                 'styles':styles,'all_cases':subset_metrics(rows,cases)}
+    ledger=read(LEDGER)
+    return {'stage':stage,'planned_cases':len(cases),'models':results,'provider_errors':errors,
+        'budget':{'known_or_reserved_yuan':round(sum(e['charged_or_reserved_yuan'] for e in ledger['entries']),6),
+                  'unconfirmed_count':sum(e['status']!='usage_confirmed' for e in ledger['entries']),
+                  'requests_started':len(ledger['entries']),'cap_yuan':ledger['cap_yuan']},'finished_at':now()}
+
+def dryrun():
+    cfg,manifest=verify();cases=manifest['cases']
+    for c in cases:
+        for answer in ('up','down','no_clear_change','uncertain'):
+            text=json.dumps({'hip_change':answer,'explanation':'可见标记变化。'},ensure_ascii=False)
+            assert parse(text,'stop')==(answer,None)
+        assert parse('{"hip_change":"up","hip_change":"down","explanation":"x"}','stop')[0]=='invalid'
+        assert parse('{"hip_change":"up","explanation":"x"}','length')[0]=='invalid'
+    values={'status':'pass','network_calls':0,'images_verified':len(cases),'cases_per_provider':len(cases),
+            'classes':dict(Counter(c['label'] for c in cases if c['style']!='imu_prediction')),
+            'models':[m['model'] for m in cfg['models']]}
+    save(HERE/'dry_run.json',values,True);return values
+
+if __name__=='__main__':
+    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=('freeze','dryrun','pilot','main','summary'))
+    args=ap.parse_args()
+    if args.mode=='freeze':out=freeze()
+    elif args.mode=='dryrun':out=dryrun()
+    elif args.mode in ('pilot','main'):
+        if not (HERE/'dry_run.json').is_file():raise ValueError('dry run required')
+        out=execute(args.mode)
+    else:
+        cfg,manifest=verify();out=summarize('all',cfg,manifest)
+        save(HERE/'results.json',out,True)
+    print(json.dumps(out,ensure_ascii=False,indent=2,allow_nan=False))

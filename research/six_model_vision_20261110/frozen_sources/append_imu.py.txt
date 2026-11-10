@@ -1,0 +1,38 @@
+"""Append clearly separate, prior-exposure IMU-prediction images to a frozen CMU set."""
+from pathlib import Path
+import hashlib
+import json
+import shutil
+import sys
+
+HERE=Path(__file__).resolve().parent
+PROJECT=Path('D:/GithubProjects/metafit-agent')
+sys.path.insert(0,str(PROJECT/'examples'))
+from check_vision_observation import PROMPT
+archive=PROJECT/'research/live_chain_20261110/results/run_A'
+manifest_path=HERE/'manifest.json'
+original=manifest_path.read_bytes()
+data=json.loads(original)
+if len(data['cases'])!=120:raise ValueError('expected untouched CMU manifest')
+prior=json.loads((archive/'manifest.json').read_text(encoding='utf-8'))
+shutil.copyfile(manifest_path,HERE/'manifest_cmu.json')
+for index,item in enumerate(prior['cases']):
+    raw=(archive/'images'/(item['id']+'.png')).read_bytes()
+    if hashlib.sha256(raw).hexdigest()!=item['image_sha256']:raise ValueError('IMU image mismatch')
+    ident=f'imu_{index:03d}'
+    (HERE/'images'/(ident+'.png')).write_bytes(raw)
+    prompt='绿色大点代表髋部。'+PROMPT
+    data['cases'].append({'id':ident,'source':item['recording'],'subject':'unknown',
+        'window':item['rows'],'reverse':item['frame_order']=='reverse',
+        'ratio':item['reference']['change_over_skeleton_y_span'],
+        'label':item['reference']['direction'],'cluster':item['cluster'],
+        'style':'imu_prediction','stage':'main','prompt':prompt,
+        'prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),
+        'image_sha256':item['image_sha256'],'reference':item['reference'],
+        'prior_exposure':'previous Qwen vision comparison; six original windows plus reverse/static variants'})
+data.update(images=len(data['cases']),imu_images=len(prior['cases']),
+    imu_manifest_sha256=hashlib.sha256((archive/'manifest.json').read_bytes()).hexdigest(),
+    source_exposure='CMU and IMU sources and some images appeared in prior experiments; this is a new joint-model comparison, not a blind unseen-subject benchmark.',
+    scoring='Primary: balanced 120 CMU images; supplementary: 18 IMU-predicted images, reported separately.')
+manifest_path.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'cmu_images':120,'imu_images':len(prior['cases']),'total':len(data['cases'])}))

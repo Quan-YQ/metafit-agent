@@ -1,0 +1,366 @@
+{
+  "schema": "six-model-budget-1",
+  "cap_yuan": 10.0,
+  "entries": [
+    {
+      "id": "e7dc39a8bc18e4cdcbffeaa60c6525ebef0e4d848805780ad4eb665584ce1f23",
+      "provider": "qwen",
+      "case_id": "case_000_g",
+      "reserved_yuan": 0.270336,
+      "charged_or_reserved_yuan": 0.010152,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:49.210043+00:00",
+      "finished_at": "2026-11-10T08:13:52.360238+00:00"
+    },
+    {
+      "id": "47c0557a40dac692d4b07cb1f3afb7c18730c558fc642f83fb270a1272d9b86f",
+      "provider": "zhipu",
+      "case_id": "case_000_g",
+      "reserved_yuan": 0.253952,
+      "charged_or_reserved_yuan": 0.010832,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:49.218150+00:00",
+      "finished_at": "2026-11-10T08:13:51.704832+00:00"
+    },
+    {
+      "id": "67ea31ff1a3a1ee8753e8a03516a98fae7a2e883f69ca377f45584c7e3f77820",
+      "provider": "deepseek",
+      "case_id": "case_000_g",
+      "reserved_yuan": 0.049152,
+      "charged_or_reserved_yuan": 0.001272,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:49.270209+00:00",
+      "finished_at": "2026-11-10T08:13:50.732106+00:00"
+    },
+    {
+      "id": "231e6bbc85a6519b7f31915c9f1be48c852085c64c34c3b655dda320e04534e8",
+      "provider": "kimi",
+      "case_id": "case_000_g",
+      "reserved_yuan": 0.704512,
+      "charged_or_reserved_yuan": 0.033414,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:49.297048+00:00",
+      "finished_at": "2026-11-10T08:13:55.452591+00:00"
+    },
+    {
+      "id": "a495a7753f0e9274fb68f50aaedec5544f702c73af8133e4057e10f5b6b933af",
+      "provider": "doubao",
+      "case_id": "case_000_g",
+      "reserved_yuan": 0.159744,
+      "charged_or_reserved_yuan": 0.01074,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:49.319727+00:00",
+      "finished_at": "2026-11-10T08:13:52.649249+00:00"
+    },
+    {
+      "id": "b7a03a7055b7c68897746561687c6288acf081b1b4602c2032afa614ab109192",
+      "provider": "hunyuan",
+      "case_id": "case_000_g",
+      "reserved_yuan": 0.135168,
+      "charged_or_reserved_yuan": 0.004938,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:49.346857+00:00",
+      "finished_at": "2026-11-10T08:13:59.424127+00:00"
+    },
+    {
+      "id": "3ca122aeec3b7efdc340faa0a0baca8a8c6986115c3b157031e9a7010636f5ac",
+      "provider": "deepseek",
+      "case_id": "case_000_u",
+      "reserved_yuan": 0.049152,
+      "charged_or_reserved_yuan": 0.001286,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:50.741615+00:00",
+      "finished_at": "2026-11-10T08:13:51.822309+00:00"
+    },
+    {
+      "id": "a55fcbb1bf60f77ab1bfa0d550b4108038f3b9569d4cb925ebc0d7ffbde02070",
+      "provider": "zhipu",
+      "case_id": "case_000_u",
+      "reserved_yuan": 0.253952,
+      "charged_or_reserved_yuan": 0.010708,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:51.713487+00:00",
+      "finished_at": "2026-11-10T08:13:53.739661+00:00"
+    },
+    {
+      "id": "24a074f06ef20d113f3572ad3ecc8dbcccafe702db84f2202011a699bf868b3c",
+      "provider": "deepseek",
+      "case_id": "case_020_g",
+      "reserved_yuan": 0.049152,
+      "charged_or_reserved_yuan": 0.001368,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:51.831283+00:00",
+      "finished_at": "2026-11-10T08:13:53.126536+00:00"
+    },
+    {
+      "id": "d3f8f17596a2881092ed8151e4c7755f478871208908e26187fa7f52957d2600",
+      "provider": "qwen",
+      "case_id": "case_000_u",
+      "reserved_yuan": 0.270336,
+      "charged_or_reserved_yuan": 0.010068,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:52.368896+00:00",
+      "finished_at": "2026-11-10T08:13:54.769994+00:00"
+    },
+    {
+      "id": "84fef313c6c3a592ee500bc6fed6a4c5b07f847eecfe9c0866a35971483283a4",
+      "provider": "doubao",
+      "case_id": "case_000_u",
+      "reserved_yuan": 0.159744,
+      "charged_or_reserved_yuan": 0.010494,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:52.656996+00:00",
+      "finished_at": "2026-11-10T08:13:55.375684+00:00"
+    },
+    {
+      "id": "a7dac763152eb800e3c5b03364062521fa0c7acb8ea5583c81140859cd75dce4",
+      "provider": "deepseek",
+      "case_id": "case_020_u",
+      "reserved_yuan": 0.049152,
+      "charged_or_reserved_yuan": 0.001206,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:53.137939+00:00",
+      "finished_at": "2026-11-10T08:13:54.403854+00:00"
+    },
+    {
+      "id": "0272530e81eff907aca5ed3390976229e6e9b1221f47ad4523d08ea24ba34251",
+      "provider": "zhipu",
+      "case_id": "case_020_g",
+      "reserved_yuan": 0.253952,
+      "charged_or_reserved_yuan": 0.01092,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:53.748542+00:00",
+      "finished_at": "2026-11-10T08:13:55.707926+00:00"
+    },
+    {
+      "id": "e19dbd10aeb58a8c712d90054f03c736d67b11f75868154db94dc08ab6601bf8",
+      "provider": "deepseek",
+      "case_id": "case_040_g",
+      "reserved_yuan": 0.049152,
+      "charged_or_reserved_yuan": 0.001392,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:54.413686+00:00",
+      "finished_at": "2026-11-10T08:13:55.860133+00:00"
+    },
+    {
+      "id": "3a4b324f0ff239b169b29b2f1e31e20f3d0ccba47047e2802c91ba9b009bd0a5",
+      "provider": "qwen",
+      "case_id": "case_020_g",
+      "reserved_yuan": 0.270336,
+      "charged_or_reserved_yuan": 0.010332,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:54.779667+00:00",
+      "finished_at": "2026-11-10T08:13:57.588906+00:00"
+    },
+    {
+      "id": "96374b057f8a38444a2c889079fce3a840bf56ce8fa23951e8a6d5bb7822e7ac",
+      "provider": "doubao",
+      "case_id": "case_020_g",
+      "reserved_yuan": 0.159744,
+      "charged_or_reserved_yuan": 0.01044,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:55.384451+00:00",
+      "finished_at": "2026-11-10T08:13:58.711028+00:00"
+    },
+    {
+      "id": "0c5955ca4fa20b83bf8f2eb5c33386f358ed8c6102642d76bd17128488399da7",
+      "provider": "kimi",
+      "case_id": "case_000_u",
+      "reserved_yuan": 0.704512,
+      "charged_or_reserved_yuan": 0.036442,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:55.461696+00:00",
+      "finished_at": "2026-11-10T08:14:05.006020+00:00"
+    },
+    {
+      "id": "9fffe6223324f73df32bc62d316e97559ebec86b145f952c5fa90ec3a6cc3c00",
+      "provider": "zhipu",
+      "case_id": "case_020_u",
+      "reserved_yuan": 0.253952,
+      "charged_or_reserved_yuan": 0.010664,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:55.715552+00:00",
+      "finished_at": "2026-11-10T08:13:57.743172+00:00"
+    },
+    {
+      "id": "c6b0c60a16c7fcb107529f79561d0b9eb44aa10572f440db6c35c32073f791f5",
+      "provider": "deepseek",
+      "case_id": "case_040_u",
+      "reserved_yuan": 0.049152,
+      "charged_or_reserved_yuan": 0.001206,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:55.869685+00:00",
+      "finished_at": "2026-11-10T08:13:57.222622+00:00"
+    },
+    {
+      "id": "864f6eb07b5cb417acf81956d386dbce0fdd21c25a6a10a0f5c54d9360489e75",
+      "provider": "qwen",
+      "case_id": "case_020_u",
+      "reserved_yuan": 0.270336,
+      "charged_or_reserved_yuan": 0.00978,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:57.597604+00:00",
+      "finished_at": "2026-11-10T08:14:00.148271+00:00"
+    },
+    {
+      "id": "c043dbccec8c65cd33e0cbbbf185ae29e3292532231e6cc0446140de12ff8349",
+      "provider": "zhipu",
+      "case_id": "case_040_g",
+      "reserved_yuan": 0.253952,
+      "charged_or_reserved_yuan": 0.011404,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:57.751641+00:00",
+      "finished_at": "2026-11-10T08:14:00.102829+00:00"
+    },
+    {
+      "id": "5f3589b86eadc0018a147afcf5285cead12d512a7a0f253309a412b3483ba1c2",
+      "provider": "doubao",
+      "case_id": "case_020_u",
+      "reserved_yuan": 0.159744,
+      "charged_or_reserved_yuan": 0.010464,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:58.719463+00:00",
+      "finished_at": "2026-11-10T08:14:02.307855+00:00"
+    },
+    {
+      "id": "4e99eef8b4da904a6dec4e62a67a8c9a58a8620c47fdf90a1809653f9762f515",
+      "provider": "hunyuan",
+      "case_id": "case_000_u",
+      "reserved_yuan": 0.135168,
+      "charged_or_reserved_yuan": 0.004776,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:13:59.432598+00:00",
+      "finished_at": "2026-11-10T08:14:02.366460+00:00"
+    },
+    {
+      "id": "fecfe8dd264b8e13ba8f265d24094d0a3dc2feb10f49ee8f2af5c4f3f64efbb4",
+      "provider": "zhipu",
+      "case_id": "case_040_u",
+      "reserved_yuan": 0.253952,
+      "charged_or_reserved_yuan": 0.010576,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:00.112082+00:00",
+      "finished_at": "2026-11-10T08:14:04.016923+00:00"
+    },
+    {
+      "id": "e7a5d1ea28a665db8dbf0c544f7ce1c13472be45de3ff5979c54d4a7a49bf5f3",
+      "provider": "qwen",
+      "case_id": "case_040_g",
+      "reserved_yuan": 0.270336,
+      "charged_or_reserved_yuan": 0.01008,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:00.155922+00:00",
+      "finished_at": "2026-11-10T08:14:02.232965+00:00"
+    },
+    {
+      "id": "1459a0c0257a90a403aa59a8daae2da495b4ca56111a30f42d842261eec64246",
+      "provider": "qwen",
+      "case_id": "case_040_u",
+      "reserved_yuan": 0.270336,
+      "charged_or_reserved_yuan": 0.010032,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:02.243657+00:00",
+      "finished_at": "2026-11-10T08:14:05.835963+00:00"
+    },
+    {
+      "id": "19d62bb5d30f22e992462567404448cffa816bca5a81f617eb1a98846fa7196a",
+      "provider": "doubao",
+      "case_id": "case_040_g",
+      "reserved_yuan": 0.159744,
+      "charged_or_reserved_yuan": 0.01074,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:02.317792+00:00",
+      "finished_at": "2026-11-10T08:14:06.447089+00:00"
+    },
+    {
+      "id": "e2891568b00eaeb33591f67cc4766dee84671e5a81540697c674a500097c5b0f",
+      "provider": "hunyuan",
+      "case_id": "case_020_g",
+      "reserved_yuan": 0.135168,
+      "charged_or_reserved_yuan": 0.005082,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:02.375310+00:00",
+      "finished_at": "2026-11-10T08:14:07.370877+00:00"
+    },
+    {
+      "id": "c1ab618f8e3395bbc50a33216e3a6fa3bc743550415d0edc9a91bd28aa0f21bb",
+      "provider": "kimi",
+      "case_id": "case_020_g",
+      "reserved_yuan": 0.704512,
+      "charged_or_reserved_yuan": 0.039942,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:05.015620+00:00",
+      "finished_at": "2026-11-10T08:14:14.072975+00:00"
+    },
+    {
+      "id": "25a7830317a0eb18d3ebdbafb074081cfd9c34be9b6bb42c6294d3c0d4b07f7a",
+      "provider": "doubao",
+      "case_id": "case_040_u",
+      "reserved_yuan": 0.159744,
+      "charged_or_reserved_yuan": 0.010464,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:06.455213+00:00",
+      "finished_at": "2026-11-10T08:14:09.116077+00:00"
+    },
+    {
+      "id": "3731aa8116514565e342669fa4f7fdd5996d5d5fc119c54496ae79f028186c35",
+      "provider": "hunyuan",
+      "case_id": "case_020_u",
+      "reserved_yuan": 0.135168,
+      "charged_or_reserved_yuan": 0.00483,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:07.380399+00:00",
+      "finished_at": "2026-11-10T08:14:11.421877+00:00"
+    },
+    {
+      "id": "f5f26d17bff79fa2fb4e3684b381ac0e7afaf741c94d79ad59c0d5fb8a38294d",
+      "provider": "hunyuan",
+      "case_id": "case_040_g",
+      "reserved_yuan": 0.135168,
+      "charged_or_reserved_yuan": 0.005064,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:11.432052+00:00",
+      "finished_at": "2026-11-10T08:14:15.371713+00:00"
+    },
+    {
+      "id": "9fae096ea3b2b3470eebe510adcf2575fcee0fff681f7613422a5fd7afb05f58",
+      "provider": "kimi",
+      "case_id": "case_020_u",
+      "reserved_yuan": 0.704512,
+      "charged_or_reserved_yuan": 0.069966,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:14.084036+00:00",
+      "finished_at": "2026-11-10T08:14:36.323532+00:00"
+    },
+    {
+      "id": "b374ab9f210aeff28c9c7d5423652abc9fcbad0ebb7231def14f5de7cef6e76a",
+      "provider": "hunyuan",
+      "case_id": "case_040_u",
+      "reserved_yuan": 0.135168,
+      "charged_or_reserved_yuan": 0.004884,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:15.381995+00:00",
+      "finished_at": "2026-11-10T08:14:19.334896+00:00"
+    },
+    {
+      "id": "0244ae80c3e0c2393fe45be970056e38be823e9c56cfb3cc3623936b027c19db",
+      "provider": "kimi",
+      "case_id": "case_040_g",
+      "reserved_yuan": 0.704512,
+      "charged_or_reserved_yuan": 0.033822,
+      "status": "usage_confirmed",
+      "started_at": "2026-11-10T08:14:36.332422+00:00",
+      "finished_at": "2026-11-10T08:14:43.269492+00:00"
+    },
+    {
+      "id": "c80af821eeb4ccecf6166e1c8e13a49f2be81325c7ffd2299d645803cfee13b2",
+      "provider": "kimi",
+      "case_id": "case_040_u",
+      "reserved_yuan": 0.704512,
+      "charged_or_reserved_yuan": 0.704512,
+      "status": "started",
+      "started_at": "2026-11-10T08:14:43.279017+00:00"
+    }
+  ],
+  "halted": false
+}
