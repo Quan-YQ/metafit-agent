@@ -4,11 +4,8 @@
 
 | 实验 | 入口 | 结果与解释 |
 |---|---|---|
-| 公开IMU到真实视觉与Agent完整链路 | [复现指南](live_chain_20261110/README.md) | [演示页](live_chain_20261110/results/run_A/index.html)、[完整报告](../docs/公开IMU完整链路实测_20261110.md) |
-| DynaIP共同输入与四款视觉模型 | [复现指南](benchmark_20261108/README.md) | [完整报告](../docs/两项优化_DynaIP与视觉模型对比_20261108.md)、[逐项归档](benchmark_20261108/results/) |
-| CIP 按受试者划分的预测 | [复现指南](continuous_20261108/README.md) | [结果 JSON](continuous_20261108/cip_results.json)、[选模记录](continuous_20261108/cip_selection_frozen.json) |
-| CMU 图片升降判断与标记读取 | [复现指南](continuous_20261108/README.md) | [平衡测试结果](continuous_20261108/balanced_live.jsonl)、两个 `marker_*holdout_results.json` |
-| FusionPoser 固定录制划分 | [训练脚本](../examples/train_pose_research.py) | [结果 JSON](continuous_20261108/fusionposer_results.json)、[实验报告](../docs/三项优化_结果报告.md) |
-| Agent 候选依据检查 | [模拟评估脚本](../examples/evaluate_agent_research.py) | [真实小样本记录](continuous_20261108/agent_live_refined.json)、[补充实验报告](../docs/三项优化_跨人和视觉补充实验_20261108.md) |
+| 公开IMU到真实视觉与Agent的扩展链路（5段×6窗口×3版本，90张图） | [复现指南](live_chain_20261110_expanded/README.md) | [完整报告](../docs/公开IMU链路扩展实测_20261110.md)、[演示页](live_chain_20261110_expanded/results/run_A/index.html) |
+| 六家视觉模型骨架读图横评 | [复现指南](six_model_vision_20261110/README.md) | [横评报告](six_model_vision_20261110/横评报告.md)、[演示页](six_model_vision_20261110/index.html) |
+| 公开数据历史归档（CIP / FusionPoser / 标记工具） | [复现指南](continuous_20261108/README.md) | 结果 JSON 在该目录；保留历史值，不作为当前主线 |
 
-`continuous_20261108` 是实验日期标识。历史结果保留原值，整理工程时不重新命名样本或修改已有评分；脚本的可移植性调整记录在 [改进记录](../CHANGELOG.md)。
+`live_chain_20261110_expanded` 是当前端到端链路实验；`six_model_vision_20261110` 是当前视觉模型横评；`continuous_20261108` 仅保留 2026-11-08 的公开数据研究结果，脚本和统计原样保留。

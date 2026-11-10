@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x2_4_forward__qwen3.8-max-2026-09-02",
+  "requested_model": "qwen3.8-max-2026-09-02",
+  "provider": "dashscope",
+  "request_sha256": "af41b5f9a5cf5bb9c8cfb0b20f152093d13ed48aceafd41302fd6bd3d6b1ef92",
+  "request_id_local": "e88675d25103ad1375afa6173e7f0133b3aea8cc8565af18fef73db1d2da8a02",
+  "created_at": "2026-11-10T10:17:23.667845+00:00",
+  "elapsed_ms": 2849.997,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 56
+  },
+  "estimated_yuan": 0.010224,
+  "reservation_yuan": 1.081344,
+  "returned_model": "qwen3.8-max-0902",
+  "provider_request_id": "chatcmpl-077f5290-d9a2-99a3-ae29-f54357bb6c52",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"down\",\n  \"explanation\": \"对比第一列与第六列，第六列中髋部绿色圆点在图中的垂直位置明显低于第一列，且下降幅度超过了骨架整体竖直高度的5%。\"\n}"
+}

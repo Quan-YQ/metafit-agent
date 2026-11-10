@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x5_4_forward__qwen3.8-max-2026-09-02",
+  "requested_model": "qwen3.8-max-2026-09-02",
+  "provider": "dashscope",
+  "request_sha256": "5a9d88d42203151ef752618a9f20a4b9d519c05c29026fd3aaad31c62ef5899a",
+  "request_id_local": "0a2628da8bd90ba14f78998d2917372982319fa5856fedfaeb86d49f0bf9c562",
+  "created_at": "2026-11-10T10:21:49.434628+00:00",
+  "elapsed_ms": 2826.263,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 66
+  },
+  "estimated_yuan": 0.010584,
+  "reservation_yuan": 1.081344,
+  "returned_model": "qwen3.8-max-0902",
+  "provider_request_id": "chatcmpl-89e17bc2-10d6-91b1-a0c2-1c19da77b5a4",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"up\",\n  \"explanation\": \"对比第一列与第六列，髋部圆点（绿点）在图中的垂直位置明显升高，从较低的下蹲姿态变为较高的直立姿态，其上升幅度超过了整张骨架竖直范围的5%。\"\n}"
+}

@@ -1,6 +1,6 @@
 # 2026-11-08 固定实验与复现
 
-在仓库根目录执行下面命令。实验结果保留在本目录；重新运行时将输出写入 `outputs/` 的新目录。查看报告见 [补充实验结果](../../docs/三项优化_跨人和视觉补充实验_20261108.md)。
+在仓库根目录执行下面命令。实验结果保留在本目录；重新运行时将输出写入 `outputs/` 的新目录。该目录是公开数据研究的历史归档，结果见本目录 JSON，不再作为当前主线；当前链路实验见 [扩展实测](../live_chain_20261110_expanded/README.md)。
 
 ## 安装
 
@@ -65,7 +65,7 @@ $env:CIP_DATA_DIR = 'C:\Datasets\CIP'
 
 默认是离线替身。`--live` 会显式请求真实文本模型，需先设置密钥。模拟候选仍经过引用和免打扰检查。
 
-FusionPoser 的历史划分和取数方式见 [实验报告](../../docs/三项优化_结果报告.md)、[误差诊断](../../docs/FusionPoser误差诊断报告.md) 与 [数据来源](../../data/fusionposer/来源说明.md)。安装 `.[train]` 后，可运行：
+FusionPoser 的历史划分和取数方式见 [数据来源](../../data/fusionposer/来源说明.md) 与 [结果 JSON](fusionposer_results.json)。安装 `.[train]` 后，可运行：
 
 ```powershell
 .\.venv\Scripts\python.exe examples\fusionposer_fetch.py --download

@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x3_3_reverse__qwen3.8-max-2026-09-02",
+  "requested_model": "qwen3.8-max-2026-09-02",
+  "provider": "dashscope",
+  "request_sha256": "e9a33343760af801e9825f717d97a5c23ad930e5bdbd9263a358c37eef5ed1af",
+  "request_id_local": "cced651452610d85a460f05c3e6fe87a97d335aad336d7080930852b314a2342",
+  "created_at": "2026-11-10T10:18:42.662503+00:00",
+  "elapsed_ms": 2731.615,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 68
+  },
+  "estimated_yuan": 0.010656,
+  "reservation_yuan": 1.081344,
+  "returned_model": "qwen3.8-max-0902",
+  "provider_request_id": "chatcmpl-5830111f-8ef9-9c6a-a5a8-c8188dbdd1f5",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"up\",\n  \"explanation\": \"对比第一列与第六列，髋部圆点（绿点）在图中的垂直位置明显升高，从约占总高度40%的位置上升至约60%的位置，变化幅度远超骨架竖直范围的5%。\"\n}"
+}

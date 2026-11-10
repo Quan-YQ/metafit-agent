@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "chain_decision",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "929b4eb5ca7fd011672cd83822ac2f40448e0792736ce93e10f9e9c5f5670772",
+  "request_id_local": "b707e46d2ed42c76a4e46895416fe5b581b63f5319cfcf067054022df8cc0bab",
+  "created_at": "2026-11-10T10:23:00.890824+00:00",
+  "elapsed_ms": 1203.634,
+  "error": null,
+  "usage": {
+    "input_tokens": 586,
+    "output_tokens": 90
+  },
+  "estimated_yuan": 0.0007118000000000001,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-ffd8b6a6-4244-9f48-95d7-af50a79987b5",
+  "finish_reason": "stop",
+  "content": "{\n  \"suggested_action\": \"silent\",\n  \"message\": null,\n  \"reason\": \"模拟数据记录了自报无不适，但时效和当前状态未确认；另一模型对髋部变化的观察为不可投递的研究候选且可能出错，缺乏可靠依据进行反馈。\",\n  \"evidence\": [\n    \"fact_1\",\n    \"fact_2\"\n  ]\n}"
+}

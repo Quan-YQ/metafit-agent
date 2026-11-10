@@ -1,0 +1,29 @@
+{
+  "schema": "metafit-live-chain-models-1",
+  "verified_date": "2026-11-10",
+  "currency": "CNY",
+  "region": "cn-beijing",
+  "models": [
+    {
+      "id": "qwen3.8-flash",
+      "provider": "dashscope",
+      "key_env": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "input_per_million": 0.8,
+      "output_per_million": 2.7,
+      "request_extra": {"enable_thinking": false},
+      "alias_notice": "Mutable official alias; returned ID and timestamp recorded.",
+      "sources": ["https://help.aliyun.com/zh/model-studio/qwen3-8-flash"]
+    },
+    {
+      "id": "qwen3.8-max-2026-09-02",
+      "provider": "dashscope",
+      "key_env": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "input_per_million": 12,
+      "output_per_million": 36,
+      "request_extra": {"enable_thinking": false},
+      "sources": ["https://help.aliyun.com/zh/model-studio/qwen3-8-max"]
+    }
+  ]
+}

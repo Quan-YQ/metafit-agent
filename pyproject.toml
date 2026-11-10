@@ -14,7 +14,6 @@ dependencies = []
 dev = ["pytest==8.4.2"]
 research = ["numpy>=1.26,<3", "Pillow>=10,<13"]
 train = ["numpy>=1.26,<3", "Pillow>=10,<13", "torch>=2.2,<3"]
-benchmark = ["numpy>=1.26,<3", "Pillow>=10,<13", "torch>=2.2,<3", "scipy>=1.11,<2"]
 
 [tool.setuptools.packages.find]
 include = ["metafit_agent*"]

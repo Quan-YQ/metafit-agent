@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x1_3_static__qwen3.8-max-2026-09-02",
+  "requested_model": "qwen3.8-max-2026-09-02",
+  "provider": "dashscope",
+  "request_sha256": "b66d8ca12ec18f6c501511e330ec13a0033c7cb27e5496aacc014ef684f21e23",
+  "request_id_local": "5af374cf67b49547a4a7597e69b6b7f2001fe5024b9b99d4069d205892619459",
+  "created_at": "2026-11-10T10:16:02.103193+00:00",
+  "elapsed_ms": 3961.652,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 77
+  },
+  "estimated_yuan": 0.01098,
+  "reservation_yuan": 1.081344,
+  "returned_model": "qwen3.8-max-0902",
+  "provider_request_id": "chatcmpl-25f84c6e-9184-9c81-b9a5-a23881cb0f2b",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"no_clear_change\",\n  \"explanation\": \"对比第一列与第六列，无论是正面还是侧面视角，髋部绿色圆点相对于骨架最高点（头部）和最低点（脚部）的垂直相对位置几乎没有发生肉眼可见的变化，其位移远小于整张骨架竖直范围的5%。\"\n}"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x5_2_static__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "87896a82a178db23e3f9768fda3d6c08c00c7226a707151abdfb035bd735963a",
+  "request_id_local": "9b70d40256d1652f224dbed2bc6fb05844d69458626a90173d437281f075b080",
+  "created_at": "2026-11-10T10:21:25.602981+00:00",
+  "elapsed_ms": 1759.461,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 43
+  },
+  "estimated_yuan": 0.0006633,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-0a8f1283-8cd6-9412-a60c-1c7542e9b6d0",
+  "finish_reason": "stop",
+  "content": "{\"hip_change\": \"no_clear_change\", \"explanation\": \"对比第一列和第六列的髋部圆点，其在画面中的垂直高度基本一致，没有明显的升高或下降。\"}"
+}

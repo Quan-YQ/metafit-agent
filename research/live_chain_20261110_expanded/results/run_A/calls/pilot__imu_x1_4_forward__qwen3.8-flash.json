@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "pilot__imu_x1_4_forward__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "8f4c81c8b920964ce9262368b23c764982a1170a9a3d9edcedf9d6e70320cf0c",
+  "request_id_local": "e3654650d3e89dc741e2963f3e5847bd1d76a751c6f74c8453f7b5df4b357149",
+  "created_at": "2026-11-10T10:15:09.553927+00:00",
+  "elapsed_ms": 1417.826,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 56
+  },
+  "estimated_yuan": 0.0006984000000000001,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-75e49228-5b6e-9956-9be6-8dc34a925b27",
+  "finish_reason": "stop",
+  "content": "{\"explanation\": \"第一列中髋部圆点位于大腿骨（股骨）的顶端，而第六列中髋部圆点明显下移到了膝盖的位置，导致其在图中的垂直高度显著下降。\", \"hip_change\": \"down\"}"
+}

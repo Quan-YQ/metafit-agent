@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x2_3_static__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "be1028d4890d3e0a65085a3031fdc961683d6294ea96867b85d4d6861d2ee04d",
+  "request_id_local": "40c03bca5842fb86c5baaa139a1f7690ebb3cb3277306570ee5652445a5f75ad",
+  "created_at": "2026-11-10T10:17:19.159374+00:00",
+  "elapsed_ms": 1784.969,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 54
+  },
+  "estimated_yuan": 0.000693,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-fa5bb60d-4686-994c-9cf7-3ea3065a799e",
+  "finish_reason": "stop",
+  "content": "{\"explanation\": \"通过观察图像中髋部绿色圆点相对于底部灰色地平线的位置，第一列和第六列的髋部高度在视觉上基本保持一致，没有明显的升高或降低。\", \"hip_change\": \"no_clear_change\"}"
+}

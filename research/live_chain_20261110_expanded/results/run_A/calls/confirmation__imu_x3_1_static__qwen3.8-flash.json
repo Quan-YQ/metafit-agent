@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x3_1_static__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "e2120171eab562d2305d6c27c11059f4621e7f040c17ec47db4418a65fabed94",
+  "request_id_local": "47e4f5184a2a2a3b80d2cb772f1a81cfac43fd900d990023bee641f27c5fecbe",
+  "created_at": "2026-11-10T10:18:17.636667+00:00",
+  "elapsed_ms": 1756.405,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 47
+  },
+  "estimated_yuan": 0.0006741000000000001,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-88b5ffc0-34f4-9c99-b415-74750332b637",
+  "finish_reason": "stop",
+  "content": "{\"hip_change\": \"no_clear_change\", \"explanation\": \"比较第一列和第六列的骨架，髋部圆点（绿色）在图像中的垂直高度基本一致，没有明显的升高或降低。\"}"
+}

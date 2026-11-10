@@ -1,0 +1,62 @@
+{
+  "stage": "confirmation",
+  "summary": {
+    "qwen3.8-flash": {
+      "planned": 87,
+      "completed": 87,
+      "correct": 60,
+      "accuracy": 0.6896551724137931,
+      "balanced_accuracy": 0.4691046658259773,
+      "per_class": {
+        "no_clear_change": {
+          "correct": 53,
+          "total": 61
+        },
+        "up": {
+          "correct": 3,
+          "total": 13
+        },
+        "down": {
+          "correct": 4,
+          "total": 13
+        }
+      },
+      "invalid_or_missing": 0,
+      "uncertain": 0,
+      "unknown_cost": 0,
+      "estimated_yuan": 0.0595107,
+      "median_ms": 1696.153
+    },
+    "qwen3.8-max-2026-09-02": {
+      "planned": 87,
+      "completed": 87,
+      "correct": 74,
+      "accuracy": 0.8505747126436781,
+      "balanced_accuracy": 0.7675493905002102,
+      "per_class": {
+        "no_clear_change": {
+          "correct": 56,
+          "total": 61
+        },
+        "up": {
+          "correct": 9,
+          "total": 13
+        },
+        "down": {
+          "correct": 9,
+          "total": 13
+        }
+      },
+      "invalid_or_missing": 0,
+      "uncertain": 0,
+      "unknown_cost": 0,
+      "estimated_yuan": 0.905904,
+      "median_ms": 2994.977
+    }
+  },
+  "responses_sha256": "360185e4e8fb33cf69f4a15c497e81c8c3277b65146f273e96685c72cfbf5f13",
+  "admitted_models": [
+    "qwen3.8-flash",
+    "qwen3.8-max-2026-09-02"
+  ]
+}

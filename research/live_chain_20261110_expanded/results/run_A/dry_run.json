@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "network_calls": 0,
+  "cases": 90,
+  "scorer_controls_checked": 360,
+  "static_controls": 30,
+  "frozen_models": [
+    "qwen3.8-flash",
+    "qwen3.8-max-2026-09-02"
+  ]
+}

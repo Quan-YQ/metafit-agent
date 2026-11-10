@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x3_5_forward__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "d7ce0a4e39e6fa185f87377fa5b2c4b5e434fd973b9432a085a33e8c9438ef40",
+  "request_id_local": "1266318d64a13580faf4cffee84aca2f5eeaedd01f23092f1c9752927a90b7c7",
+  "created_at": "2026-11-10T10:19:07.874636+00:00",
+  "elapsed_ms": 1858.696,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 54
+  },
+  "estimated_yuan": 0.000693,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-9705149d-b0a0-90ee-ab02-132a1938c24c",
+  "finish_reason": "stop",
+  "content": "{\"explanation\": \"观察第六列第一帧与第一列最后一帧，对比绿色髋部圆点相对于底部地平线的高度，可见末帧中髋部圆点的垂直位置明显高于起始帧。\", \"hip_change\": \"up\"}"
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "green-dot-direction-check-1",
+  "method": "Read the green hip-dot y position in each of the six columns (top row), compare column 6 with column 1, and compare the sign with the frozen geometric reference.",
+  "images": 90,
+  "directional_images": 28,
+  "directional_agreements": 28,
+  "mismatches": [],
+  "note": "Only up/down reference cases are directional. Static and near-static controls are not counted as directional; a one-pixel neutral band is used for the pixel reading."
+}

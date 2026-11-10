@@ -1,6 +1,6 @@
 # MetaFit Agent
 
-MetaFit Agent 是一个非商业研究原型，探索“训练事件 → 动作骨架与视觉观察 → Agent 候选反馈”的链路。仓库提供可运行的本机模拟接口、公开数据实验、自动化测试与实验记录。
+MetaFit Agent 是一个非商业研究原型，探索“训练事件 → 动作骨架与视觉观察 → Agent 候选反馈”的链路。仓库提供可运行的本机模拟接口、公开数据实验、自动化测试与实验记录；公开数据只用于工程验证，后续接入 HumanPlus 人一智能实验室的宽松衣物动作捕捉数据。
 
 **Python 3.12** · 本机接口契约 **`0.3.0-draft`** · 默认使用模拟数据与离线模型
 
@@ -17,7 +17,7 @@ Agent 是一套以程序为主的流程，大模型只负责提出候选，规�
 | 会话与安全状态 | 确认必须由用户主动发起；待确认事件可以保存但不调用模型；无法归属会话的不适报告明确提示“未记录”。 |
 | 本机模拟接口 | 用 SQLite 保存事件、决策、引用快照和安全状态，提供会话、问题、事件接口，以及示例客户端、自检脚本和静态 fixtures。 |
 | 文本模型客户端 | DeepSeek 与智谱 GLM，共用请求预算、HTTP 错误映射和响应解析；只用于独立的演示与研究脚本，本机接口默认使用离线模型。 |
-| 动作研究 | 用 FusionPoser 六 IMU 数据预测骨架，在 CIP、CMU 公开数据上做跨受试者预测和骨架读图实验。 |
+| 动作研究 | 用 FusionPoser 六 IMU 数据预测骨架并做视觉读图链路验证；后续接入 HumanPlus 人一智能实验室的专有宽松衣物动捕数据。 |
 
 自动化测试覆盖提醒、静默、免打扰延后、不适优先与错误引用等分支。一次事件的主路径：
 
@@ -46,28 +46,24 @@ Agent 是一套以程序为主的流程，大模型只负责提出候选，规�
 
 格式错误、主动不确定和请求失败都进入分母。完整的有线/无线分项、耗时、费用和逐图记录见[横评报告](research/six_model_vision_20261110/横评报告.md)，也可直接打开[本机演示页](research/six_model_vision_20261110/index.html)。
 
+IMU 补充列只统计六家都有记录的 14 张，来自旧两段开发录制的 18 张图；下面的端到端链路使用另选 5 段测试录制的 90 张图，两者不是同一批样本。
+
 ### 端到端真实链路
 
-已完成一次真实串联：公开 IMU 与头部高度 → 预测骨架图 → 视觉模型观察 → 文本模型选择 → R3 检查，最终输出 `silent`。
+扩展链路使用 5 段未参与训练的公开录制 × 每段 6 个自然窗口 × forward/reverse/static 三种版本，共 **90 张**预测骨架图；两款千问全量评分：
 
-- 15 张新图确认：`qwen3.8-max` **14/15**，`qwen3.8-flash` **11/15**；三类平均正确率 **66.7% / 59.0%**。
-- 下降片段仍是明确短板；完整 18 张（含三图预跑）Max 16/18、Flash 13/18。
-- 最终候选只引用了自报事实，没有引用视觉观察，因此这次验证的是链路连通，不是视觉改变了决策。
+| 模型 | 全量正确率 | 三类平均 | 上升 / 下降 / 无明显变化 | 中位耗时 |
+|---|---:|---:|---|---:|
+| `qwen3.8-max-2026-09-02` | **75/90（83.3%）** | **73.5%** | 9/14 · 9/14 · 57/62 | 2.99 秒 |
+| `qwen3.8-flash` | **62/90（68.9%）** | **48.1%** | 3/14 · 5/14 · 54/62 | 1.68 秒 |
 
-可直接打开[演示页](research/live_chain_20261110/results/run_A/index.html)，详细口径见[完整报告](docs/公开IMU完整链路实测_20261110.md)，无密钥重放步骤见[重放指南](research/live_chain_20261110/README.md)。
+- 无明显变化占 62/90，总准确率会被抬高，主要看三类平均；30 个源窗口的聚类 bootstrap 95% 置信区间：Max 56.6%–89.2%，Flash 36.5%–59.8%。
+- 完整链路：Max 将 `imu_x2_4_forward` 读为 down（与几何参考一致）→ Flash 选择 `silent` → R3 `reviewed`；候选引用了自报事实和视觉观察事实，视觉观察进入依据，但最终仍不展示、不投递。
+- 首轮 pilot 的三张边缘图成绩低，扩展协议把 pilot 改为诊断、全部 90 张评分；图片、提示词和模型未改，详见报告。
 
-### 姿态预测与几何对照
+可打开[演示页](research/live_chain_20261110_expanded/results/run_A/index.html)，详细口径见[完整报告](docs/公开IMU链路扩展实测_20261110.md)，无密钥重放见[重放指南](research/live_chain_20261110_expanded/README.md)。
 
-| 实验 | 当前结果 | 范围 |
-|---|---|---|
-| DynaIP 对比 | DynaIP **4.290 cm**，对齐小模型 **8.773 cm** | 2 名共同未训练受试者、8 段 CIP 录制；统一骨架的 22 个关节位置误差（MPJPE） |
-| CIP 跨受试者预测 | 测试均值 **0.109054**，固定平均姿态基线 **0.146297** | 3 人训练、1 人验证、1 人测试；使用参考头高与辅助对齐 |
-| FusionPoser 留出 | 窗口模型 **10.063**，单帧模型 **13.522** | 同一组 3 段留出录制；单位暂按厘米解释 |
-| 固定颜色标记工具 | 160 个窗口中 **154 个一致、6 个不确定** | 指定颜色和参考线的受控图片，与视觉模型成绩分别计算 |
-
-> 这些指标来自不同数据、身体点定义和任务，不能相互换算或拼成同一次对比。骨架读图只比较首尾髋部高度，不代表动作质量、安全性或对真实训练画面的理解能力；部分录制者身份未知，窗口可能重叠。
-
-逐项方法和完整结果见 [DynaIP 与视觉模型对比](docs/两项优化_DynaIP与视觉模型对比_20261108.md)、[FusionPoser 结果报告](docs/三项优化_结果报告.md) 与 [跨人和视觉补充实验](docs/三项优化_跨人和视觉补充实验_20261108.md)。
+> 这些图是预测骨架，不是真实动作真值；5 段测试录制此前也用于公开数据研究，不是全新盲测。旧 18 张结果（Max 14/15、三类平均 66.7%）与新 90 张在样本、阶段和模型范围上都不同，不能直接比较。
 
 ## 快速开始
 
@@ -84,7 +80,6 @@ py -3.12 -m venv .venv
 
 - `.[dev,research]`：NumPy、Pillow，用于研究计算与图片检查。
 - `.[dev,train]`：增加 PyTorch，用于自训练骨架模型。
-- `.[dev,benchmark]`：增加 SciPy，用于 DynaIP 评测。
 
 提交前运行 `python tools/check_repository.py` 检查候选文件、文档链接和密钥格式。
 
@@ -118,11 +113,11 @@ py -3.12 -m venv .venv
 
 ```powershell
 .\.venv\Scripts\python.exe research\six_model_vision_20261110\replay.py
-.\.venv\Scripts\python.exe research\live_chain_20261110\replay.py --run research\live_chain_20261110\results\run_A
-.\.venv\Scripts\python.exe research\live_chain_20261110\present.py --run research\live_chain_20261110\results\run_A
+.\.venv\Scripts\python.exe research\live_chain_20261110_expanded\replay.py --run research\live_chain_20261110_expanded\results\run_A
+.\.venv\Scripts\python.exe research\live_chain_20261110_expanded\present.py --run research\live_chain_20261110_expanded\results\run_A
 ```
 
-各实验的数据准备、完整命令和版本锁见对应指南：[DynaIP 与视觉评测](research/benchmark_20261108/README.md)、[CIP 与视觉补充](research/continuous_20261108/README.md)、[完整链路](research/live_chain_20261110/README.md)。
+各实验的数据准备和完整命令见对应指南：[六家视觉横评](research/six_model_vision_20261110/README.md)、[扩展链路](research/live_chain_20261110_expanded/README.md)；CIP/FusionPoser 公开数据实验保留在[历史研究归档](research/continuous_20261108/README.md)。
 
 真实模型调用需要显式启用并自行配置密钥与预算；已付费请求不会自动重试。重新训练或重新调用会产生新结果，应使用新的输出目录，并记录数据划分、提示词和依赖版本。
 
@@ -132,7 +127,7 @@ py -3.12 -m venv .venv
 - **CIP**：CC BY 4.0，保留数据作者署名和来源；下载、命名与参考定义见 [CIP 数据说明](data/cip/README.md)。
 - **CMU**：仓库保留少量骨架示例，来源与转换说明见[公开动作实验](docs/公开动作数据骨架实验.md)。
 - **AMASS / SMPL+H**：由使用者自行取得许可并本地下载，见[本地使用说明](docs/AMASS下载与交接.md)；不要把受限数据、模型或衍生图提交或上传。
-- **密钥**：通过 `DEEPSEEK_API_KEY`、`ZHIPUAI_API_KEY`、`DASHSCOPE_API_KEY`、`ARK_API_KEY` 环境变量提供；`.env.example` 只是示例，程序不会自动加载。显式真实调用会产生费用。
+- **密钥**：通过 `DEEPSEEK_API_KEY`、`ZHIPUAI_API_KEY`、`DASHSCOPE_API_KEY` 环境变量提供；`.env.example` 只是示例，程序不会自动加载。显式真实调用会产生费用。
 - 项目自身暂未指定开源许可证；第三方数据和软件遵循各自许可。
 
 原始数据、人体模型、训练权重、数据库和本机输出已列入忽略规则。
@@ -144,7 +139,7 @@ metafit_agent/   事件、候选、检查、状态、存储与本机接口
 examples/        模拟客户端、数据获取与研究入口
 research/        固定实验方案、复现脚本和不含原始数据的结果
 tests/           自动化测试
-docs/            接口契约、实验报告、评审说明与历史记录
+docs/            接口契约、实验报告与评审说明
 data/            数据来源、许可与本地数据目录
 tools/           提交前检查工具
 ```

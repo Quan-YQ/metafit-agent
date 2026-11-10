@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x5_2_static__qwen3.8-max-2026-09-02",
+  "requested_model": "qwen3.8-max-2026-09-02",
+  "provider": "dashscope",
+  "request_sha256": "8674e158120573d89c76f0f776cc4f9bacd8441ead0b98782617597007db56bb",
+  "request_id_local": "fd179d1c0a8cf304ef355a73fdaa2365edea9f859b2c565971807972183b4e04",
+  "created_at": "2026-11-10T10:21:28.027969+00:00",
+  "elapsed_ms": 2380.254,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 59
+  },
+  "estimated_yuan": 0.010332,
+  "reservation_yuan": 1.081344,
+  "returned_model": "qwen3.8-max-0902",
+  "provider_request_id": "chatcmpl-104d8f92-62b2-9da4-99dc-f7f5ee0df29b",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"no_clear_change\",\n  \"explanation\": \"对比第一列与第六列，上下两排视角中髋部绿色圆点的垂直位置相对于骨架整体高度几乎没有发生可见变化，远小于5%的阈值。\"\n}"
+}

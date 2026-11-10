@@ -1,0 +1,174 @@
+{
+  "run": "research/live_chain_20261110_expanded/results/run_A",
+  "total_images": 90,
+  "clusters": 30,
+  "class_counts": {
+    "no_clear_change": 62,
+    "down": 14,
+    "up": 14
+  },
+  "models": {
+    "qwen3.8-flash": {
+      "all": {
+        "answered": 90,
+        "accuracy": 0.6888888888888889,
+        "balanced_accuracy": 0.4807987711213518,
+        "per_class": {
+          "no_clear_change": {
+            "correct": 54,
+            "total": 62
+          },
+          "down": {
+            "correct": 5,
+            "total": 14
+          },
+          "up": {
+            "correct": 3,
+            "total": 14
+          }
+        },
+        "uncertain": 0,
+        "estimated_yuan": 0.061560000000000004,
+        "median_ms": 1679.73
+      },
+      "bootstrap": {
+        "clusters": 30,
+        "resamples": 5000,
+        "seed": 20261110,
+        "accuracy_95ci": [
+          0.5888888888888889,
+          0.7777777777777778
+        ],
+        "balanced_accuracy_95ci": [
+          0.36482334869431643,
+          0.5980392156862745
+        ]
+      },
+      "pilot": {
+        "answered": 3,
+        "accuracy": 0.6666666666666666,
+        "balanced_accuracy": 0.6666666666666666,
+        "per_class": {
+          "no_clear_change": {
+            "correct": 1,
+            "total": 1
+          },
+          "down": {
+            "correct": 1,
+            "total": 1
+          },
+          "up": {
+            "correct": 0,
+            "total": 1
+          }
+        },
+        "uncertain": 0,
+        "estimated_yuan": 0.0020493,
+        "median_ms": 1417.826
+      },
+      "confirmation": {
+        "answered": 87,
+        "accuracy": 0.6896551724137931,
+        "balanced_accuracy": 0.4691046658259773,
+        "per_class": {
+          "no_clear_change": {
+            "correct": 53,
+            "total": 61
+          },
+          "up": {
+            "correct": 3,
+            "total": 13
+          },
+          "down": {
+            "correct": 4,
+            "total": 13
+          }
+        },
+        "uncertain": 0,
+        "estimated_yuan": 0.0595107,
+        "median_ms": 1696.153
+      }
+    },
+    "qwen3.8-max-2026-09-02": {
+      "all": {
+        "answered": 90,
+        "accuracy": 0.8333333333333334,
+        "balanced_accuracy": 0.7350230414746544,
+        "per_class": {
+          "no_clear_change": {
+            "correct": 57,
+            "total": 62
+          },
+          "down": {
+            "correct": 9,
+            "total": 14
+          },
+          "up": {
+            "correct": 9,
+            "total": 14
+          }
+        },
+        "uncertain": 0,
+        "estimated_yuan": 0.937008,
+        "median_ms": 2986.71
+      },
+      "bootstrap": {
+        "clusters": 30,
+        "resamples": 5000,
+        "seed": 20261110,
+        "accuracy_95ci": [
+          0.7333333333333333,
+          0.9222222222222223
+        ],
+        "balanced_accuracy_95ci": [
+          0.5659536541889483,
+          0.8918269230769231
+        ]
+      },
+      "pilot": {
+        "answered": 3,
+        "accuracy": 0.3333333333333333,
+        "balanced_accuracy": 0.3333333333333333,
+        "per_class": {
+          "no_clear_change": {
+            "correct": 1,
+            "total": 1
+          },
+          "down": {
+            "correct": 0,
+            "total": 1
+          },
+          "up": {
+            "correct": 0,
+            "total": 1
+          }
+        },
+        "uncertain": 0,
+        "estimated_yuan": 0.031104,
+        "median_ms": 2734.987
+      },
+      "confirmation": {
+        "answered": 87,
+        "accuracy": 0.8505747126436781,
+        "balanced_accuracy": 0.7675493905002102,
+        "per_class": {
+          "no_clear_change": {
+            "correct": 56,
+            "total": 61
+          },
+          "up": {
+            "correct": 9,
+            "total": 13
+          },
+          "down": {
+            "correct": 9,
+            "total": 13
+          }
+        },
+        "uncertain": 0,
+        "estimated_yuan": 0.905904,
+        "median_ms": 2994.977
+      }
+    }
+  }
+}

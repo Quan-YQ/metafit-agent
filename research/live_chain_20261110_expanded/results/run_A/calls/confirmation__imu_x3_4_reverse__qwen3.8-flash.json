@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x3_4_reverse__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "9a429f5275bc3b4b07fa9533a016cbf9545a6c931ea560a25e3b268ce59f0843",
+  "request_id_local": "a785282046b1a77306bff460a8f0371acbfcf6671ac7359f1c3bfdb187828d0b",
+  "created_at": "2026-11-10T10:18:57.704712+00:00",
+  "elapsed_ms": 1326.002,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 39
+  },
+  "estimated_yuan": 0.0006525,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-099708d9-00ac-91d9-b849-bde6e7106486",
+  "finish_reason": "stop",
+  "content": "{\"hip_change\": \"down\", \"explanation\": \"对比第一列和第六列，末帧中髋部绿色圆点在画面中的垂直位置明显低于起始帧。\"}"
+}

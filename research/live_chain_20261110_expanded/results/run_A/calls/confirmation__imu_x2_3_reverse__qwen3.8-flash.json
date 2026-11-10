@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x2_3_reverse__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "4ddb9d6a71e032a3df1a2c622d01df2a01c5f64e8c4f43a53a702b005a2c9ce2",
+  "request_id_local": "696e06992f620368f4fc63a73be586c3bb5b985b3e1d4d9e33e8c6c9f7ddeb17",
+  "created_at": "2026-11-10T10:17:11.616269+00:00",
+  "elapsed_ms": 1649.55,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 54
+  },
+  "estimated_yuan": 0.000693,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-a78ef51f-41fe-9a00-83f7-03b82488a7b3",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"no_clear_change\",\n  \"explanation\": \"对比第一列和第六列的正面视角，髋部绿色圆点在画面中的绝对垂直高度基本一致，没有发生明显的升高或降低。\"\n}"
+}

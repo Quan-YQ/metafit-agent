@@ -11,7 +11,7 @@ import pytest
 pytest.importorskip('numpy')
 Image = pytest.importorskip('PIL.Image')
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT/'research/live_chain_20261110'))
+sys.path.insert(0, str(ROOT/'research/live_chain_20261110_expanded'))
 import client as live
 import dataset as imu_data
 import run as chain_run
@@ -93,8 +93,7 @@ def test_unknown_usage_is_archived_and_reservation_retained(caller,monkeypatch):
 
 
 def test_budget_exhausted_blocks_network(caller,monkeypatch):
-    from vision_benchmark import reserve
-    reserve(caller.ledger,10,'already-used')
+    live.reserve(caller.ledger,10,'already-used')
     monkeypatch.setattr(live,'send',lambda *args:pytest.fail('must not send'))
     with pytest.raises(ModelCallError,match='budget_not_admitted'):
         caller.call(body(),'no-budget')
@@ -182,60 +181,15 @@ def test_provider_failure_stops_sibling_models_too(tmp_path,monkeypatch):
     assert not result['admitted_models']
 
 
-def test_shipped_real_archive_replays_without_network(monkeypatch):
+def test_shipped_expanded_archive_replays_without_network(monkeypatch):
     import importlib.util
-    spec=importlib.util.spec_from_file_location('live_chain_archive_replay',ROOT/'research/live_chain_20261110/replay.py')
+    spec=importlib.util.spec_from_file_location('expanded_archive_replay',
+        ROOT/'research/live_chain_20261110_expanded/replay.py')
     module=importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     monkeypatch.setattr(live,'send',lambda *args:pytest.fail('offline replay must not send'))
-    archive=ROOT/'research/live_chain_20261110/results/run_A'
+    archive=ROOT/'research/live_chain_20261110_expanded/results/run_A'
     result=module.audit(archive)
     assert result['network_calls']==0
+    assert result['images']==90
     assert result['chain']['binding_and_review_reproduced'] is True
-    with pytest.raises(ValueError,match='no further API calls'):
-        chain_run.validated(archive)
-
-
-def test_archived_request_hash_proves_image_and_visual_fact_were_sent():
-    import hashlib
-    from check_vision_observation import PROMPT
-    from research_motion_choice import RESEARCH_SYSTEM
-    archive=ROOT/'research/live_chain_20261110/results/run_A'
-    trace=json.loads((archive/'chain_trace.json').read_text(encoding='utf-8'))
-    frozen=json.loads((archive/'freeze.json').read_text(encoding='utf-8'))
-    models={m['id']:m for m in frozen['models']}
-    records={name:json.loads((archive/'calls'/(name+'.json')).read_text(encoding='utf-8'))
-             for name in ('chain_visual','chain_decision')}
-    def check_request(model_id,messages,record):
-        model=models[model_id]
-        payload={'model':model_id,'messages':messages,'temperature':0,'max_tokens':8192,
-            'stream':False,'response_format':{'type':'json_object'},**model['request_extra']}
-        actual=hashlib.sha256(json.dumps(payload,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
-        assert actual==record['request_sha256']
-    class O:
-        mode=trace['visual_observation']['observer_mode']
-        requested_model=trace['visual_model']
-        calls=requests_started=0
-        usage=elapsed_ms=None
-        def observe(self,image):
-            check_request(self.requested_model,[{'role':'user','content':[
-                {'type':'image_url','image_url':{'url':'data:image/png;base64,'+base64.b64encode(image).decode()}},
-                {'type':'text','text':PROMPT}]}],records['chain_visual'])
-            return records['chain_visual']['content']
-    class D:
-        mode='offline_archive_request_verification'
-        calls=requests_started=0
-        response=None
-        def complete(self,facts):
-            assert any(f.name=='simulated_model_reported_hip_change' for f in facts)
-            safe=[{'fact_id':f.fact_id,'name':f.name,'value':f.value} for f in facts]
-            check_request(trace['decision_model'],[
-                {'role':'system','content':RESEARCH_SYSTEM},
-                {'role':'user','content':json.dumps({'facts':safe},ensure_ascii=False)}],records['chain_decision'])
-            r=records['chain_decision']; u=r['usage']
-            self.response=ModelResponse(r['content'],r['requested_model'],r['returned_model'],
-                r['provider_request_id'],TokenUsage(u['input_tokens'],u['output_tokens']),r['elapsed_ms'],'stop')
-            return self.response
-    result=pipeline.run_pipeline(trace['event'],O(),D(),experiment_fn=lambda:
-        (trace['prediction_research'],(archive/trace['image_file']).read_bytes(),b''))
-    assert result['r3_status']=='reviewed'

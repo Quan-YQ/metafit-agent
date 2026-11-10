@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x3_6_reverse__qwen3.8-max-2026-09-02",
+  "requested_model": "qwen3.8-max-2026-09-02",
+  "provider": "dashscope",
+  "request_sha256": "833627db4e1c5520ef932447d47a4baa1cda610b31039989b34ffe00b056eafe",
+  "request_id_local": "e7bfd08ee87d2f93b5b8a11c8190caa7117bda253180739dc7ab23151cd8f74e",
+  "created_at": "2026-11-10T10:19:25.536424+00:00",
+  "elapsed_ms": 3494.417,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 65
+  },
+  "estimated_yuan": 0.010548,
+  "reservation_yuan": 1.081344,
+  "returned_model": "qwen3.8-max-0902",
+  "provider_request_id": "chatcmpl-45d306c7-a14b-9883-91bc-d3b5ea1150c4",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"down\",\n  \"explanation\": \"对比第一列与第六列，髋部圆点（绿点）从站立时的高位显著下降至蹲姿或坐姿时的低位，其垂直高度变化远超整张骨架竖直范围的5%。\"\n}"
+}

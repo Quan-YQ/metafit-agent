@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x5_4_reverse__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "82fb183804b90f815206093220a9d5549f89adceddd0dc16c5e3506e084d5210",
+  "request_id_local": "f3d7084c3b2f57c1748f4f5a075e3eec744280847ecf0ed6c0739575277976bb",
+  "created_at": "2026-11-10T10:21:57.380673+00:00",
+  "elapsed_ms": 5429.401,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 37
+  },
+  "estimated_yuan": 0.0006471000000000001,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-d9eb02e1-1b9a-9015-9364-4fb73621ce23",
+  "finish_reason": "stop",
+  "content": "{\"hip_change\": \"down\", \"explanation\": \"第六列的髋部圆点明显低于第一列，且下降幅度超过了骨架整体高度的5%。\"}"
+}

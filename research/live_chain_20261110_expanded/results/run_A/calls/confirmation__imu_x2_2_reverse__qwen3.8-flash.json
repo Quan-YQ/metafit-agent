@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x2_2_reverse__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "79e3b6b7f393a477127387bfd327df3a7cfceea23449a62f8fa718d8b36e691e",
+  "request_id_local": "673b4d23f61107d3b4689f900092a4935c299ca7703b297de3a1cf5ce83196d8",
+  "created_at": "2026-11-10T10:17:01.754115+00:00",
+  "elapsed_ms": 1797.099,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 49
+  },
+  "estimated_yuan": 0.0006795,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-58df815a-21a0-9fc8-8f1e-a7e8caf150b6",
+  "finish_reason": "stop",
+  "content": "{\"hip_change\": \"no_clear_change\", \"explanation\": \"对比第一列和第六列的正面视图，髋部绿色圆点相对于地面水平线的垂直高度在视觉上基本保持一致，没有明显的升高或降低。\"}"
+}

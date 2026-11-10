@@ -1,0 +1,61 @@
+{
+  "stage": "pilot",
+  "summary": {
+    "qwen3.8-flash": {
+      "planned": 3,
+      "completed": 3,
+      "correct": 2,
+      "accuracy": 0.6666666666666666,
+      "balanced_accuracy": 0.6666666666666666,
+      "per_class": {
+        "no_clear_change": {
+          "correct": 1,
+          "total": 1
+        },
+        "down": {
+          "correct": 1,
+          "total": 1
+        },
+        "up": {
+          "correct": 0,
+          "total": 1
+        }
+      },
+      "invalid_or_missing": 0,
+      "uncertain": 0,
+      "unknown_cost": 0,
+      "estimated_yuan": 0.0020493,
+      "median_ms": 1417.826
+    },
+    "qwen3.8-max-2026-09-02": {
+      "planned": 3,
+      "completed": 3,
+      "correct": 1,
+      "accuracy": 0.3333333333333333,
+      "balanced_accuracy": 0.3333333333333333,
+      "per_class": {
+        "no_clear_change": {
+          "correct": 1,
+          "total": 1
+        },
+        "down": {
+          "correct": 0,
+          "total": 1
+        },
+        "up": {
+          "correct": 0,
+          "total": 1
+        }
+      },
+      "invalid_or_missing": 0,
+      "uncertain": 0,
+      "unknown_cost": 0,
+      "estimated_yuan": 0.031104,
+      "median_ms": 2734.987
+    }
+  },
+  "responses_sha256": "4c45c22fa63d518724a7ebe30572e17ff0be28b0f9a879088cf03b767aa4b2b0",
+  "admitted_models": [
+    "qwen3.8-flash"
+  ]
+}

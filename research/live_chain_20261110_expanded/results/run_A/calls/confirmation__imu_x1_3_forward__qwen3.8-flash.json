@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x1_3_forward__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "546e79c7fb1d568ac115c51287fa60066f8cca99581a71120c04facfdcc8b720",
+  "request_id_local": "151c8e07f3ed509bdc5b0e18cb532afc0bf01217801bd6fa5de3fdbd4a606fa1",
+  "created_at": "2026-11-10T10:15:53.453222+00:00",
+  "elapsed_ms": 1624.0,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 51
+  },
+  "estimated_yuan": 0.0006849000000000001,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-424be0d9-77fb-9340-9b05-7aa01819bac4",
+  "finish_reason": "stop",
+  "content": "{\"hip_change\": \"up\", \"explanation\": \"对比第一列和第六列的正面视角，末帧（第六列）的绿色髋部圆点明显高于起始帧（第一列）的绿色髋部圆点。\"}"
+}

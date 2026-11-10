@@ -1,0 +1,1742 @@
+[
+  {
+    "case_id": "imu_x1_1_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1467.821,
+    "estimated_yuan": 0.0006768000000000001,
+    "call_file": "calls/confirmation__imu_x1_1_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_1_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3884.353,
+    "estimated_yuan": 0.010188,
+    "call_file": "calls/confirmation__imu_x1_1_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_1_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 4915.515,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x1_1_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_1_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1635.309,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x1_1_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_2_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1499.741,
+    "estimated_yuan": 0.0006741000000000001,
+    "call_file": "calls/confirmation__imu_x1_2_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_2_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 6980.542,
+    "estimated_yuan": 0.010512,
+    "call_file": "calls/confirmation__imu_x1_2_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_2_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2458.004,
+    "estimated_yuan": 0.01044,
+    "call_file": "calls/confirmation__imu_x1_2_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_2_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2100.081,
+    "estimated_yuan": 0.0007443,
+    "call_file": "calls/confirmation__imu_x1_2_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_2_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1555.306,
+    "estimated_yuan": 0.0007065,
+    "call_file": "calls/confirmation__imu_x1_2_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_2_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3620.564,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x1_2_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_3_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 3272.558,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x1_3_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_3_forward",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1624.0,
+    "estimated_yuan": 0.0006849000000000001,
+    "call_file": "calls/confirmation__imu_x1_3_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_3_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1731.046,
+    "estimated_yuan": 0.0007065,
+    "call_file": "calls/confirmation__imu_x1_3_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_3_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2825.023,
+    "estimated_yuan": 0.01026,
+    "call_file": "calls/confirmation__imu_x1_3_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_3_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3961.652,
+    "estimated_yuan": 0.01098,
+    "call_file": "calls/confirmation__imu_x1_3_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_3_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1439.681,
+    "estimated_yuan": 0.0006822,
+    "call_file": "calls/confirmation__imu_x1_3_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_4_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1228.004,
+    "estimated_yuan": 0.0006633,
+    "call_file": "calls/confirmation__imu_x1_4_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_4_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2344.058,
+    "estimated_yuan": 0.010404,
+    "call_file": "calls/confirmation__imu_x1_4_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_5_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 3335.934,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x1_5_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_5_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2310.182,
+    "estimated_yuan": 0.0006822,
+    "call_file": "calls/confirmation__imu_x1_5_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_5_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1598.84,
+    "estimated_yuan": 0.0006687,
+    "call_file": "calls/confirmation__imu_x1_5_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_5_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 3430.567,
+    "estimated_yuan": 0.010548,
+    "call_file": "calls/confirmation__imu_x1_5_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_5_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3776.723,
+    "estimated_yuan": 0.010476,
+    "call_file": "calls/confirmation__imu_x1_5_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_5_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1660.553,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x1_5_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_6_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1904.262,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x1_6_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_6_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3554.816,
+    "estimated_yuan": 0.010476,
+    "call_file": "calls/confirmation__imu_x1_6_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_6_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2588.788,
+    "estimated_yuan": 0.010404,
+    "call_file": "calls/confirmation__imu_x1_6_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x1_6_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1258.293,
+    "estimated_yuan": 0.000693,
+    "call_file": "calls/confirmation__imu_x1_6_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_6_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1607.742,
+    "estimated_yuan": 0.0006741000000000001,
+    "call_file": "calls/confirmation__imu_x1_6_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x1_6_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3172.179,
+    "estimated_yuan": 0.010584,
+    "call_file": "calls/confirmation__imu_x1_6_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_1_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2991.411,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x2_1_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_1_forward",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2288.228,
+    "estimated_yuan": 0.000693,
+    "call_file": "calls/confirmation__imu_x2_1_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_1_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1334.237,
+    "estimated_yuan": 0.0006633,
+    "call_file": "calls/confirmation__imu_x2_1_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_1_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2693.112,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x2_1_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_1_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2763.306,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x2_1_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_1_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1610.437,
+    "estimated_yuan": 0.000693,
+    "call_file": "calls/confirmation__imu_x2_1_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_2_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1598.312,
+    "estimated_yuan": 0.0007011000000000001,
+    "call_file": "calls/confirmation__imu_x2_2_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_2_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2827.589,
+    "estimated_yuan": 0.010188,
+    "call_file": "calls/confirmation__imu_x2_2_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_2_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3536.869,
+    "estimated_yuan": 0.010188,
+    "call_file": "calls/confirmation__imu_x2_2_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_2_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1797.099,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x2_2_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_2_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1221.449,
+    "estimated_yuan": 0.0006768000000000001,
+    "call_file": "calls/confirmation__imu_x2_2_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_2_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2472.831,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x2_2_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_3_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2451.578,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x2_3_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_3_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1861.882,
+    "estimated_yuan": 0.0006741000000000001,
+    "call_file": "calls/confirmation__imu_x2_3_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_3_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1649.55,
+    "estimated_yuan": 0.000693,
+    "call_file": "calls/confirmation__imu_x2_3_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_3_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2976.005,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x2_3_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_3_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2666.879,
+    "estimated_yuan": 0.010548,
+    "call_file": "calls/confirmation__imu_x2_3_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_3_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1784.969,
+    "estimated_yuan": 0.000693,
+    "call_file": "calls/confirmation__imu_x2_3_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_4_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1574.959,
+    "estimated_yuan": 0.0006687,
+    "call_file": "calls/confirmation__imu_x2_4_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_4_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2849.997,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x2_4_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_4_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 4420.099,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x2_4_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_4_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1771.566,
+    "estimated_yuan": 0.00072,
+    "call_file": "calls/confirmation__imu_x2_4_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_4_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2083.994,
+    "estimated_yuan": 0.0006687,
+    "call_file": "calls/confirmation__imu_x2_4_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_4_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2671.169,
+    "estimated_yuan": 0.010404,
+    "call_file": "calls/confirmation__imu_x2_4_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_5_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2524.436,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x2_5_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_5_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1704.943,
+    "estimated_yuan": 0.0006822,
+    "call_file": "calls/confirmation__imu_x2_5_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_5_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1505.149,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x2_5_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_5_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2994.977,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x2_5_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_5_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2819.406,
+    "estimated_yuan": 0.010476,
+    "call_file": "calls/confirmation__imu_x2_5_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_5_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1634.272,
+    "estimated_yuan": 0.0006903,
+    "call_file": "calls/confirmation__imu_x2_5_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_6_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1294.788,
+    "estimated_yuan": 0.0006633,
+    "call_file": "calls/confirmation__imu_x2_6_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_6_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2658.192,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x2_6_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_6_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3177.345,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x2_6_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x2_6_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1586.857,
+    "estimated_yuan": 0.0006957,
+    "call_file": "calls/confirmation__imu_x2_6_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_6_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1435.15,
+    "estimated_yuan": 0.0006849000000000001,
+    "call_file": "calls/confirmation__imu_x2_6_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x2_6_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3568.774,
+    "estimated_yuan": 0.010404,
+    "call_file": "calls/confirmation__imu_x2_6_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_1_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 4056.757,
+    "estimated_yuan": 0.010476,
+    "call_file": "calls/confirmation__imu_x3_1_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_1_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1570.976,
+    "estimated_yuan": 0.0006957,
+    "call_file": "calls/confirmation__imu_x3_1_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_1_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1925.138,
+    "estimated_yuan": 0.0007416,
+    "call_file": "calls/confirmation__imu_x3_1_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_1_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2801.14,
+    "estimated_yuan": 0.01026,
+    "call_file": "calls/confirmation__imu_x3_1_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_1_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3100.072,
+    "estimated_yuan": 0.01026,
+    "call_file": "calls/confirmation__imu_x3_1_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_1_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1756.405,
+    "estimated_yuan": 0.0006741000000000001,
+    "call_file": "calls/confirmation__imu_x3_1_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_2_forward",
+    "model": "qwen3.8-flash",
+    "answer": "down",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1900.425,
+    "estimated_yuan": 0.0007254000000000001,
+    "call_file": "calls/confirmation__imu_x3_2_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_2_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3138.911,
+    "estimated_yuan": 0.010656,
+    "call_file": "calls/confirmation__imu_x3_2_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_2_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 4358.175,
+    "estimated_yuan": 0.010656,
+    "call_file": "calls/confirmation__imu_x3_2_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_2_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1231.617,
+    "estimated_yuan": 0.0006525,
+    "call_file": "calls/confirmation__imu_x3_2_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_2_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1831.625,
+    "estimated_yuan": 0.0006822,
+    "call_file": "calls/confirmation__imu_x3_2_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_2_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2928.899,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x3_2_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_3_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 3234.589,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x3_3_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_3_forward",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1659.082,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x3_3_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_3_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1581.132,
+    "estimated_yuan": 0.0006957,
+    "call_file": "calls/confirmation__imu_x3_3_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_3_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2731.615,
+    "estimated_yuan": 0.010656,
+    "call_file": "calls/confirmation__imu_x3_3_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_3_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3247.067,
+    "estimated_yuan": 0.010512,
+    "call_file": "calls/confirmation__imu_x3_3_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_3_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1725.753,
+    "estimated_yuan": 0.0007011000000000001,
+    "call_file": "calls/confirmation__imu_x3_3_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_4_forward",
+    "model": "qwen3.8-flash",
+    "answer": "down",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1286.134,
+    "estimated_yuan": 0.0006498000000000001,
+    "call_file": "calls/confirmation__imu_x3_4_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_4_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 3578.314,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x3_4_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_4_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 3623.155,
+    "estimated_yuan": 0.01062,
+    "call_file": "calls/confirmation__imu_x3_4_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_4_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "down",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1326.002,
+    "estimated_yuan": 0.0006525,
+    "call_file": "calls/confirmation__imu_x3_4_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_4_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1420.773,
+    "estimated_yuan": 0.0006687,
+    "call_file": "calls/confirmation__imu_x3_4_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_4_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2282.176,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x3_4_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_5_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 4440.336,
+    "estimated_yuan": 0.011052,
+    "call_file": "calls/confirmation__imu_x3_5_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_5_forward",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1858.696,
+    "estimated_yuan": 0.000693,
+    "call_file": "calls/confirmation__imu_x3_5_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_5_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1509.466,
+    "estimated_yuan": 0.0006606,
+    "call_file": "calls/confirmation__imu_x3_5_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_5_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2857.087,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x3_5_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_5_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2965.135,
+    "estimated_yuan": 0.01026,
+    "call_file": "calls/confirmation__imu_x3_5_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_5_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1536.852,
+    "estimated_yuan": 0.000666,
+    "call_file": "calls/confirmation__imu_x3_5_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_6_forward",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1663.307,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x3_6_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_6_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3336.367,
+    "estimated_yuan": 0.010476,
+    "call_file": "calls/confirmation__imu_x3_6_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_6_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3494.417,
+    "estimated_yuan": 0.010548,
+    "call_file": "calls/confirmation__imu_x3_6_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x3_6_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1500.372,
+    "estimated_yuan": 0.0006525,
+    "call_file": "calls/confirmation__imu_x3_6_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_6_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1434.938,
+    "estimated_yuan": 0.0006822,
+    "call_file": "calls/confirmation__imu_x3_6_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x3_6_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2887.449,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x3_6_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_1_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2917.089,
+    "estimated_yuan": 0.010152,
+    "call_file": "calls/confirmation__imu_x4_1_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_1_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1711.03,
+    "estimated_yuan": 0.0006822,
+    "call_file": "calls/confirmation__imu_x4_1_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_1_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1547.83,
+    "estimated_yuan": 0.0006849000000000001,
+    "call_file": "calls/confirmation__imu_x4_1_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_1_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3871.706,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x4_1_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_1_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2617.06,
+    "estimated_yuan": 0.01026,
+    "call_file": "calls/confirmation__imu_x4_1_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_1_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1373.863,
+    "estimated_yuan": 0.000693,
+    "call_file": "calls/confirmation__imu_x4_1_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_2_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1744.146,
+    "estimated_yuan": 0.0006876,
+    "call_file": "calls/confirmation__imu_x4_2_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_2_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2712.311,
+    "estimated_yuan": 0.010404,
+    "call_file": "calls/confirmation__imu_x4_2_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_2_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2925.794,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x4_2_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_2_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1384.523,
+    "estimated_yuan": 0.000666,
+    "call_file": "calls/confirmation__imu_x4_2_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_2_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1403.172,
+    "estimated_yuan": 0.0006768000000000001,
+    "call_file": "calls/confirmation__imu_x4_2_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_2_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2719.954,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x4_2_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_3_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2832.231,
+    "estimated_yuan": 0.010368,
+    "call_file": "calls/confirmation__imu_x4_3_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_3_forward",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2003.557,
+    "estimated_yuan": 0.0007254000000000001,
+    "call_file": "calls/confirmation__imu_x4_3_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_3_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1923.163,
+    "estimated_yuan": 0.0006633,
+    "call_file": "calls/confirmation__imu_x4_3_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_3_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2982.009,
+    "estimated_yuan": 0.010944,
+    "call_file": "calls/confirmation__imu_x4_3_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_3_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3052.624,
+    "estimated_yuan": 0.01044,
+    "call_file": "calls/confirmation__imu_x4_3_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_3_static",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1823.808,
+    "estimated_yuan": 0.0007011000000000001,
+    "call_file": "calls/confirmation__imu_x4_3_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_4_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1593.196,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x4_4_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_4_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3038.415,
+    "estimated_yuan": 0.01044,
+    "call_file": "calls/confirmation__imu_x4_4_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_4_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2412.777,
+    "estimated_yuan": 0.010404,
+    "call_file": "calls/confirmation__imu_x4_4_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_4_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2013.356,
+    "estimated_yuan": 0.0007524000000000001,
+    "call_file": "calls/confirmation__imu_x4_4_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_4_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1800.814,
+    "estimated_yuan": 0.0006687,
+    "call_file": "calls/confirmation__imu_x4_4_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_4_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3691.347,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x4_4_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_5_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2776.107,
+    "estimated_yuan": 0.010512,
+    "call_file": "calls/confirmation__imu_x4_5_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_5_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1651.262,
+    "estimated_yuan": 0.0006714000000000001,
+    "call_file": "calls/confirmation__imu_x4_5_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_5_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1749.177,
+    "estimated_yuan": 0.0006795,
+    "call_file": "calls/confirmation__imu_x4_5_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_5_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3228.356,
+    "estimated_yuan": 0.01044,
+    "call_file": "calls/confirmation__imu_x4_5_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_5_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3593.458,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x4_5_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_5_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1849.75,
+    "estimated_yuan": 0.0006849000000000001,
+    "call_file": "calls/confirmation__imu_x4_5_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_6_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1910.628,
+    "estimated_yuan": 0.0007065,
+    "call_file": "calls/confirmation__imu_x4_6_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_6_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2702.128,
+    "estimated_yuan": 0.010224,
+    "call_file": "calls/confirmation__imu_x4_6_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_6_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2636.931,
+    "estimated_yuan": 0.010368,
+    "call_file": "calls/confirmation__imu_x4_6_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x4_6_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1700.687,
+    "estimated_yuan": 0.0006903,
+    "call_file": "calls/confirmation__imu_x4_6_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_6_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1504.798,
+    "estimated_yuan": 0.0006876,
+    "call_file": "calls/confirmation__imu_x4_6_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x4_6_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3060.039,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x4_6_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_1_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 3242.989,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x5_1_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_1_forward",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2630.14,
+    "estimated_yuan": 0.00072,
+    "call_file": "calls/confirmation__imu_x5_1_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_1_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1937.848,
+    "estimated_yuan": 0.0006822,
+    "call_file": "calls/confirmation__imu_x5_1_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_1_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 3240.174,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x5_1_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_1_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2719.397,
+    "estimated_yuan": 0.01026,
+    "call_file": "calls/confirmation__imu_x5_1_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_1_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1961.172,
+    "estimated_yuan": 0.0006606,
+    "call_file": "calls/confirmation__imu_x5_1_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_2_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2150.273,
+    "estimated_yuan": 0.0007038000000000001,
+    "call_file": "calls/confirmation__imu_x5_2_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_2_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2619.382,
+    "estimated_yuan": 0.01044,
+    "call_file": "calls/confirmation__imu_x5_2_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_2_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3536.762,
+    "estimated_yuan": 0.010404,
+    "call_file": "calls/confirmation__imu_x5_2_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_2_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1888.982,
+    "estimated_yuan": 0.0006822,
+    "call_file": "calls/confirmation__imu_x5_2_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_2_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1759.461,
+    "estimated_yuan": 0.0006633,
+    "call_file": "calls/confirmation__imu_x5_2_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_2_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2380.254,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x5_2_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_3_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3629.06,
+    "estimated_yuan": 0.010548,
+    "call_file": "calls/confirmation__imu_x5_3_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_3_forward",
+    "model": "qwen3.8-flash",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1696.153,
+    "estimated_yuan": 0.0006714000000000001,
+    "call_file": "calls/confirmation__imu_x5_3_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_3_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1798.872,
+    "estimated_yuan": 0.0006957,
+    "call_file": "calls/confirmation__imu_x5_3_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_3_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 4233.577,
+    "estimated_yuan": 0.010692,
+    "call_file": "calls/confirmation__imu_x5_3_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_3_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2749.672,
+    "estimated_yuan": 0.01044,
+    "call_file": "calls/confirmation__imu_x5_3_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_3_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1998.114,
+    "estimated_yuan": 0.0006903,
+    "call_file": "calls/confirmation__imu_x5_3_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_4_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2122.351,
+    "estimated_yuan": 0.0006741000000000001,
+    "call_file": "calls/confirmation__imu_x5_4_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_4_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2826.263,
+    "estimated_yuan": 0.010584,
+    "call_file": "calls/confirmation__imu_x5_4_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_4_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2431.969,
+    "estimated_yuan": 0.01026,
+    "call_file": "calls/confirmation__imu_x5_4_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_4_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 5429.401,
+    "estimated_yuan": 0.0006471000000000001,
+    "call_file": "calls/confirmation__imu_x5_4_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_4_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1730.759,
+    "estimated_yuan": 0.0006714000000000001,
+    "call_file": "calls/confirmation__imu_x5_4_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_4_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3063.321,
+    "estimated_yuan": 0.010332,
+    "call_file": "calls/confirmation__imu_x5_4_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_5_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3826.262,
+    "estimated_yuan": 0.010584,
+    "call_file": "calls/confirmation__imu_x5_5_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_5_forward",
+    "model": "qwen3.8-flash",
+    "answer": "up",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1875.779,
+    "estimated_yuan": 0.0007065,
+    "call_file": "calls/confirmation__imu_x5_5_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_5_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1827.193,
+    "estimated_yuan": 0.0006876,
+    "call_file": "calls/confirmation__imu_x5_5_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_5_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3954.072,
+    "estimated_yuan": 0.011268,
+    "call_file": "calls/confirmation__imu_x5_5_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_5_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2691.488,
+    "estimated_yuan": 0.010512,
+    "call_file": "calls/confirmation__imu_x5_5_static__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_5_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1709.429,
+    "estimated_yuan": 0.0006633,
+    "call_file": "calls/confirmation__imu_x5_5_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_6_forward",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 2231.344,
+    "estimated_yuan": 0.0006957,
+    "call_file": "calls/confirmation__imu_x5_6_forward__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_6_forward",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "up",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 2775.91,
+    "estimated_yuan": 0.011268,
+    "call_file": "calls/confirmation__imu_x5_6_forward__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_6_reverse",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "down",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3512.095,
+    "estimated_yuan": 0.010512,
+    "call_file": "calls/confirmation__imu_x5_6_reverse__qwen3.8-max-2026-09-02.json"
+  },
+  {
+    "case_id": "imu_x5_6_reverse",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "differs_from_reference",
+    "error": null,
+    "elapsed_ms": 1592.871,
+    "estimated_yuan": 0.0006633,
+    "call_file": "calls/confirmation__imu_x5_6_reverse__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_6_static",
+    "model": "qwen3.8-flash",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 1418.717,
+    "estimated_yuan": 0.0006633,
+    "call_file": "calls/confirmation__imu_x5_6_static__qwen3.8-flash.json"
+  },
+  {
+    "case_id": "imu_x5_6_static",
+    "model": "qwen3.8-max-2026-09-02",
+    "answer": "no_clear_change",
+    "comparison": "matches_reference",
+    "error": null,
+    "elapsed_ms": 3016.752,
+    "estimated_yuan": 0.010296,
+    "call_file": "calls/confirmation__imu_x5_6_static__qwen3.8-max-2026-09-02.json"
+  }
+]

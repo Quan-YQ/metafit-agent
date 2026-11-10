@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_x5_6_forward__qwen3.8-max-2026-09-02",
+  "requested_model": "qwen3.8-max-2026-09-02",
+  "provider": "dashscope",
+  "request_sha256": "0597126debbfbd5f29abe98c5156b5e46637c4ad7a51f4de9e6c261212a104ff",
+  "request_id_local": "1d6b0462ada1d9d1f01f55ae47561ddb674d83d059d8119b806c6457eb0fcc4f",
+  "created_at": "2026-11-10T10:22:23.495413+00:00",
+  "elapsed_ms": 2775.91,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 85
+  },
+  "estimated_yuan": 0.011268,
+  "reservation_yuan": 1.081344,
+  "returned_model": "qwen3.8-max-0902",
+  "provider_request_id": "chatcmpl-75e00b33-ca1b-9fd0-9f07-2936ca931aa0",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"up\",\n  \"explanation\": \"对比第一列与第六列，上排视角中髋部绿点从屈膝时的较低位置明显上升至直立时的较高位置，下排视角中髋部绿点也从深蹲姿态的低位显著升高至站立姿态的高位，其垂直位移均超过了骨架整体竖直范围的5%。\"\n}"
+}
