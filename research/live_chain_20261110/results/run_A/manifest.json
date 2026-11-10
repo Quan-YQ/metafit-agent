@@ -1,0 +1,1450 @@
+{
+  "schema": "imu-vision-chain-dataset-1",
+  "prompt": "图中六列从左到右是同一动作的时间顺序，上下两排是同一时刻的两个视角。只比较第六列与第一列的髋部圆点在图中的垂直高度。图中所有帧的绘图比例相同。如果末帧髋部升高至少整张骨架竖直范围的 5%，回答 up；下降至少 5%，回答 down；变化小于 5%，回答 no_clear_change；看不清或无法确定则回答 uncertain。只输出 JSON 对象，字段只有 hip_change 和 explanation；explanation 用一句中文说明可见依据。不要推断训练安全或给出建议。",
+  "prompt_sha256": "6887863d5f80e760f400fb64386aa0b5830ae0bacb4b1ef52baee6482607f553",
+  "cases": [
+    {
+      "id": "imu_1_1_forward",
+      "recording": "0625174933",
+      "rows": [
+        0,
+        232,
+        465,
+        697,
+        930,
+        1162
+      ],
+      "frame_order": "forward",
+      "cluster": "0625174933_0",
+      "stage": "pilot",
+      "reference": {
+        "direction": "down",
+        "change_over_skeleton_y_span": -0.0537,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "93ede3c85369f9c9f5c35bb29065f9462d864376e5e019b5f9bc704d54ada0e7",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          0,
+          232,
+          465,
+          697,
+          930,
+          1162
+        ],
+        "frame_order": "forward",
+        "case_id": "imu_1_1_forward",
+        "predicted_hip_reference": {
+          "direction": "down",
+          "change_over_skeleton_y_span": -0.0537,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "0e02e3666152d19a551d65b3078f4137a3353a21af6519eeaef6893ee9d43394"
+    },
+    {
+      "id": "imu_1_1_reverse",
+      "recording": "0625174933",
+      "rows": [
+        1162,
+        930,
+        697,
+        465,
+        232,
+        0
+      ],
+      "frame_order": "reverse",
+      "cluster": "0625174933_0",
+      "stage": "pilot",
+      "reference": {
+        "direction": "up",
+        "change_over_skeleton_y_span": 0.0537,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "d6aa947844750423af860a882f74415ebb2c2e3241746d73109eb9cd150b183f",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          1162,
+          930,
+          697,
+          465,
+          232,
+          0
+        ],
+        "frame_order": "reverse",
+        "case_id": "imu_1_1_reverse",
+        "predicted_hip_reference": {
+          "direction": "up",
+          "change_over_skeleton_y_span": 0.0537,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "6e04e6859c4bd8e8be0f5cf1074b9a4eceaf8953665a92288fdd54fce17ecba0"
+    },
+    {
+      "id": "imu_1_1_static",
+      "recording": "0625174933",
+      "rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "frame_order": "static",
+      "cluster": "0625174933_0",
+      "stage": "pilot",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "8896a2822b921f98698eca370284bacccb3a577b4dcc5ab2864c9e801d82b470",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "frame_order": "static",
+        "case_id": "imu_1_1_static",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "4015cb71983fa0802038009228c9917aab3ab38a0c998e47e1bfaabf3cb0f438"
+    },
+    {
+      "id": "imu_1_2_forward",
+      "recording": "0625174933",
+      "rows": [
+        1163,
+        1395,
+        1628,
+        1860,
+        2093,
+        2325
+      ],
+      "frame_order": "forward",
+      "cluster": "0625174933_1",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": -0.0237,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "0d1b48a5cbaf738f07ab9b9f09e6090f87a7bc4db389d68d49ca312a86e885ca",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          1163,
+          1395,
+          1628,
+          1860,
+          2093,
+          2325
+        ],
+        "frame_order": "forward",
+        "case_id": "imu_1_2_forward",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": -0.0237,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "06929f94194f1417262e669584a5393966b6c0525911e1ebff8140e30dc19de5"
+    },
+    {
+      "id": "imu_1_2_reverse",
+      "recording": "0625174933",
+      "rows": [
+        2325,
+        2093,
+        1860,
+        1628,
+        1395,
+        1163
+      ],
+      "frame_order": "reverse",
+      "cluster": "0625174933_1",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0237,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "8be2e6f588e1a01759f35b9c2906510ce0b44b335be23226e9d68e7dbe090f77",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          2325,
+          2093,
+          1860,
+          1628,
+          1395,
+          1163
+        ],
+        "frame_order": "reverse",
+        "case_id": "imu_1_2_reverse",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0237,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "522d6f27f1ec202ef8d224caf0aa2b1c5a0c4cbc134c2f7e226b6b0bacda8198"
+    },
+    {
+      "id": "imu_1_2_static",
+      "recording": "0625174933",
+      "rows": [
+        1163,
+        1163,
+        1163,
+        1163,
+        1163,
+        1163
+      ],
+      "frame_order": "static",
+      "cluster": "0625174933_1",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "a93c9632c17f3e747c835af6599e0a27a26c8118485ca483bd43be430e22528f",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          1163,
+          1163,
+          1163,
+          1163,
+          1163,
+          1163
+        ],
+        "frame_order": "static",
+        "case_id": "imu_1_2_static",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "96b3c7d152b16cd5601dadc155583c7714b188a6053406d2407d09c977de6141"
+    },
+    {
+      "id": "imu_1_3_forward",
+      "recording": "0625174933",
+      "rows": [
+        2326,
+        2558,
+        2791,
+        3023,
+        3256,
+        3488
+      ],
+      "frame_order": "forward",
+      "cluster": "0625174933_2",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "up",
+        "change_over_skeleton_y_span": 0.0607,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "a8b939d78487114256e1a57b26d56cd10166b2ea8ff9fcea9f90f4aaf32ced2a",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          2326,
+          2558,
+          2791,
+          3023,
+          3256,
+          3488
+        ],
+        "frame_order": "forward",
+        "case_id": "imu_1_3_forward",
+        "predicted_hip_reference": {
+          "direction": "up",
+          "change_over_skeleton_y_span": 0.0607,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "2df1190621c99aed3f9658909a01d47a5d93a2a25aca7dbc81cca203af328d88"
+    },
+    {
+      "id": "imu_1_3_reverse",
+      "recording": "0625174933",
+      "rows": [
+        3488,
+        3256,
+        3023,
+        2791,
+        2558,
+        2326
+      ],
+      "frame_order": "reverse",
+      "cluster": "0625174933_2",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "down",
+        "change_over_skeleton_y_span": -0.0607,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "baf2bc945a46dd842fc1b92be41fa948b439b53db6fc64f0f1500ffc05d91826",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          3488,
+          3256,
+          3023,
+          2791,
+          2558,
+          2326
+        ],
+        "frame_order": "reverse",
+        "case_id": "imu_1_3_reverse",
+        "predicted_hip_reference": {
+          "direction": "down",
+          "change_over_skeleton_y_span": -0.0607,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "69b5ac3226cf3e4adb88081c22daae9b033ce508f462fc6aa58d4df64ccdf84f"
+    },
+    {
+      "id": "imu_1_3_static",
+      "recording": "0625174933",
+      "rows": [
+        2326,
+        2326,
+        2326,
+        2326,
+        2326,
+        2326
+      ],
+      "frame_order": "static",
+      "cluster": "0625174933_2",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "bf193dc02dc1e75c9fbbbd058cc61740f3014d0defb57276fb3451faa3cfb6f2",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+        "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625174933",
+        "selected_original_rows": [
+          2326,
+          2326,
+          2326,
+          2326,
+          2326,
+          2326
+        ],
+        "frame_order": "static",
+        "case_id": "imu_1_3_static",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "330c158c3a832090ea7aa5feb6c68c0aaa34610e4553b84dd81efbd7fd227d1e"
+    },
+    {
+      "id": "imu_2_1_forward",
+      "recording": "0625175157",
+      "rows": [
+        0,
+        203,
+        406,
+        609,
+        812,
+        1015
+      ],
+      "frame_order": "forward",
+      "cluster": "0625175157_0",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": -0.0007,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "ac90e7a96378a6563d161fc8891f2943faa9f5de5d10e5103d540fb8ad56fc29",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          0,
+          203,
+          406,
+          609,
+          812,
+          1015
+        ],
+        "frame_order": "forward",
+        "case_id": "imu_2_1_forward",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": -0.0007,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "4d86eaae8d1edb031f9004636c8291fda8e91d555b8cc54a616ffe7f8269ba87"
+    },
+    {
+      "id": "imu_2_1_reverse",
+      "recording": "0625175157",
+      "rows": [
+        1015,
+        812,
+        609,
+        406,
+        203,
+        0
+      ],
+      "frame_order": "reverse",
+      "cluster": "0625175157_0",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0007,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "9ad8b19d8eb75d85688110600b1580b9df5c9b9c737745b4c42e121584ea88b6",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          1015,
+          812,
+          609,
+          406,
+          203,
+          0
+        ],
+        "frame_order": "reverse",
+        "case_id": "imu_2_1_reverse",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0007,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "aeaf120a53d085926e6b3197be9e7c6b94870089b8c1d1664cebf4cc2c12f4f7"
+    },
+    {
+      "id": "imu_2_1_static",
+      "recording": "0625175157",
+      "rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "frame_order": "static",
+      "cluster": "0625175157_0",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "eb3b79cbc79a7d167e1f1f696d0c2781d5e1619f5a6990e7b0b72dba4547132a",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "frame_order": "static",
+        "case_id": "imu_2_1_static",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "18fcf174873461ec033dfc86cdc81d855562e40a3053762d0a525a25a9cc72c9"
+    },
+    {
+      "id": "imu_2_2_forward",
+      "recording": "0625175157",
+      "rows": [
+        1016,
+        1219,
+        1422,
+        1625,
+        1828,
+        2031
+      ],
+      "frame_order": "forward",
+      "cluster": "0625175157_1",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0457,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "0d4b8b8f56ecaeaa6704b0156316e640775d35780d2753de628f60cbb356e562",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          1016,
+          1219,
+          1422,
+          1625,
+          1828,
+          2031
+        ],
+        "frame_order": "forward",
+        "case_id": "imu_2_2_forward",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0457,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "22be8657c56295d2ba5aa608fc64762b80d06a88bd69ed5907aed08a6ea29705"
+    },
+    {
+      "id": "imu_2_2_reverse",
+      "recording": "0625175157",
+      "rows": [
+        2031,
+        1828,
+        1625,
+        1422,
+        1219,
+        1016
+      ],
+      "frame_order": "reverse",
+      "cluster": "0625175157_1",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": -0.0457,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "221fcc3537cb22b76e3a1eba8a8ac98923862207090f9bf294d1f57d2525798f",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          2031,
+          1828,
+          1625,
+          1422,
+          1219,
+          1016
+        ],
+        "frame_order": "reverse",
+        "case_id": "imu_2_2_reverse",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": -0.0457,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "478a90f8ae70870fea8e324a5ecea187700545d9c5229fbbbf2d4987231f0711"
+    },
+    {
+      "id": "imu_2_2_static",
+      "recording": "0625175157",
+      "rows": [
+        1016,
+        1016,
+        1016,
+        1016,
+        1016,
+        1016
+      ],
+      "frame_order": "static",
+      "cluster": "0625175157_1",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "d4e49b15ce6644a331dc0f860c8f314873f801151957bde430ffc2021ae1a60f",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          1016,
+          1016,
+          1016,
+          1016,
+          1016,
+          1016
+        ],
+        "frame_order": "static",
+        "case_id": "imu_2_2_static",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "1e8a701e0341b9098691fc46a91a8e7a6eaeed3176d3f087bd63facf299eef91"
+    },
+    {
+      "id": "imu_2_3_forward",
+      "recording": "0625175157",
+      "rows": [
+        2032,
+        2235,
+        2438,
+        2641,
+        2844,
+        3047
+      ],
+      "frame_order": "forward",
+      "cluster": "0625175157_2",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": -0.0353,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "d39c94383798b23c62a9ba7321ad4a7a05f0787aa6b818562717015361980238",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          2032,
+          2235,
+          2438,
+          2641,
+          2844,
+          3047
+        ],
+        "frame_order": "forward",
+        "case_id": "imu_2_3_forward",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": -0.0353,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "02ab1b92804427580934e906bc0012dd0b8f9d9c7420a08c5b2e179316c160ac"
+    },
+    {
+      "id": "imu_2_3_reverse",
+      "recording": "0625175157",
+      "rows": [
+        3047,
+        2844,
+        2641,
+        2438,
+        2235,
+        2032
+      ],
+      "frame_order": "reverse",
+      "cluster": "0625175157_2",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0353,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "c1c8eafb83f2699b3e47abb20e36107269685077d0456f7339ac92d5637ec415",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          3047,
+          2844,
+          2641,
+          2438,
+          2235,
+          2032
+        ],
+        "frame_order": "reverse",
+        "case_id": "imu_2_3_reverse",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0353,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "0f487df7700966020e811d11a75119d9ba492c08fe3dd00cce62782966433218"
+    },
+    {
+      "id": "imu_2_3_static",
+      "recording": "0625175157",
+      "rows": [
+        2032,
+        2032,
+        2032,
+        2032,
+        2032,
+        2032
+      ],
+      "frame_order": "static",
+      "cluster": "0625175157_2",
+      "stage": "confirmation",
+      "reference": {
+        "direction": "no_clear_change",
+        "change_over_skeleton_y_span": 0.0,
+        "threshold": 0.05,
+        "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+      },
+      "image_sha256": "e13d0af1e42a03182a12a24f37c54f881e9dfb4f509b19c16775f8290018e532",
+      "report": {
+        "schema": "fusionposer-frozen-expanded-chain-1",
+        "x_sha256": "c2724b06135019a753af0d24028e4f0f89aec1bff2378ffe0654fb16e8e032b2",
+        "y_sha256": "97bad8b360e38aa6dc6d06d82fa52c98efcf4e423407a32020b6aa77497fb5ef",
+        "training_hashes": {
+          "0625180826": {
+            "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+            "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+          },
+          "0625181142": {
+            "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+            "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+          },
+          "0625181240": {
+            "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+            "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+          },
+          "0625175446": {
+            "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+            "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+          },
+          "0625175813": {
+            "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+            "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+          }
+        },
+        "training_recordings": [
+          "0625180826",
+          "0625181142",
+          "0625181240",
+          "0625175446",
+          "0625175813"
+        ],
+        "training_frames": 23951,
+        "predictor": "fixed_five_recording_ridge_alpha200",
+        "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+        "recording": "0625175157",
+        "selected_original_rows": [
+          2032,
+          2032,
+          2032,
+          2032,
+          2032,
+          2032
+        ],
+        "frame_order": "static",
+        "case_id": "imu_2_3_static",
+        "predicted_hip_reference": {
+          "direction": "no_clear_change",
+          "change_over_skeleton_y_span": 0.0,
+          "threshold": 0.05,
+          "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+        },
+        "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+        "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+        "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+      },
+      "prediction_report_sha256": "3286e9f522dface89f31e7bce63cb933a244b0f3cc9d58edf4ca0ec14646c8f2"
+    }
+  ],
+  "exposure": "Both recordings were used as development data in prior pose experiments; these images are new to this round. Variants share clusters, not independent people.",
+  "reference": "Prediction geometry, not physical truth. Static/reverse controls are constructed.",
+  "numpy_version": "2.5.4"
+}

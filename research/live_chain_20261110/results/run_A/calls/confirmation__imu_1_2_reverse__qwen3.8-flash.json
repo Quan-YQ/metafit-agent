@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_1_2_reverse__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "eb8bc1db796d089abf3c6b421cc9b7a32cb2c83821b1483273f6847eae51de7f",
+  "request_id_local": "cbe623d164ba1914b196651688a312a9199bcfc18e0f9127c6d75ae7d5705053",
+  "created_at": "2026-11-10T01:32:37.392619+00:00",
+  "elapsed_ms": 2110.531,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 63
+  },
+  "estimated_yuan": 0.0007173,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-36ee9f54-9f0c-9a30-b9b3-bcfc83b503e0",
+  "finish_reason": "stop",
+  "content": "{\"explanation\": \"通过对比第一列和第六列的正面视图，末帧（第六列）中代表髋部的绿色圆点在画面中的垂直位置明显高于起始帧（第一列），其高度差目测超过了骨架整体高度的5%。\", \"hip_change\": \"up\"}"
+}

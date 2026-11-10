@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "pilot__imu_1_1_forward__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "2de77fcaaa002aff08fb84f3ba10cd9ea407f5af88be80d9dda279374d25c61b",
+  "request_id_local": "53fb9dc6cfc0a8651eb87c1c0bb5cb2834a68747c8f19e43613c566f135dafd0",
+  "created_at": "2026-11-10T01:31:10.320828+00:00",
+  "elapsed_ms": 1589.598,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 55
+  },
+  "estimated_yuan": 0.0006957,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-e8fa5cf8-f2be-9782-9129-21f72d05f55d",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"no_clear_change\",\n  \"explanation\": \"对比第一列和第六列，髋部绿色圆点在画面中的垂直高度基本一致，变化幅度远小于整张骨架竖直范围的5%。\"\n}"
+}

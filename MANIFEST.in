@@ -3,6 +3,7 @@ include .github/workflows/tests.yml
 recursive-include docs *.md *.yaml
 recursive-include examples *.py *.json *.http *.bvh
 recursive-include research *.py *.md *.json *.jsonl *.txt .gitignore
+recursive-include research/live_chain_20261110/results *.png *.html
 recursive-include data *.md LICENSE
 recursive-include tools *.py
 recursive-include tests *.py

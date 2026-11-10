@@ -4,6 +4,7 @@
 
 | 实验 | 入口 | 结果与解释 |
 |---|---|---|
+| 公开IMU到真实视觉与Agent完整链路 | [复现指南](live_chain_20261110/README.md) | [演示页](live_chain_20261110/results/run_A/index.html)、[完整报告](../docs/公开IMU完整链路实测_20261110.md) |
 | DynaIP共同输入与四款视觉模型 | [复现指南](benchmark_20261108/README.md) | [完整报告](../docs/两项优化_DynaIP与视觉模型对比_20261108.md)、[逐项归档](benchmark_20261108/results/) |
 | CIP 按受试者划分的预测 | [复现指南](continuous_20261108/README.md) | [结果 JSON](continuous_20261108/cip_results.json)、[选模记录](continuous_20261108/cip_selection_frozen.json) |
 | CMU 图片升降判断与标记读取 | [复现指南](continuous_20261108/README.md) | [平衡测试结果](continuous_20261108/balanced_live.jsonl)、两个 `marker_*holdout_results.json` |

@@ -1,0 +1,137 @@
+{
+  "schema": "live-chain-preregistration-1",
+  "model_ids": [
+    "qwen3.8-flash",
+    "qwen3.8-max-2026-09-02",
+    "doubao-seed-2-1-pro-260915"
+  ],
+  "models": [
+    {
+      "id": "qwen3.8-flash",
+      "provider": "dashscope",
+      "key_env": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "input_per_million": 0.8,
+      "output_per_million": 2.7,
+      "request_extra": {
+        "enable_thinking": false
+      },
+      "alias_notice": "Mutable official alias; returned ID and timestamp recorded.",
+      "sources": [
+        "https://help.aliyun.com/zh/model-studio/qwen3-8-flash"
+      ]
+    },
+    {
+      "id": "qwen3.8-max-2026-09-02",
+      "provider": "dashscope",
+      "key_env": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "input_per_million": 12,
+      "output_per_million": 36,
+      "request_extra": {
+        "enable_thinking": false
+      },
+      "sources": [
+        "https://help.aliyun.com/zh/model-studio/qwen3-8-max"
+      ]
+    },
+    {
+      "id": "doubao-seed-2-1-pro-260915",
+      "provider": "ark",
+      "key_env": "ARK_API_KEY",
+      "endpoint": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+      "input_per_million": 6,
+      "output_per_million": 30,
+      "request_extra": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "sources": [
+        "https://docs.volcengine.com/docs/ark/model-list?lang=zh",
+        "https://docs.volcengine.com/docs/ark/model-pricing?lang=zh&redirect=1",
+        "https://docs.volcengine.com/docs/ark/chat-api?lang=zh&redirect=1"
+      ]
+    }
+  ],
+  "manifest_sha256": "2567aafaaf6879afc01396d4b21414548ca94a90fd521701ac90f4fdfcd0dde7",
+  "code_hashes": {
+    "research/live_chain_20261110/client.py": "9229297ee5963336882f7cf872cff4e711779f29de691ef508102b5040d4b585",
+    "research/live_chain_20261110/dataset.py": "1fdd8c067b560f8c373ed238d3da69b067b8bbb74a3ec7252ae79c9ce8629774",
+    "research/live_chain_20261110/present.py": "4d6a8e29fbf24015205eb58f4e9c7a887018f619f781be784e6ca817b4200c7c",
+    "research/live_chain_20261110/replay.py": "a41d53a51e2b9ce90d802813fab455b6533964300d5697887e8d0c6bc298a297",
+    "research/live_chain_20261110/run.py": "2aa6cdfaebafe2cfedc900d29e4c26f0f9021f316e2b7469dfc3110d6a1e0506",
+    "research/live_chain_20261110/models.json": "3e3fa4aea286c4aeecc97a9e6f2ca60ebe741b695196f9b727781f44a441a762",
+    "examples/fusionposer_imu_agent.py": "aa94f284912ff2f445b178e4e29a7b2e92964cc0831fb3835e7204e9e7729da9",
+    "examples/fusionposer_expanded.py": "389d63ef3719658b24052cb805df6671d85decfa04e0fca20dcc5050f76b2cb2",
+    "examples/fusionposer_research.py": "67f4587795ab9943beae73a6e32f54f14e13d9f6defd8f17360fa5be879a871a",
+    "examples/render_motion_sample.py": "a47ce07d5cbaee652e8bf1b59626add2cb3b403fb1d3b5fcc1fdfb373f56dedf",
+    "examples/research_motion_choice.py": "f48530262841a05cad508ef7533e7a7dabbe45696615ce22371f28c1f596600f",
+    "examples/check_vision_observation.py": "b636dae9120311d63ff4d189bf13e6992bf8b37dbe7467e173e9224333444f98",
+    "research/benchmark_20261108/vision_benchmark.py": "eda2b1f498862790592b18b6d32ca24f47f764407153814fdfe442748270a451",
+    "metafit_agent/__init__.py": "937b32702689d0a5513f839d28c6b3a04435e61c314cfecfc30609dc02151369",
+    "metafit_agent/__main__.py": "93dc32b89f8147b32c58f93fddd5beebc2ce14c3198469820791abf6a110bd84",
+    "metafit_agent/check_key_input.py": "075db9464f235cab413f550d82a24cc577cd1af16823411b68bf0523efd1bbd0",
+    "metafit_agent/context_builder.py": "4144085caf389111c032d578d82f6b3ba1fd0024c6773243ebe872257f61df71",
+    "metafit_agent/coordinator.py": "494f81f50811dcd1df5ab93655b5e45970129ef16019a3cf7f48433be71b58e7",
+    "metafit_agent/decision.py": "4fd1a62afe8986b1e4d3cc65626c418eddd92c3e7f8e0f670062dcb4e4689d20",
+    "metafit_agent/decision_review.py": "aac3f82623f609ee1d0c88257ad7fb57e2a2471e7b9976fe07368d6b2239fc5d",
+    "metafit_agent/decision_store.py": "a7210033ed08e80f58e4e2b545d587f5fdb6d537e1424a944fe9f3537ef2a405",
+    "metafit_agent/deepseek_client.py": "54993f6afbae3cc851c675ad37d40a3d8c97a96c16cbe6f66f8a0fd18a9907b4",
+    "metafit_agent/demo_context.py": "34178b6ce4efd9aa9698275a4fdda8e477812eda4d37f40e915c324caf52e4dd",
+    "metafit_agent/demo_coordinator.py": "68f60a39fc0eed6f0696acfd4389f8ebdd4eaa19aa93327c8461ccca44d7fc95",
+    "metafit_agent/demo_decision.py": "26ca69936bf0e25b35647eddb076009685dd275c22b782213c54bc7f6a7cd80d",
+    "metafit_agent/demo_history.py": "43a394cc39e322af4dd694aca6d16e609897aed39ecf38df6e4aac2464da9977",
+    "metafit_agent/demo_interaction.py": "67c6b4507a53a04374dfcbc819bbf36ac5da7b30f076d1cf8153b3372c344b5f",
+    "metafit_agent/demo_review.py": "8b0f5897d310c0034080c884a2a3925f25b57d6f7702dd45d1433b72c9b03353",
+    "metafit_agent/demo_safety_persistence.py": "0672f19695cbc59d0561057ddbd469ba786699c8baa20a0357aed9c46b170655",
+    "metafit_agent/demo_snapshot.py": "3ac951f2c26ad92a8a7ef468cb280d3cae19d01216fca43a8a213161507edcdd",
+    "metafit_agent/demo_storage.py": "50c09d502f2c0b40e8a3cf36cf2065dbc5c383beeaecf5820d836dcfd5c0bc79",
+    "metafit_agent/demo_training_event.py": "11da37a85adf282285f15560f56114e1e522cc988b5dcda4b5c6981e918f2b94",
+    "metafit_agent/evaluate_decision.py": "d4ee155a683bbfedd6b221f0cbe5f2a7149cc22c39ecdc57ebe85678d2520677",
+    "metafit_agent/event_store.py": "ebbb642c5676132e3537a79d9b01f2305413d5b035b80b84f1a50d671c14e1ae",
+    "metafit_agent/facts.py": "d5d692deb67a2514ef4189d2013241f9eb638d7aa1f74c454fca3dc082b601da",
+    "metafit_agent/glm_client.py": "256933d4ae1530132c299cb271097e5dec5e0d8ae617d635b1ec4dee81431523",
+    "metafit_agent/interaction_state.py": "5bcd377fa9e45851d9d1f30fd443bfe7ca47afd9dcf1d9d9a8a1daa15b127398",
+    "metafit_agent/model_client.py": "337ef962fbea2e2e5939b6a0af908f69606deebc9a057f364126cb1118603b84",
+    "metafit_agent/model_response.py": "7747a97d50adfb03e984e8ad7b6396b7ea308bcf4965b9d1d120fb4868fa886b",
+    "metafit_agent/recorded_coordinator.py": "37342e628b7092fadf6545cfd8c90a08ea4c4cef05cd7d9c09e3d75c1543d4cd",
+    "metafit_agent/replay_decision.py": "1d8fd260c682bb7a16b8b97f729a8ecb182cd643f34ed8b82d2d324333db6b3b",
+    "metafit_agent/research_evidence_guard.py": "e94d28a09b012f6827f535aa37903674cd6b9132d33c8adf0ed5326f3fb19882",
+    "metafit_agent/safety_coordinator.py": "7dc62f68ba13bfe4f0b75f155aebe01e7b0bee16de1444106e39f4ca3edefdb9",
+    "metafit_agent/safety_signals.py": "6ab78b82c5084a34f4dd45670208c57b31047671b929117ed4202f39269ec1be",
+    "metafit_agent/safety_store.py": "6069a1c1419cdfc997f21e0d823dd2658f0b568d7e4cbb4ff90120a32183ada5",
+    "metafit_agent/simulation_api.py": "0f0ff7aa176cd2676e0f4bd28e286d6ee29e217b53f7da79b0c742f781ffbdb6",
+    "metafit_agent/snapshot_coordinator.py": "c6222755ea7fd87a6b4afffa764b2b6e018604efd3a03d9802fba3d12b520420",
+    "metafit_agent/snapshot_store.py": "87a6fb18c47343ccbdd18d2035801b5784fc2b2131e89d999bf23136ee4c4d25",
+    "metafit_agent/stored_coordinator.py": "b820ba74ce75bbcc84085ab0b5e72e3029a3418a2d4999319832d7cae1eedc3f",
+    "metafit_agent/training_events.py": "f142ab5907790ea22e7ae9325d0510a148bbd07e36754f05a26e87b96139c41c"
+  },
+  "budget_cap_yuan": 10,
+  "max_output_tokens": 8192,
+  "pilot_items_per_model": 3,
+  "pilot_bars": {
+    "correct_min": 2,
+    "invalid_max": 0,
+    "unknown_cost_max": 0
+  },
+  "selection_rule": [
+    "balanced_accuracy_desc",
+    "accuracy_desc",
+    "uncertain_rate_asc",
+    "cost_asc",
+    "latency_asc"
+  ],
+  "stops": [
+    "transport_or_auth_error_stops_provider",
+    "unknown_charge_stops_provider",
+    "pilot_below_bar_excluded",
+    "ledger_admission_refused_stops_all",
+    "no_automatic_paid_retry"
+  ],
+  "decoys": "Repeated-frame static controls; uncertainty and invalid count as incorrect. Reversal pairs share a source cluster.",
+  "blinding": "Only PNG and frozen prompt sent to vision; no filename, class, reference, pose error, or model label. Programmatic geometry scorer sees class labels only.",
+  "heldout_exposure": "Both recordings were used as development data in prior pose experiments; these images are new to this round. Variants share clusters, not independent people.",
+  "cost_envelope": "One fixed 1200x460 PNG; <=16KiB text; reserve 65,536 input and 8,192 output tokens. Engineering envelope, usage checked after each call; not a provider billing guarantee.",
+  "scope": "Public FusionPoser IMU + head-height → fixed expanded ridge → image observation → simulated event choice → R3 review."
+}

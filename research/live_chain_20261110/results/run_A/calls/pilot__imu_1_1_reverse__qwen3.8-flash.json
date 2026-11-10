@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "pilot__imu_1_1_reverse__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "6c7a8980f9777c6df590cb93a142fa273c5b8a00816ab1650fd3adf7af784f13",
+  "request_id_local": "39d988b5275bfee152574b96115cbef26efb60c86d579c5fd261506638c58318",
+  "created_at": "2026-11-10T01:31:19.909163+00:00",
+  "elapsed_ms": 2231.601,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 60
+  },
+  "estimated_yuan": 0.0007092,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-5ac89e73-e0a2-934c-871b-1753877d07e0",
+  "finish_reason": "stop",
+  "content": "{\"explanation\": \"第六列（末帧）的髋部圆点垂直高度明显高于第一列（首帧），其升高的距离目测约占骨架整体竖直高度的10%至20%，超过了5%的阈值。\", \"hip_change\": \"up\"}"
+}

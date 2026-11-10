@@ -27,8 +27,9 @@ def digest(data):
 
 class IMUGate:
     """仅用于公开样本的研究接合；不为真实身份或动作质量背书。"""
-    def __init__(self, observer, decision):
+    def __init__(self, observer, decision, experiment_fn=None):
         self.observer, self.decision = observer, decision
+        self.experiment = experiment_fn if experiment_fn is not None else experiment
         self.report = None
         self.observation = None
         self.motion_fact = None
@@ -38,9 +39,9 @@ class IMUGate:
 
     def _verify(self, facts, scope):
         try:
-            fresh, image, _ = experiment()
+            fresh, image, _ = self.experiment()
             observation = self.observation
-            if (not observation or observation["comparison"] != "matches_reference"
+            if (fresh != self.report or not observation or observation["comparison"] != "matches_reference"
                     or observation["source_x_sha256"] != fresh["x_sha256"]
                     or observation["source_y_sha256"] != fresh["y_sha256"]
                     or observation["selected_original_rows"] != fresh["selected_original_rows"]
@@ -53,6 +54,7 @@ class IMUGate:
             if observation["observation_id"] != expected_id:
                 return False
             expected = {"schema": "public-imu-simulated-binding-1", "event_facts_digest": fact_list_digest(scope, facts),
+                        "prediction_report_sha256": digest(fresh),
                         "observation_id": expected_id, "source_x_sha256": fresh["x_sha256"],
                         "source_y_sha256": fresh["y_sha256"], "image_sha256": observation["image_sha256"]}
             fact = self.motion_fact
@@ -74,7 +76,7 @@ class IMUGate:
         if any((f.user_id, f.session_id, f.event_id) != (scope.user_id, scope.session_id, scope.event_id) for f in facts):
             raise ModelCallError("unsupported_research_scope")
         try:
-            self.report, image, _ = experiment()
+            self.report, image, _ = self.experiment()
         except (OSError, ValueError, TypeError, IndexError, OverflowError):
             raise ModelCallError("imu_research_data_invalid") from None
         if not isinstance(image, bytes) or not image.startswith(b"\x89PNG\r\n\x1a\n") or len(image) > 2 * 1024 * 1024:
@@ -103,6 +105,7 @@ class IMUGate:
                                 scope.user_id, scope.session_id, scope.event_id,
                                 "shadow_observation:" + self.observation["observation_id"], "event", "simulated_motion_observation")
         self.binding = {"schema": "public-imu-simulated-binding-1", "event_facts_digest": fact_list_digest(scope, facts),
+                        "prediction_report_sha256": digest(self.report),
                         "observation_id": self.observation["observation_id"], "source_x_sha256": self.report["x_sha256"],
                         "source_y_sha256": self.report["y_sha256"], "image_sha256": self.observation["image_sha256"]}
         self.binding_sha256 = digest(self.binding)
@@ -119,10 +122,10 @@ class IMUGate:
         return result
 
 
-def run_pipeline(event, observer=None, decision=None):
+def run_pipeline(event, observer=None, decision=None, *, experiment_fn=None):
     chosen_observer = observer if observer is not None else ScriptedObserver("no_clear_change")
     chosen_decision = decision if decision is not None else OfflineChoiceModel()
-    gate = IMUGate(chosen_observer, chosen_decision)
+    gate = IMUGate(chosen_observer, chosen_decision, experiment_fn)
     outcome = decide_simulated_event(event, gate)
     binding_status = "not_checked"
     if outcome.status == "candidate":
@@ -152,11 +155,13 @@ def run_pipeline(event, observer=None, decision=None):
         "simulation": True, "source_kind": "public_real_imu_and_head_height", "skeleton_origin": "predicted_by_single_sequence_ridge",
         "reference_origin": "public_optical_motion_capture", "event_image_association": "synthetic_not_real_world_proof",
         "prediction_research": gate.report, "visual_observation": gate.observation,
-        "visual_requests_started": chosen_observer.calls if chosen_observer.mode == "live_deepseek_observation" else 0,
+        "visual_requests_started": getattr(chosen_observer, "requests_started",
+            chosen_observer.calls if chosen_observer.mode == "live_deepseek_observation" else 0),
         "visual_usage": chosen_observer.usage, "visual_elapsed_ms": chosen_observer.elapsed_ms,
         "binding_precheck": gate.precheck, "binding_status": binding_status, "binding_sha256": gate.binding_sha256,
         "decision_mode": chosen_decision.mode,
-        "decision_requests_started": chosen_decision.calls if chosen_decision.mode == "live_deepseek_choice" else 0,
+        "decision_requests_started": getattr(chosen_decision, "requests_started",
+            chosen_decision.calls if chosen_decision.mode == "live_deepseek_choice" else 0),
         "decision_usage": usage, "decision_elapsed_ms": round(response.elapsed_ms, 2) if response else None,
         "decision_reason_adjustment": getattr(chosen_decision, "reason_adjustment", None),
         "decision_estimated_yuan": str(budget.estimated_spent_yuan) if budget else None,

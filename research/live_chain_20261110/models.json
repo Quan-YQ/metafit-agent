@@ -1,0 +1,43 @@
+{
+  "schema": "metafit-live-chain-models-1",
+  "verified_date": "2026-11-10",
+  "currency": "CNY",
+  "region": "cn-beijing",
+  "models": [
+    {
+      "id": "qwen3.8-flash",
+      "provider": "dashscope",
+      "key_env": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "input_per_million": 0.8,
+      "output_per_million": 2.7,
+      "request_extra": {"enable_thinking": false},
+      "alias_notice": "Mutable official alias; returned ID and timestamp recorded.",
+      "sources": ["https://help.aliyun.com/zh/model-studio/qwen3-8-flash"]
+    },
+    {
+      "id": "qwen3.8-max-2026-09-02",
+      "provider": "dashscope",
+      "key_env": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "input_per_million": 12,
+      "output_per_million": 36,
+      "request_extra": {"enable_thinking": false},
+      "sources": ["https://help.aliyun.com/zh/model-studio/qwen3-8-max"]
+    },
+    {
+      "id": "doubao-seed-2-1-pro-260915",
+      "provider": "ark",
+      "key_env": "ARK_API_KEY",
+      "endpoint": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+      "input_per_million": 6,
+      "output_per_million": 30,
+      "request_extra": {"thinking": {"type": "disabled"}},
+      "sources": ["https://docs.volcengine.com/docs/ark/model-list?lang=zh", "https://docs.volcengine.com/docs/ark/model-pricing?lang=zh&redirect=1", "https://docs.volcengine.com/docs/ark/chat-api?lang=zh&redirect=1"]
+    }
+  ],
+  "considered": [
+    {"id": "gemini-3.8-flash", "status": "optional_not_in_this_round", "reason": "Separate international account/region and currency; domestic candidates cover cost and stronger-model comparison.", "input_usd_per_million": 0.75, "output_usd_per_million": 3.75, "introductory_until": "2026-12-31", "source": "https://ai.google.dev/gemini-api/docs/latest-model"},
+    {"id": "glm-4.6v-flash", "status": "historical_comparison_only", "reason": "Already tested on Nov 8; keep historical evidence, avoid presenting it as a newly released candidate."}
+  ]
+}

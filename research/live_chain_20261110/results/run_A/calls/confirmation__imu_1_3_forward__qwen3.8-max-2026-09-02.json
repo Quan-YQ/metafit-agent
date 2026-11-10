@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_1_3_forward__qwen3.8-max-2026-09-02",
+  "requested_model": "qwen3.8-max-2026-09-02",
+  "provider": "dashscope",
+  "request_sha256": "7b3f8038b639c00152beef5c4a0d3a0e843d0f1ebcca27cb943e788842acc681",
+  "request_id_local": "e450d4db8558d952bf3f9a6fa7a935ec8bb6124189436aa9c95628fc1e9b2882",
+  "created_at": "2026-11-10T01:32:45.025434+00:00",
+  "elapsed_ms": 3035.442,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 56
+  },
+  "estimated_yuan": 0.010224,
+  "reservation_yuan": 1.081344,
+  "returned_model": "qwen3.8-max-0902",
+  "provider_request_id": "chatcmpl-0b0ae6e9-06c3-9be9-a6b9-2bd051afd74a",
+  "finish_reason": "stop",
+  "content": "{\n  \"hip_change\": \"up\",\n  \"explanation\": \"对比第一列与第六列，第六列中髋部绿点在图中的垂直位置明显高于第一列，且升高幅度超过了整张骨架竖直范围的5%。\"\n}"
+}

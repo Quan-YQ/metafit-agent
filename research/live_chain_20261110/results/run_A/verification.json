@@ -1,0 +1,53 @@
+{
+  "schema": "metafit-live-chain-final-verification-1",
+  "date": "2026-11-10",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "scope": "Final target checkout, existing optional data and research dependencies present.",
+  "pytest": {
+    "command": "python -X utf8 -m pytest -q -p no:cacheprovider",
+    "passed": 753,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 1,
+    "elapsed_seconds": 75.17,
+    "warning": "Pinned upstream DynaIP read_data.py uses torch.cross without dim; future deprecation warning."
+  },
+  "new_chain_tests": {
+    "passed": 15
+  },
+  "replay": {
+    "network_calls": 0,
+    "rerendered_image_hashes": 18,
+    "pilot_call_records": 7,
+    "confirmation_call_records": 30,
+    "chain_visual_calls": 1,
+    "chain_decision_calls": 1,
+    "r3": "reviewed",
+    "binding": "matched_simulation"
+  },
+  "request_payload_hash_reconstruction": "passed: exact image prompt and facts, including visual observation",
+  "repository_check": {
+    "candidate_files_scanned": 323,
+    "markdown_files": 33,
+    "local_links": 194,
+    "issues": 0
+  },
+  "credential_scan": {
+    "exact_environment_key_matches": 0,
+    "values_logged": false
+  },
+  "html_local_links": "all_exist",
+  "git_diff_check": "passed",
+  "budget": {
+    "cap_yuan": 10,
+    "requests": 39,
+    "known_usage_estimate_yuan": 0.2082174,
+    "unknown_reserved_yuan": 0.638976,
+    "total_consumed_or_reserved_yuan": 0.8471934
+  },
+  "historical_tests": "Earlier failed checks are superseded by this final full run. Source semantic content unchanged by Windows newline normalization.",
+  "git": {
+    "committed": false,
+    "pushed": false
+  }
+}

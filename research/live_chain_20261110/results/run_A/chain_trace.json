@@ -1,0 +1,159 @@
+{
+  "simulation": true,
+  "source_kind": "public_real_imu_and_head_height",
+  "skeleton_origin": "predicted_by_fixed_five_recording_ridge_alpha200",
+  "reference_origin": "public_optical_motion_capture",
+  "event_image_association": "synthetic_not_real_world_proof",
+  "prediction_research": {
+    "schema": "fusionposer-frozen-expanded-chain-1",
+    "x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+    "y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+    "training_hashes": {
+      "0625180826": {
+        "x": "59a1e0bce5ad3157137b43b7f41e3ca05d366272e93519976e5f8762233cebc9",
+        "y": "4dc960fcb05a83d3ec7b6997f134c0686ed638603ec1b15e6a4c4b23e4940ac6"
+      },
+      "0625181142": {
+        "x": "e16d71c0fa22fa68416a48ee3e33bc827f740a6d2133dbb508f05fb69776ba2c",
+        "y": "0b9e10b696618c650f538d3d43149151eb7750f716ac3591c1155264c376e392"
+      },
+      "0625181240": {
+        "x": "72f875584c346705e5d1ef4830644741c853b49f3246920797601b255ec46cc8",
+        "y": "244e8787ebfd18599433ecc463d3acbe634416fc20de6b775ee3675db17ae3b7"
+      },
+      "0625175446": {
+        "x": "bec5d27b6f8a37bb50e839132892737156b92d155446f1272de7f1f353d2db47",
+        "y": "763dd2bd868ce5751b29ecef0dbc99475a1368442b5cb6913ffc79d691de5222"
+      },
+      "0625175813": {
+        "x": "ee645fb508c1bd8a592482992106a7aca50788778d716860448a1b5ef2d3a42b",
+        "y": "00c5c29715e0b4ddb9e7362e3fb745a05b9a719ca727765ba2c9bfda8e8d9ff5"
+      }
+    },
+    "training_recordings": [
+      "0625180826",
+      "0625181142",
+      "0625181240",
+      "0625175446",
+      "0625175813"
+    ],
+    "training_frames": 23951,
+    "predictor": "fixed_five_recording_ridge_alpha200",
+    "predictor_sha256": "6025493eb849ef5b7662af64461bc7fd4e80e76fe0ad447db731761d1a5ab234",
+    "recording": "0625174933",
+    "selected_original_rows": [
+      1163,
+      1395,
+      1628,
+      1860,
+      2093,
+      2325
+    ],
+    "frame_order": "forward",
+    "case_id": "imu_1_2_forward",
+    "predicted_hip_reference": {
+      "direction": "no_clear_change",
+      "change_over_skeleton_y_span": -0.0237,
+      "threshold": 0.05,
+      "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+    },
+    "input": "Six IMUs plus public head-height input; preprocessed 43 features at window index 6.",
+    "source_commit": "e8ba6f89b2f6cc031b37c55dd72fc674192df86f",
+    "reference_scope": "Geometry of predicted skeleton; no optical target supplied to vision API."
+  },
+  "visual_observation": {
+    "schema": "imu-prediction-observation-research-1",
+    "source_x_sha256": "cd4f9de038bf6c4ff13bf3bf9c700a31d10d8e7d9b026513c2a370daade44fac",
+    "source_y_sha256": "6609a5de720a432699ba0b24b3dd653420dcfc3a0256aa1d801fd5917b744f64",
+    "selected_original_rows": [
+      1163,
+      1395,
+      1628,
+      1860,
+      2093,
+      2325
+    ],
+    "image_sha256": "0d1b48a5cbaf738f07ab9b9f09e6090f87a7bc4db389d68d49ca312a86e885ca",
+    "prompt_sha256": "6887863d5f80e760f400fb64386aa0b5830ae0bacb4b1ef52baee6482607f553",
+    "observer_mode": "live_official_vision",
+    "requested_model": "qwen3.8-max-2026-09-02",
+    "reference": {
+      "direction": "no_clear_change",
+      "change_over_skeleton_y_span": -0.0237,
+      "threshold": 0.05,
+      "note": "来自预测骨架的工程对照，不是人体真值、训练质量或安全标签。"
+    },
+    "model_hip_change": "no_clear_change",
+    "comparison": "matches_reference",
+    "observation_id": "imu_obs_13cde51163133bb7"
+  },
+  "visual_requests_started": 1,
+  "visual_usage": {
+    "prompt_tokens": 684,
+    "completion_tokens": 55
+  },
+  "visual_elapsed_ms": 2518.9308999997593,
+  "binding_precheck": "passed",
+  "binding_status": "matched_simulation",
+  "binding_sha256": "e4848464f1bd9988fa86f2b87481314e3433029b05d3fc7941e7b3d36b0e906a",
+  "decision_mode": "live_official_choice",
+  "decision_requests_started": 1,
+  "decision_usage": {
+    "input_tokens": 588,
+    "output_tokens": 66
+  },
+  "decision_elapsed_ms": 1619.64,
+  "decision_reason_adjustment": null,
+  "decision_estimated_yuan": null,
+  "decision_budget_uncertain": null,
+  "r2_status": "candidate",
+  "r2_error": null,
+  "r3_status": "reviewed",
+  "reference_check": "passed_for_cited_ids",
+  "candidate_action": "silent",
+  "candidate_evidence": [
+    "fact_1"
+  ],
+  "do_not_disturb": {
+    "value": false,
+    "source": "simulation_default"
+  },
+  "effective_action": "silent",
+  "may_display": false,
+  "delivery": false,
+  "notice": "Public IMU and head-height research chain; image geometry is checked against prediction, not motion truth. Simulated event; no App delivery.",
+  "schema": "metafit-linked-live-run-1",
+  "case_id": "imu_1_2_forward",
+  "visual_model": "qwen3.8-max-2026-09-02",
+  "decision_model": "qwen3.8-flash",
+  "event": {
+    "schema_version": "0.1",
+    "event_id": "sim_event_001",
+    "event_type": "set_completed",
+    "user_id": "sim_user_001",
+    "session_id": "sim_session_001",
+    "set_id": "sim_set_001",
+    "exercise_id": "public_imu_research",
+    "timestamp": "2026-11-02T18:30:00+08:00",
+    "source": "simulation",
+    "discomfort": {
+      "status": "none",
+      "source": "self_report"
+    },
+    "perceived_effort": null
+  },
+  "candidate": {
+    "suggested_action": "silent",
+    "message": null,
+    "reason": "模拟数据记录了自报无不适，但时效和当前状态未确认；仅依据当前模拟事实。",
+    "evidence": [
+      "fact_1"
+    ]
+  },
+  "image_file": "images/imu_1_2_forward.png",
+  "freeze_sha256": "ab87e5d80d0c4b3cbf1a36c7674655170dfc135656b121e295ee0b987e0ea0a1",
+  "provider_records": {
+    "chain_visual": "b3ff8ed967802f830fd6c545f98cd1c5ede65971731d4b5642d9799315fc4c4f",
+    "chain_decision": "e4046b1d16dd17497f781691554d36f21f6e4150371c6b48c8d7080749c11e0c"
+  }
+}

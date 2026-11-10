@@ -1,0 +1,21 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "confirmation__imu_1_3_static__qwen3.8-flash",
+  "requested_model": "qwen3.8-flash",
+  "provider": "dashscope",
+  "request_sha256": "b219e5cedbd9e832810efcd27c913b9495a58602cec803cc633dfc2c57e45781",
+  "request_id_local": "5db4477d457080eb33d61a0815f54b7f4790c78903f2f63697f89f5552774c80",
+  "created_at": "2026-11-10T01:32:56.956409+00:00",
+  "elapsed_ms": 1707.93,
+  "error": null,
+  "usage": {
+    "input_tokens": 684,
+    "output_tokens": 42
+  },
+  "estimated_yuan": 0.0006606,
+  "reservation_yuan": 0.07454720000000001,
+  "returned_model": "qwen3.8-flash",
+  "provider_request_id": "chatcmpl-a008edcc-0c00-9792-86d8-3916c8d6f6a3",
+  "finish_reason": "stop",
+  "content": "{\"explanation\": \"通过对比第一列和第六列的图像，髋部绿色圆点在画面中的垂直高度没有发生肉眼可见的变化。\", \"hip_change\": \"no_clear_change\"}"
+}

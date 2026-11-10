@@ -1,0 +1,18 @@
+{
+  "schema": "live-chain-provider-call-1",
+  "identity": "pilot__imu_1_1_forward__doubao-seed-2-1-pro-260915",
+  "requested_model": "doubao-seed-2-1-pro-260915",
+  "provider": "ark",
+  "request_sha256": "d73f83790fdc7b3969a52a9e7965edc6160e75c7190ba66c3ee22e610790266f",
+  "request_id_local": "1f791b7d04c96e76e9bd3959f0d01c305a52f38c767f0cea0d955fc131a5553f",
+  "created_at": "2026-11-10T01:31:14.357161+00:00",
+  "elapsed_ms": 329.564,
+  "error": "http_404",
+  "usage": null,
+  "estimated_yuan": null,
+  "reservation_yuan": 0.638976,
+  "returned_model": null,
+  "provider_request_id": null,
+  "finish_reason": null,
+  "content": null
+}

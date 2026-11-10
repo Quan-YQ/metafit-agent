@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "network_calls": 0,
+  "cases": 18,
+  "scorer_controls_checked": 72,
+  "static_controls": 6,
+  "frozen_models": [
+    "qwen3.8-flash",
+    "qwen3.8-max-2026-09-02",
+    "doubao-seed-2-1-pro-260915"
+  ]
+}
